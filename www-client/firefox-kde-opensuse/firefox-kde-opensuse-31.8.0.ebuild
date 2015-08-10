@@ -30,7 +30,8 @@ PATCH="${MOZ_PN}-31.0-patches-0.3"
 PATCHFF="${PATCH}"
 # Upstream ftp release URI that's used by mozlinguas.eclass
 # We don't use the http mirror because it deletes old tarballs.
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${MOZ_PN}/releases"
+#MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${MOZ_PN}/releases"
+MOZ_FTP_URI="http://archive.mozilla.org/pub/${MOZ_PN}/releases"
 MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${MOZ_PN}/releases"
 
 # Mercurial repository for Mozilla Firefox patches to provide better KDE Integration (developed by Wolfgang Rosenauer for OpenSUSE)
@@ -59,7 +60,6 @@ SRC_URI="${SRC_URI}
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 CDEPEND="
-	<=media-libs/freetype-2.5.9999
 	>=dev-libs/nss-3.19.2
 	>=dev-libs/nspr-4.10.6
 "
@@ -74,13 +74,13 @@ DEPEND="${CDEPEND}
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
-
-	kde? ( kde-misc/kmozillahelper )
-	!!www-client/firefox"
+"
 
 # No source releases for alpha|beta
 if [[ ${PV} =~ alpha ]]; then
-	CHANGESET="8a3042764de7"
+	CHANGESET="8a3042764de7
+	kde? ( kde-misc/kmozillahelper )
+	!!www-client/firefox"
 	SRC_URI="${SRC_URI}
 		http://dev.gentoo.org/~nirbheek/mozilla/firefox/firefox-${MOZ_PV}_${CHANGESET}.source.tar.bz2"
 	S="${WORKDIR}/mozilla-aurora-${CHANGESET}"
@@ -195,7 +195,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-32.0-hppa-js-configure.patch # bug 524556
 
-	# Allow user to apply any additional patches without modifying ebuild
+	# Allow user to apply any additional patches without modifing ebuild
 	epatch_user
 
 	# Enable gnomebreakpad

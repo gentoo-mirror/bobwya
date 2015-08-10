@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: www-client/firefox-kde-opensuse-39.0 $
+# $Header: www-client/firefox-kde-opensuse-39.0.3 $
 
 EAPI="5"
 VIRTUALX_REQUIRED="pgo"
@@ -31,7 +31,8 @@ fi
 PATCH="${MOZ_PN}-38.0-patches-0.3"
 # Upstream ftp release URI that's used by mozlinguas.eclass
 # We don't use the http mirror because it deletes old tarballs.
-MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${MOZ_PN}/releases"
+#MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${MOZ_PN}/releases"
+MOZ_FTP_URI="http://archive.mozilla.org/pub/${MOZ_PN}/releases"
 MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${MOZ_PN}/releases"
 
 # Mercurial repository for Mozilla Firefox patches to provide better KDE Integration (developed by Wolfgang Rosenauer for OpenSUSE)
@@ -194,7 +195,7 @@ src_prepare() {
 	epatch "${WORKDIR}/firefox"
 	epatch "${FILESDIR}"/${PN}-38-hppa-js-syntax-error.patch #556196
 
-	# Allow user to apply any additional patches without modifying ebuild
+	# Allow user to apply any additional patches without modifing ebuild
 	epatch_user
 
 	# Enable gnomebreakpad
