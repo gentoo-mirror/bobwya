@@ -1,0 +1,77 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
+app-office/libreoffice:collada - Enable Collada for rendering 3D models stored in *.dae and *.kmz format
+app-office/libreoffice:gltf - Use media-libs/libgltf for inserting 3D models in the glTF format into presentations
+app-office/libreoffice:gtk3 - Enable highly experimental gtk3 frontend
+app-office/libreoffice:jemalloc - Use dev-libs/jemalloc for allocations
+app-office/libreoffice:odk - Build the Office Development Kit
+app-office/libreoffice:telepathy - Enable document colaboration features using telepathy communication framework.
+app-office/libreoffice:vlc - Use media-video/vlc for video embedding
+dev-cpp/pion:bzip2 - Add support for bzip2 compression using app-arch/bzip2 library.
+dev-cpp/pion:debug - Build dev-libs/pion with debugging information.
+dev-cpp/pion:doc - Build html documentation and man pages by default. Build monolithic pdf and postscript documentation files (optional: dependent on whether both dev-texlive/texlive-latex and dev-texlive/texlive-latexextra are installed).
+dev-cpp/pion:log4cplus - Enable (exclusive) logging support using external dev-libs/log4cplus library.
+dev-cpp/pion:log4cpp - Enable (exclusive) logging support using external dev-libs/log4cpp library.
+dev-cpp/pion:log4cxx - Enable (exclusive) logging support using external dev-libs/log4cxx library.
+dev-cpp/pion:logging - Enable logging globally for dev-libs/pion. Use dev-libs/boost std::ostream command line output if none of the preceeding three (mutally exclusive) external logging libraries are enabled.
+dev-cpp/pion:ssl - Enables SSL support using dev-libs/openssl library.
+dev-cpp/pion:zlib - Add support for gzip compression using sys-libs/zlib library.
+games-fps/dhewm3:dedicated - install only as a dedicated game server
+games-fps/dhewm3:roe - Adds support for the Resurrection of Evil expansion
+games-fps/dhewm3:sdl2 - Enable support SDL2
+kde-misc/beshell:examples - Install bespin example configuration files.
+kde-misc/beshell:scripts - Install bespin script files.
+kde-misc/beshell:wallpapers - Install stock bespin wallpapers.
+mail-client/thunderbird-kde-opensuse:bindist - Disable official Thunderbird branding (icons, name) which are not binary-redistributable according to upstream.
+mail-client/thunderbird-kde-opensuse:crypt - Enable encryption support with enigmail
+mail-client/thunderbird-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
+mail-client/thunderbird-kde-opensuse:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
+mail-client/thunderbird-kde-opensuse:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
+mail-client/thunderbird-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native KDE4 file dialog via kde-misc/kmozillahelper.
+mail-client/thunderbird-kde-opensuse:lightning - Enable app-global calendar support (note 38.0 and above bundles calendar support when this flag is off)
+mail-client/thunderbird-kde-opensuse:minimal - Remove the software development kit and headers
+mail-client/thunderbird-kde-opensuse:mozdom - Enable Mozilla's DOM inspector
+mail-client/thunderbird-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
+mail-client/thunderbird-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
+mail-client/thunderbird-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
+mail-client/thunderbird-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
+mail-client/thunderbird-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
+media-video/h264enc:ogm - Support for OGM container format
+media-video/handbrake:fdk - Support for encoding AAC using media-libs/fdk-aac.
+media-video/handbrake:ffmpeg - Use FFmpeg from media-video/ffmpeg to decode MPEG-2 instead of media-plugins/gst-plugins-mpeg2dec.
+media-video/handbrake:gstreamer - Support for the streaming media framework from media-libs/gstreamer.
+media-video/handbrake:gtk - Support for Gimp ToolKit + from x11-libs/gtk+, requirement for a GUI-based HandBrake.
+net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/rb_libtorrent.
+net-misc/fatrat:jplugins - Install Java runtime plugins.
+net-misc/fatrat:webinterface - Enable builtin webinterface.
+net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
+net-p2p/eiskaltdcpp:cli - Enable sample cli based on readline
+net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon
+net-p2p/eiskaltdcpp:dht - Enable DHT (distributed hash table) support for libeiskaltdcpp
+net-p2p/eiskaltdcpp:emoticons - Install emoticon packs
+net-p2p/eiskaltdcpp:json - Enable JSON for cli and daemon
+net-p2p/eiskaltdcpp:libcanberra - Enable sound notifications support over libcanberra in EiskaltDC++ Gtk
+net-p2p/eiskaltdcpp:minimal - Don't install headers
+www-client/firefox-kde-opensuse:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
+www-client/firefox-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
+www-client/firefox-kde-opensuse:egl - Enable EGL provider
+www-client/firefox-kde-opensuse:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
+www-client/firefox-kde-opensuse:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
+www-client/firefox-kde-opensuse:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
+www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support for KDE4 file dialog via kde-misc/kmozillahelper.
+www-client/firefox-kde-opensuse:minimal - Prevent sdk and headers from being installed
+www-client/firefox-kde-opensuse:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
+www-client/firefox-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
+www-client/firefox-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
+www-client/firefox-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
+www-client/firefox-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
+www-client/firefox-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
+x11-drivers/nvidia-drivers:X - Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
+x11-drivers/nvidia-drivers:gtk2 - Install nvidia-settings with support for GTK+ 2
+x11-drivers/nvidia-drivers:gtk3 - Install nvidia-settings with support for GTK+ 3
+x11-drivers/nvidia-drivers:pax_kernel - PaX patches from the PaX project
+x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
+x11-drivers/nvidia-drivers:uvm - Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs

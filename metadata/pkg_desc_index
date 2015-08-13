@@ -1,0 +1,23 @@
+app-backup/fsarchiver 9999: Flexible filesystem archiver for backup and deployment tool
+app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
+app-crypt/chntpw 100627 110511 140201: Offline Windows NT Password & Registry Editor
+app-office/libreoffice 9999: LibreOffice, a full office productivity suite
+app-shells/bash-completion 2.1-r91 2.1-r92 2.1-r93 2.1_p20141224 9999: Programmable Completion for bash
+dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP interfaces
+games-fps/dhewm3 9999: A Doom 3 GPL source modification.
+kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology (namely KIO and Solid) for the rest of us
+kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for: dolphin,konsole,firefox,kopete,akonadi,krdc,kate,clementine,amarok,rekonq,konqueror,chromium,chrome and last.fm
+kde-misc/kmozillahelper 0.6.4: Mozilla KDE Integration
+mail-client/thunderbird-kde-opensuse 24.8.0 31.8.0 38.1.0: Thunderbird Mail Client with OpenSUSE patchset, to provide better integration with KDE Desktop
+media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
+media-video/filebot 4.1 4.6: Java-based GUI and console tools to rename TV shows, download subtitles, and validate checksums
+media-video/h264enc 9.4.0 9.4.1 10.4.0: Script to encode H.264/AVC/MPEG-4 Part 10 formats
+media-video/handbrake 0.9.9 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder.
+net-misc/fatrat 1.2.9999: Qt4 (C++) based download manager with support for HTTP, FTP, SFTP, BitTorrent, rapidshare and more
+net-misc/teamviewer 9.0.32150 10.0.41499: All-In-One Solution for Remote Access and Support over the Internet
+net-p2p/btsync 1.2.82 1.3.109 1.4.72 1.4.111: Sync files & folders using BitTorrent protocol
+net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
+net-p2p/syncthing 9999: Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized.
+sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
+www-client/firefox-kde-opensuse 31.8.0 38.1.0 38.1.1 39.0.3: Firefox Web Browser with OpenSUSE patchset, to provide better integration with KDE Desktop
+x11-drivers/nvidia-drivers 331.113 340.76 343.36 346.72 349.16 352.09: NVIDIA Accelerated Graphics Driver
