@@ -10,6 +10,11 @@ app-office/libreoffice:jemalloc - Use dev-libs/jemalloc for allocations
 app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:telepathy - Enable document colaboration features using telepathy communication framework.
 app-office/libreoffice:vlc - Use media-video/vlc for video embedding
+app-office/libreoffice-l10n:linguas_ca_valencia - Catalan locale (Valencia)
+app-office/libreoffice-l10n:linguas_kmr_Latn - kmr_Latn localization
+app-office/libreoffice-l10n:linguas_sid - sid localization
+app-office/libreoffice-l10n:linguas_sr_Latn - Serbian (Latin) locale
+app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 dev-cpp/pion:bzip2 - Add support for bzip2 compression using app-arch/bzip2 library.
 dev-cpp/pion:debug - Build dev-libs/pion with debugging information.
 dev-cpp/pion:doc - Build html documentation and man pages by default. Build monolithic pdf and postscript documentation files (optional: dependent on whether both dev-texlive/texlive-latex and dev-texlive/texlive-latexextra are installed).
