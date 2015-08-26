@@ -1,5 +1,6 @@
 app-backup/fsarchiver 9999: Flexible filesystem archiver for backup and deployment tool
 app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
+app-benchmarks/phoronix-test-suite 5.8.1 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
 app-crypt/chntpw 100627 110511 140201: Offline Windows NT Password & Registry Editor
 app-office/libreoffice 5.0.1.1 5.0.9999: LibreOffice, a full office productivity suite
 app-office/libreoffice-l10n 5.0.0 5.0.1.1: Translations for the Libreoffice suite
@@ -21,5 +22,5 @@ net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protoc
 net-p2p/syncthing 9999: Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized.
 sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
-www-client/firefox-kde-opensuse 31.8.0 38.1.0 38.1.1 39.0.3 40.0: Firefox Web Browser with OpenSUSE patchset, to provide better integration with KDE Desktop
+www-client/firefox-kde-opensuse 38.1.1 38.2.0 40.0.2: Firefox Web Browser with OpenSUSE patchset, to provide better integration with KDE Desktop
 x11-drivers/nvidia-drivers 331.113 340.76 343.36 346.72 349.16 352.09: NVIDIA Accelerated Graphics Driver
