@@ -23,5 +23,5 @@ net-p2p/syncthing 9999: Syncthing replaces proprietary sync and cloud services w
 sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-auth/pam_kwallet 9999: PAM integration to automatically unlock kwallet when logging into a KDE4 Desktop Session
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
-www-client/firefox-kde-opensuse 38.1.1 38.2.0 40.0.2: Firefox Web Browser with OpenSUSE patchset, to provide better integration with KDE Desktop
+www-client/firefox-kde-opensuse 38.1.1 38.2.0 38.2.1 40.0.3: Firefox Web Browser with OpenSUSE patchset, to provide better integration with KDE Desktop
 x11-drivers/nvidia-drivers 331.113 340.76 343.36 346.72 349.16 352.09: NVIDIA Accelerated Graphics Driver
