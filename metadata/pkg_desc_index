@@ -11,7 +11,7 @@ games-fps/dhewm3 9999: A Doom 3 GPL source modification.
 kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology (namely KIO and Solid) for the rest of us
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for: dolphin,konsole,firefox,kopete,akonadi,krdc,kate,clementine,amarok,rekonq,konqueror,chromium,chrome and last.fm
 kde-misc/kmozillahelper 0.6.4: Mozilla KDE Integration
-mail-client/thunderbird-kde-opensuse 31.8.0 38.2.0 38.3.0 38.4.0: Thunderbird Mail Client with OpenSUSE patchset, to provide better integration with KDE Desktop
+mail-client/thunderbird-kde-opensuse 31.8.0 38.3.0 38.4.0: Thunderbird Mail Client with OpenSUSE patchset, to provide better integration with KDE Desktop
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
 media-video/filebot 4.1 4.6.1: Java-based GUI and console tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 9.4.0 9.4.1 10.4.6: Script to encode H.264/AVC/MPEG-4 Part 10 formats

@@ -44,20 +44,6 @@ games-fps/dhewm3:sdl2 - Enable support SDL2
 kde-misc/beshell:examples - Install bespin example configuration files.
 kde-misc/beshell:scripts - Install bespin script files.
 kde-misc/beshell:wallpapers - Install stock bespin wallpapers.
-mail-client/thunderbird-kde-opensuse:bindist - Disable official Thunderbird branding (icons, name) which are not binary-redistributable according to upstream.
-mail-client/thunderbird-kde-opensuse:crypt - Enable encryption support with enigmail
-mail-client/thunderbird-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
-mail-client/thunderbird-kde-opensuse:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
-mail-client/thunderbird-kde-opensuse:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
-mail-client/thunderbird-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native KDE4 file dialog via kde-misc/kmozillahelper.
-mail-client/thunderbird-kde-opensuse:lightning - Enable app-global calendar support (note 38.0 and above bundles calendar support when this flag is off)
-mail-client/thunderbird-kde-opensuse:minimal - Remove the software development kit and headers
-mail-client/thunderbird-kde-opensuse:mozdom - Enable Mozilla's DOM inspector
-mail-client/thunderbird-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
-mail-client/thunderbird-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
-mail-client/thunderbird-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
-mail-client/thunderbird-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
-mail-client/thunderbird-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 media-video/h264enc:ogm - Support for OGM container format
 media-video/handbrake:fdk - Support for encoding AAC using media-libs/fdk-aac.
 media-video/handbrake:ffmpeg - Use FFmpeg from media-video/ffmpeg to decode MPEG-2 instead of media-plugins/gst-plugins-mpeg2dec.
