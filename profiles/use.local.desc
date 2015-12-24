@@ -16,19 +16,6 @@ app-emulation/wine:prelink - Run prelink on DLLs during build -- do not disable 
 app-emulation/wine:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support
 app-emulation/wine:run-exes - Use Wine to open and run .EXE and .MSI files
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
-app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
-app-office/libreoffice:collada - Enable Collada for rendering 3D models stored in *.dae and *.kmz format
-app-office/libreoffice:gltf - Use media-libs/libgltf for inserting 3D models in the glTF format into presentations
-app-office/libreoffice:gtk3 - Enable highly experimental gtk3 frontend
-app-office/libreoffice:jemalloc - Use dev-libs/jemalloc for allocations
-app-office/libreoffice:odk - Build the Office Development Kit
-app-office/libreoffice:telepathy - Enable document colaboration features using telepathy communication framework.
-app-office/libreoffice:vlc - Use media-video/vlc for video embedding
-app-office/libreoffice-l10n:linguas_ca_valencia - Catalan locale (Valencia)
-app-office/libreoffice-l10n:linguas_kmr_Latn - kmr_Latn localization
-app-office/libreoffice-l10n:linguas_sid - sid localization
-app-office/libreoffice-l10n:linguas_sr_Latn - Serbian (Latin) locale
-app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 dev-cpp/pion:bzip2 - Add support for bzip2 compression using app-arch/bzip2 library.
 dev-cpp/pion:debug - Build dev-libs/pion with debugging information.
 dev-cpp/pion:doc - Build html documentation and man pages by default. Build monolithic pdf and postscript documentation files (optional: dependent on whether both dev-texlive/texlive-latex and dev-texlive/texlive-latexextra are installed).
@@ -75,9 +62,3 @@ www-client/firefox-kde-opensuse:system-icu - Use the system-wide dev-libs/icu in
 www-client/firefox-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
 www-client/firefox-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 www-client/firefox-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
-x11-drivers/nvidia-drivers:X - Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
-x11-drivers/nvidia-drivers:gtk2 - Install nvidia-settings with support for GTK+ 2
-x11-drivers/nvidia-drivers:gtk3 - Install nvidia-settings with support for GTK+ 3
-x11-drivers/nvidia-drivers:pax_kernel - PaX patches from the PaX project
-x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
-x11-drivers/nvidia-drivers:uvm - Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs
