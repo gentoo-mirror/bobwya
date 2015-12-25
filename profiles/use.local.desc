@@ -52,7 +52,7 @@ media-video/h264enc:ogm - Support for OGM container format
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/rb_libtorrent.
 net-misc/fatrat:jplugins - Install Java runtime plugins.
 net-misc/fatrat:webinterface - Enable builtin webinterface.
-net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
+net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled wine.
 net-p2p/eiskaltdcpp:cli - Enable sample cli based on readline
 net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon
 net-p2p/eiskaltdcpp:dht - Enable DHT (distributed hash table) support for libeiskaltdcpp

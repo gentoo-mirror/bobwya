@@ -13,8 +13,8 @@ media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
 media-video/filebot 4.1 4.6.1: Java-based tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 10.4.6: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 net-dialup/dterm 0.3: Simple serial terminal emulator
-net-misc/fatrat 1.2.9999: Qt4 (C++) based download manager with support for HTTP, FTP, SFTP, BitTorrent, rapidshare and more
-net-misc/teamviewer 9.0.32150 10.0.41499: All-In-One Solution for Remote Access and Support over the Internet
+net-misc/fatrat 1.2.9999: Qt4 (C++) based download manager with multi-protocol support
+net-misc/teamviewer 11.0.53191: All-In-One Solution for Remote Access and Support over the Internet
 net-p2p/btsync 1.2.82 1.3.109 1.4.72 1.4.111: Sync files & folders using BitTorrent protocol
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
