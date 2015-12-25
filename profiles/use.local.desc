@@ -60,12 +60,14 @@ net-p2p/eiskaltdcpp:emoticons - Install emoticon packs
 net-p2p/eiskaltdcpp:json - Enable JSON for cli and daemon
 net-p2p/eiskaltdcpp:libcanberra - Enable sound notifications support over libcanberra in EiskaltDC++ Gtk
 net-p2p/eiskaltdcpp:minimal - Don't install headers
+sys-auth/pam_kwallet:debug - Enable extra debug codepaths
 www-client/firefox-kde-opensuse:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
 www-client/firefox-kde-opensuse:egl - Enable EGL provider
 www-client/firefox-kde-opensuse:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
 www-client/firefox-kde-opensuse:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
 www-client/firefox-kde-opensuse:gtk3 - Use the cairo-gtk3 rendering engine
+www-client/firefox-kde-opensuse:hwaccel - Use hardware-accelerated rendering
 www-client/firefox-kde-opensuse:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
 www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support for KDE4 file dialog via kde-misc/kmozillahelper.
 www-client/firefox-kde-opensuse:minimal - Prevent sdk and headers from being installed
