@@ -10,9 +10,8 @@ kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4
 kde-misc/kmozillahelper 0.6.4: Mozilla KDE Integration
 mail-client/thunderbird-kde-opensuse 31.8.0 38.3.0 38.4.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
-media-video/filebot 4.1 4.6.1: Java-based GUI and console tools to rename TV shows, download subtitles, and validate checksums
-media-video/h264enc 9.4.0 9.4.1 10.4.6: Script to encode H.264/AVC/MPEG-4 Part 10 formats
-media-video/handbrake 0.9.9 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder.
+media-video/filebot 4.1 4.6.1: Java-based tools to rename TV shows, download subtitles, and validate checksums
+media-video/h264enc 10.4.6: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 net-dialup/dterm 0.3: Simple serial terminal emulator
 net-misc/fatrat 1.2.9999: Qt4 (C++) based download manager with support for HTTP, FTP, SFTP, BitTorrent, rapidshare and more
 net-misc/teamviewer 9.0.32150 10.0.41499: All-In-One Solution for Remote Access and Support over the Internet

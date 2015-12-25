@@ -49,10 +49,6 @@ mail-client/thunderbird-kde-opensuse:system-jpeg - Use the system-wide media-lib
 mail-client/thunderbird-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 media-video/h264enc:ogm - Support for OGM container format
-media-video/handbrake:fdk - Support for encoding AAC using media-libs/fdk-aac.
-media-video/handbrake:ffmpeg - Use FFmpeg from media-video/ffmpeg to decode MPEG-2 instead of media-plugins/gst-plugins-mpeg2dec.
-media-video/handbrake:gstreamer - Support for the streaming media framework from media-libs/gstreamer.
-media-video/handbrake:gtk - Support for Gimp ToolKit + from x11-libs/gtk+, requirement for a GUI-based HandBrake.
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/rb_libtorrent.
 net-misc/fatrat:jplugins - Install Java runtime plugins.
 net-misc/fatrat:webinterface - Enable builtin webinterface.
