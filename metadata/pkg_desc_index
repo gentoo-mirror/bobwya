@@ -1,14 +1,14 @@
 app-backup/fsarchiver 9999: Flexible filesystem archiver for backup and deployment tool
 app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
-app-benchmarks/phoronix-test-suite 5.8.1 6.0.0_pre4 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
-app-emulation/wine 1.8_rc1 1.8_rc2 1.8_rc3 1.8_rc4: Free implementation of Windows(tm) on Unix
-app-shells/bash-completion 2.1-r91 2.1-r92 2.1-r93 2.1_p20141224 9999: Programmable Completion for bash
+app-benchmarks/phoronix-test-suite 5.8.1 6.0.1 6.2.0_pre1 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
+app-emulation/wine 1.8: Free implementation of Windows(tm) on Unix
+app-shells/bash-completion 9999: Programmable Completion for bash
 dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP interfaces
 games-fps/dhewm3 9999: A Doom 3 GPL source modification.
-kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology (namely KIO and Solid) for the rest of us
-kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for: dolphin,konsole,firefox,kopete,akonadi,krdc,kate,clementine,amarok,rekonq,konqueror,chromium,chrome and last.fm
+kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for the rest of us
+kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
 kde-misc/kmozillahelper 0.6.4: Mozilla KDE Integration
-mail-client/thunderbird-kde-opensuse 31.8.0 38.3.0 38.4.0: Thunderbird Mail Client with OpenSUSE patchset, to provide better integration with KDE Desktop
+mail-client/thunderbird-kde-opensuse 31.8.0 38.3.0 38.4.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
 media-video/filebot 4.1 4.6.1: Java-based GUI and console tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 9.4.0 9.4.1 10.4.6: Script to encode H.264/AVC/MPEG-4 Part 10 formats

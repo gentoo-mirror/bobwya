@@ -1,13 +1,13 @@
 DEFINED_PHASES=install
-DESCRIPTION=Dockmanager scripts for: dolphin,konsole,firefox,kopete,akonadi,krdc,kate,clementine,amarok,rekonq,konqueror,chromium,chrome and last.fm
+DESCRIPTION=Dockmanager scripts for various KDE 4 applications
 EAPI=5
 HOMEPAGE=http://kde-look.org/content/show.php/dockmanager-kde_and_extra?content=151511
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-3
-RDEPEND=>=kde-base/kdebase-runtime-meta-4.8.0 x11-misc/dockmanager
+RDEPEND=>=kde-apps/kdebase-runtime-meta-4.8.0 x11-misc/dockmanager
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=http://kde-look.org/CONTENT/content-files/151511-dockmanager-kde_and_extra-0.9.17.tgz
 _eclass_exported_funcs=src_install:-
 _eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=817b3fd4b6ec0a460bc39911d6b9c881
+_md5_=8789b2979aed12c3a85984e0db89d473
