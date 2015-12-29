@@ -1,7 +1,7 @@
 app-backup/fsarchiver 9999: Flexible filesystem archiver for backup and deployment tool
 app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/phoronix-test-suite 5.8.1 6.0.1 6.2.0_pre1 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
-app-emulation/wine 1.8: Free implementation of Windows(tm) on Unix
+app-emulation/wine 1.8 1.9.0: Free implementation of Windows(tm) on Unix
 app-shells/bash-completion 9999: Programmable Completion for bash
 dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP interfaces
 games-fps/dhewm3 9999: A Doom 3 GPL source modification.
