@@ -48,6 +48,10 @@ mail-client/thunderbird-kde-opensuse:system-icu - Use the system-wide dev-libs/i
 mail-client/thunderbird-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
+media-video/h264enc:aacplus - Add support for AAC audio encoding supprt via package media-sound/aacplusenc.
+media-video/h264enc:faac - Add support for AAC audio encoding support via library media-libs/faac.
+media-video/h264enc:fdkaac - Add support for AAC audio encoding support via library media-libs/fdk-aac.
+media-video/h264enc:neroaac - Add support for AAC audio encoding support via binary package media-sound/neroaac.
 media-video/h264enc:ogm - Support for OGM container format
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/rb_libtorrent.
 net-misc/fatrat:jplugins - Install Java runtime plugins.
