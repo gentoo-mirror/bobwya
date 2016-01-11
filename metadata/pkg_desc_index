@@ -1,7 +1,7 @@
 app-backup/fsarchiver 9999: Flexible filesystem archiver for backup and deployment tool
 app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/phoronix-test-suite 5.8.1 6.0.1 6.2.0_pre1 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
-app-emulation/wine 1.8 1.9.0: Free implementation of Windows(tm) on Unix
+app-emulation/wine 1.8 1.9.1: Free implementation of Windows(tm) on Unix
 app-shells/bash-completion 9999: Programmable Completion for bash
 dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP interfaces
 games-fps/dhewm3 9999: A Doom 3 GPL source modification.
@@ -20,4 +20,4 @@ net-p2p/eiskaltdcpp 2.2.10 9999: Qt based client for DirectConnect and ADC proto
 sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-auth/pam_kwallet 9999: PAM integration to automatically unlock kwallet when logged into KDE4 Session
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
-www-client/firefox-kde-opensuse 38.4.0 38.5.0 43.0.3: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
+www-client/firefox-kde-opensuse 38.4.0 38.5.0 43.0.4: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
