@@ -100,5 +100,6 @@ www-client/firefox-kde-opensuse:pgo - Add support for profile-guided optimizatio
 www-client/firefox-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
 www-client/firefox-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 www-client/firefox-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
+www-client/firefox-kde-opensuse:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
 www-client/firefox-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 www-client/firefox-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
