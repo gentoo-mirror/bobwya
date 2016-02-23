@@ -94,7 +94,7 @@ www-client/firefox-kde-opensuse:gstreamer-0 - Use gstreamer:0.10 instead of gstr
 www-client/firefox-kde-opensuse:gtk3 - Use the cairo-gtk3 rendering engine
 www-client/firefox-kde-opensuse:hwaccel - Use hardware-accelerated rendering
 www-client/firefox-kde-opensuse:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
-www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support for KDE4 file dialog via kde-misc/kmozillahelper.
+www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native KDE4/Plasma 5 file dialog via kde-misc/kmozillahelper.
 www-client/firefox-kde-opensuse:minimal - Prevent sdk and headers from being installed
 www-client/firefox-kde-opensuse:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
