@@ -41,7 +41,7 @@ mail-client/thunderbird-kde-opensuse:crypt - Enable encryption support with enig
 mail-client/thunderbird-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
 mail-client/thunderbird-kde-opensuse:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
 mail-client/thunderbird-kde-opensuse:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
-mail-client/thunderbird-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native KDE4 file dialog via kde-misc/kmozillahelper.
+mail-client/thunderbird-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native KDE4/Plasma 5 file dialog via kde-misc/kmozillahelper.
 mail-client/thunderbird-kde-opensuse:lightning - Enable app-global calendar support (note 38.0 and above bundles calendar support when this flag is off)
 mail-client/thunderbird-kde-opensuse:minimal - Remove the software development kit and headers
 mail-client/thunderbird-kde-opensuse:mozdom - Enable Mozilla's DOM inspector
