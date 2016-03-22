@@ -10,7 +10,7 @@ kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
 kde-misc/kmozillahelper 0.6.4 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird-kde-opensuse 24.8.0 31.8.0 38.5.0 38.6.0 38.7.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
-media-libs/mesa 11.0.6-r1 11.0.8-r1 11.0.9-r1 11.1.1-r1 11.1.2-r1 9999-r1: OpenGL-like graphic library for Linux
+media-libs/mesa 11.0.6-r1 11.0.8-r1 11.0.9-r1 11.1.2-r2 9999-r1: OpenGL-like graphic library for Linux
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
 media-video/filebot 4.1 4.6.1: Java-based tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
@@ -23,5 +23,5 @@ sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-auth/pam_kwallet 9999: PAM integration to automatically unlock kwallet when logged into KDE4 Session
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
 www-client/firefox-kde-opensuse 38.5.0 38.6.1 38.7.0 44.0.2 45.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
-x11-base/xorg-server 1.16.4-r6 1.17.4-r1 1.18.0-r1 1.18.1-r1: X.Org X servers
-x11-drivers/nvidia-drivers 304.131-r5 340.93-r2 340.96-r6 346.96-r7 352.63-r1 352.79-r5 355.11-r5 358.16-r6 361.18-r3 361.28-r3: NVIDIA Accelerated Graphics Driver
+x11-base/xorg-server 1.16.4-r6 1.17.4-r1 1.18.0-r1 1.18.1-r1 1.18.2-r1: X.Org X servers
+x11-drivers/nvidia-drivers 304.131-r5 340.93-r2 340.96-r6 346.96-r7 352.63-r1 352.79-r5 355.00.27-r1 355.11-r5 358.16-r6 361.28-r3 364.12-r1: NVIDIA Accelerated Graphics Driver
