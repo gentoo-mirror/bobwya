@@ -1,7 +1,7 @@
 app-backup/fsarchiver 0.6.19 0.6.20 0.6.21 9999: Flexible filesystem archiver for backup and deployment tool
 app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/phoronix-test-suite 5.8.1 6.2.2 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
-app-emulation/wine 1.8_rc1 1.8_rc2 1.8_rc3 1.8_rc4 1.8 1.8.1 1.9.0 1.9.1 1.9.2 1.9.3 1.9.4 1.9.5 1.9.6 9999: Free implementation of Windows(tm) on Unix
+app-emulation/wine 1.8_rc1 1.8_rc2 1.8_rc3 1.8_rc4 1.8 1.8.1 1.9.0 1.9.1 1.9.2 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 9999: Free implementation of Windows(tm) on Unix
 app-eselect/eselect-opengl 1.3.2: Utility to change the OpenGL interface being used
 app-shells/bash-completion 9999: Programmable Completion for bash
 dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP interfaces
