@@ -48,6 +48,7 @@ mail-client/thunderbird-kde-opensuse:mozdom - Enable Mozilla's DOM inspector
 mail-client/thunderbird-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
+mail-client/thunderbird-kde-opensuse:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 media-libs/mesa:bindist - Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.
