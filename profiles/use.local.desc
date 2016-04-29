@@ -89,6 +89,7 @@ sys-auth/pam_kwallet:debug - Enable extra debug codepaths
 www-client/firefox-kde-opensuse:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
 www-client/firefox-kde-opensuse:egl - Enable EGL provider
+www-client/firefox-kde-opensuse:force-gtk2 - Use the cairo-gtk2 rendering engine
 www-client/firefox-kde-opensuse:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
 www-client/firefox-kde-opensuse:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
 www-client/firefox-kde-opensuse:gtk3 - Use the cairo-gtk3 rendering engine
@@ -98,6 +99,7 @@ www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support 
 www-client/firefox-kde-opensuse:minimal - Prevent sdk and headers from being installed
 www-client/firefox-kde-opensuse:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
+www-client/firefox-kde-opensuse:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
 www-client/firefox-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 www-client/firefox-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
 www-client/firefox-kde-opensuse:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
