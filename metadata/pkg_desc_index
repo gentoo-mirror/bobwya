@@ -5,7 +5,7 @@ app-emulation/wine 1.8_rc1-r1 1.8_rc2-r1 1.8_rc3-r1 1.8_rc4-r1 1.8-r1 1.8.1-r1 1
 app-eselect/eselect-opengl 1.3.2: Utility to change the OpenGL interface being used
 app-shells/bash-completion 9999: Programmable Completion for bash
 dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP interfaces
-games-fps/dhewm3 9999: A Doom 3 GPL source modification.
+games-fps/dhewm3 1.4.0_rc1 1.4.0 1.4.1_rc1 9999: A Doom 3 GPL source modification.
 kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for the rest of us
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
 kde-misc/kmozillahelper 0.6.4 9999: Mozilla KDE Desktop Integration

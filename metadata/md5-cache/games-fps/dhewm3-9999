@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEFINED_PHASES=compile configure install postinst prepare test unpack
 DEPEND=virtual/jpeg:* media-libs/libogg !sdl2? ( >=media-libs/libsdl-1.2[opengl,video] ) sdl2? ( media-libs/libsdl2[opengl,video] ) media-libs/libvorbis media-libs/openal curl? ( net-misc/curl ) sys-libs/zlib sys-devel/make >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A Doom 3 GPL source modification.
 EAPI=5
 HOMEPAGE=https://github.com/dhewm/dhewm3
-IUSE=cdinstall curl dedicated roe sdl2
+IUSE=curl dedicated sdl2
 LICENSE=GPL-3
-RDEPEND=virtual/jpeg:* media-libs/libogg !sdl2? ( >=media-libs/libsdl-1.2[opengl,video] ) sdl2? ( media-libs/libsdl2[opengl,video] ) media-libs/libvorbis media-libs/openal curl? ( net-misc/curl ) sys-libs/zlib games-misc/games-envd
+RDEPEND=virtual/jpeg:* media-libs/libogg !sdl2? ( >=media-libs/libsdl-1.2[opengl,video] ) sdl2? ( media-libs/libsdl2[opengl,video] ) media-libs/libvorbis media-libs/openal curl? ( net-misc/curl ) sys-libs/zlib
 SLOT=0
-_eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=a524fe34e5c45e1f6d6f36ee830def93
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=92c5336cda14fd988a27b7185a73ff2e
