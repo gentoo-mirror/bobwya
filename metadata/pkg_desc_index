@@ -9,7 +9,7 @@ games-fps/dhewm3 1.4.0_rc1 1.4.0 1.4.1_rc1 9999: A Doom 3 GPL source modificatio
 kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for the rest of us
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
 kde-misc/kmozillahelper 0.6.4 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird-kde-opensuse 24.8.0 31.8.0 38.7.0 38.7.1 45.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird-kde-opensuse 24.8.0 31.8.0 38.7.0 38.8.0 45.1.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/mesa 11.0.6-r1 11.0.9-r1 11.1.2-r2 11.2.0-r1 11.2.1-r1 9999-r1: OpenGL-like graphic library for Linux
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
 media-video/filebot 4.1 4.7: Java-based tools to rename TV shows, download subtitles, and validate checksums
