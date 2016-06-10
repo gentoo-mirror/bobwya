@@ -44,6 +44,7 @@ mail-client/thunderbird-kde-opensuse:lightning - Enable app-global calendar supp
 mail-client/thunderbird-kde-opensuse:minimal - Remove the software development kit and headers
 mail-client/thunderbird-kde-opensuse:mozdom - Enable Mozilla's DOM inspector
 mail-client/thunderbird-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
+mail-client/thunderbird-kde-opensuse:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
