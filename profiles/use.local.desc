@@ -50,6 +50,14 @@ mail-client/thunderbird-kde-opensuse:system-jpeg - Use the system-wide media-lib
 mail-client/thunderbird-kde-opensuse:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 mail-client/thunderbird-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
+media-libs/fontconfig:infinality - Enable infinality options for improved LCD filtering
+media-libs/freetype:adobe-cff - Use Adobe CFF as default font-renderer
+media-libs/freetype:bindist - Disable ClearType support (see http://freetype.org/patents.html)
+media-libs/freetype:bzip2 - Support bzip2 compressed PCF fonts.
+media-libs/freetype:fontforge - Install internal headers required for TrueType debugger in media-gfx/fontforge (built with USE=truetype-debugger)
+media-libs/freetype:harfbuzz - Use media-libs/harfbuzz for auto-hinting OpenType fonts. WARNING: may trigger circular dependencies!
+media-libs/freetype:infinality - Enable infinality options for improved LCD filtering
+media-libs/freetype:utils - Install utilities and examples from ft2demos
 media-libs/mesa:bindist - Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.
 media-libs/mesa:classic - Build drivers based on the classic architecture.
 media-libs/mesa:d3d9 - Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.
