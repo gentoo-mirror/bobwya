@@ -91,9 +91,12 @@ net-p2p/eiskaltdcpp:cli - Enable sample cli based on readline
 net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon
 net-p2p/eiskaltdcpp:dht - Enable DHT (distributed hash table) support for libeiskaltdcpp
 net-p2p/eiskaltdcpp:emoticons - Install emoticon packs
+net-p2p/eiskaltdcpp:gtk2 - Enable x11-libs/gtk+:2 based GUI
+net-p2p/eiskaltdcpp:gtk3 - Enable x11-libs/gtk+:3 based GUI
 net-p2p/eiskaltdcpp:json - Enable JSON for cli and daemon
 net-p2p/eiskaltdcpp:libcanberra - Enable sound notifications support over libcanberra in EiskaltDC++ Gtk
 net-p2p/eiskaltdcpp:minimal - Don't install headers
+net-p2p/eiskaltdcpp:qml - Build with Qt Declarative Ui support
 sys-auth/pam_kwallet:debug - Enable extra debug codepaths
 www-client/firefox-kde-opensuse:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
