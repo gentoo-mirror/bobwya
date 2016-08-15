@@ -12,7 +12,7 @@ games-util/lutris 0.3.7 0.3.7.1 0.3.7.2 0.3.7.3 0.3.7.4 0.3.7.5 9999: Lutris is 
 kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for the rest of us
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
 kde-misc/kmozillahelper 0.6.4 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird-kde-opensuse 24.8.0 31.8.0 38.7.0 38.8.0 45.2.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird-kde-opensuse 31.8.0-r1 38.7.0-r1 38.8.0-r1 45.2.0-r1: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/fontconfig 2.12.0-r20160423: A library for configuring and customizing font access
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.6.3-r20160423: A high-quality and portable font engine
