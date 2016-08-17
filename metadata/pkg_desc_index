@@ -30,5 +30,5 @@ sys-auth/pam_kwallet 9999: PAM integration to automatically unlock kwallet when 
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
 www-client/firefox-kde-opensuse 38.8.0-r1 45.2.0-r1 45.3.0 47.0.1-r1 48.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
-x11-base/xorg-server 1.16.4-r6 1.17.4-r1 1.18.0-r1 1.18.1-r1 1.18.3-r1: X.Org X servers
+x11-base/xorg-server 1.16.4-r6 1.17.4-r1 1.18.0-r1 1.18.1-r1 1.18.2-r1 1.18.3-r1 1.18.4-r1: X.Org X servers
 x11-drivers/nvidia-drivers 304.131-r5 340.93-r2 340.96-r6 346.96-r7 352.63-r1 352.79-r5 355.00.27-r1 355.11-r5 358.16-r6 361.28-r3 361.42-r1 361.45.11-r1 361.45.18-r1 364.12-r2 364.15-r1 364.19-r1 367.18-r1 367.27-r1 367.35-r2: NVIDIA Accelerated Graphics Driver
