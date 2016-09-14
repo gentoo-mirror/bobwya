@@ -25,6 +25,7 @@ net-misc/fatrat 1.2.9999: Qt4 (C++) based download manager with multi-protocol s
 net-misc/teamviewer 11.0.53191: All-In-One Solution for Remote Access and Support over the Internet
 net-p2p/btsync 1.4.111: Sync files & folders using BitTorrent protocol
 net-p2p/eiskaltdcpp 2.2.10-r1 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
+sys-apps/cpuid 20151017 20160814: Utility to get detailed information about CPU(s) using the CPUID instruction
 sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-auth/pam_kwallet 9999: PAM integration to automatically unlock kwallet when logged into KDE4 Session
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
