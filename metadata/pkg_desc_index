@@ -28,6 +28,7 @@ sys-apps/cpuid 20151017 20160814: Utility to get detailed information about CPU(
 sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-auth/pam_kwallet 9999: PAM integration to automatically unlock kwallet when logged into KDE4 Session
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
+sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 www-client/firefox-kde-opensuse 38.8.0-r2 45.3.0-r1 45.4.0 47.0.1-r2 49.0.1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.16.4-r6 1.17.4-r1 1.18.0-r1 1.18.1-r1 1.18.2-r1 1.18.3-r1 1.18.4-r1: X.Org X servers
