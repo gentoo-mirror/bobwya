@@ -12,7 +12,7 @@ kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
 kde-misc/kmozillahelper 0.6.4-r1 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird-kde-opensuse 31.8.0-r1 38.8.0-r1 45.2.0-r1 45.3.0-r1 45.4.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
-mail-client/wmail-bin 2.0.3 2.0.5: The missing desktop client for Gmail & Google Inbox
+mail-client/wmail-bin 2.0.1 2.0.2 2.0.3 2.0.4 2.0.5 2.0.6: The missing desktop client for Gmail & Google Inbox
 media-libs/fontconfig 2.12.0-r20160423: A library for configuring and customizing font access
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.6.3-r20160423: A high-quality and portable font engine
