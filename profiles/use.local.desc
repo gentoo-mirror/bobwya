@@ -103,6 +103,7 @@ net-p2p/eiskaltdcpp:libcanberra - Enable sound notifications support over libcan
 net-p2p/eiskaltdcpp:minimal - Don't install headers
 net-p2p/eiskaltdcpp:qml - Build with Qt Declarative Ui support
 sys-auth/pam_kwallet:debug - Enable extra debug codepaths
+sys-kernel/dracut:debug - Module installing additional tools like strace, file editor, ssh and more
 www-client/firefox-kde-opensuse:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox-kde-opensuse:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 www-client/firefox-kde-opensuse:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
