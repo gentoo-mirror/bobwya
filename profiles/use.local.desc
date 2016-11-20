@@ -121,6 +121,7 @@ www-client/firefox-kde-opensuse:system-libevent - Use the system-wide dev-libs/l
 www-client/firefox-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 www-client/firefox-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 x11-base/xorg-server:dmx - Build the Distributed Multiheaded X server
+x11-base/xorg-server:fop - Support for generating pdf documentation using dev-java/fop
 x11-base/xorg-server:glamor - Enable Glamor OpenGL 2D acceleration
 x11-base/xorg-server:kdrive - Build the kdrive X servers
 x11-base/xorg-server:tslib - Build with tslib support for touchscreen devices
