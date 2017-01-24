@@ -4,11 +4,11 @@ DESCRIPTION=Driver for Synaptics touchpads
 EAPI=6
 HOMEPAGE=https://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/
 IUSE=kernel_linux
-KEYWORDS=amd64 arm ~mips ppc ~ppc64 x86
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=kernel_linux? ( >=dev-libs/libevdev-0.4 ) >=x11-base/xorg-server-1.14 >=x11-libs/libXi-1.2 >=x11-libs/libXtst-1.1.0 x11-base/xorg-server:= x11-base/xorg-server[xorg]
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/driver/xf86-input-synaptics-1.9.0.tar.bz2
 _eclass_exported_funcs=pkg_pretend:- pkg_postrm:xorg-3 pkg_postinst:xorg-3 pkg_setup:linux-info src_unpack:xorg-3 src_prepare:xorg-3 src_configure:xorg-3 src_compile:xorg-3 src_install:xorg-3
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xorg-3	fba18a1c0f58df400c94ae9268a0a186
-_md5_=ebb022a101bee8df97d2aed196118887
+_md5_=fd848a559ecd7c87006f4a58f6eea945
