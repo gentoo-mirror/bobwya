@@ -11,6 +11,7 @@ inherit autotools eutils fdo-mime flag-o-matic gnome2-utils l10n multilib multil
 
 MY_PV="${PV}"
 MY_P="${P}"
+STAGING_SUFFIX=""
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://source.winehq.org/git/wine.git http://source.winehq.org/git/wine.git"
 	inherit git-r3
@@ -32,12 +33,13 @@ else
 		SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_VERSION}/${PN}-${MY_PV}.tar.bz2 -> ${P}.tar.bz2"
 		MY_P="${PN}-${MY_PV}"
 	fi
+	[[ "${MAJOR_VERSION}" == "1.8" ]] && STAGING_SUFFIX="-unofficial"
 fi
 
 VANILLA_GV="2.47"
 VANILLA_MV="4.6.4"
 STAGING_P="wine-staging-${MY_PV}"
-STAGING_DIR="${WORKDIR}/${STAGING_P}"
+STAGING_DIR="${WORKDIR}/${STAGING_P}${STAGING_SUFFIX}"
 STAGING_HELPER="wine-staging-git-helper-0.1.3"
 WINE_GENTOO="wine-gentoo-2015.03.07"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
@@ -65,7 +67,7 @@ if [[ ${PV} == "9999" ]]; then
 	staging? ( https://github.com/bobwya/${STAGING_HELPER%-*}/archive/${STAGING_HELPER##*-}.tar.gz -> ${STAGING_HELPER}.tar.gz )"
 else
 	SRC_URI="${SRC_URI}
-	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${MY_PV}.tar.gz -> ${STAGING_P}.tar.gz )"
+	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${MY_PV}${STAGING_SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
@@ -410,6 +412,13 @@ src_prepare() {
 			fi
 		done
 
+		# Disable Upstream (Wine Staging) about tab customisation, for winecfg utility, to support our own version
+		if [[ -f "${STAGING_DIR}/patches/winecfg-Staging/0001-winecfg-Add-staging-tab-for-CSMT.patch" ]]; then
+			sed -i '/SetDlgItemTextA(hDlg, IDC_ABT_PANEL_TEXT, PACKAGE_VERSION " (Staging)");/{s/PACKAGE_VERSION " (Staging)"/PACKAGE_VERSION/}' \
+				"${STAGING_DIR}/patches/winecfg-Staging/0001-winecfg-Add-staging-tab-for-CSMT.patch" \
+				|| die "sed failed"
+		fi
+
 		# Launch wine-staging patcher in a subshell, using eapply as a backend, and gitapply.sh as a backend for binary patches
 		ebegin "Running Wine-Staging patch installer"
 		(
@@ -420,6 +429,10 @@ src_prepare() {
 		eend $? || die "(subshell) script: failed to apply Wine-Staging patches."
 		sed -r -i -e '/^AC_INIT\(.*\)$/{s/\[Wine\]/\[Wine \(Staging\)\]/}' "${S}/configure.ac" || die "sed failed"
 		sed -r -i -e 's/Wine (\(Staging\) |)/Wine \(Staging\) /' "${S}/VERSION" || die "sed failed"
+
+		if [[ ! -z "${STAGING_SUFFIX}" ]]; then
+			sed -i -e 's/(Staging)/(Staging'"${STAGING_SUFFIX}"')/' libs/wine/Makefile.in || die "sed"
+		fi
 	fi
 
 	default
