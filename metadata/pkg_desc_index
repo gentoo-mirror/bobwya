@@ -19,7 +19,7 @@ media-libs/avidemux-plugins 2.6.15 2.6.16 2.6.17 2.6.18 9999: Avidemux is a simp
 media-libs/fontconfig 2.12.0-r20160423: A library for configuring and customizing font access
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.6.3-r20160423: A high-quality and portable font engine
-media-libs/mesa 11.0.6-r1 11.0.9-r1 11.1.4-r1 11.2.2-r1 12.0.1-r1 12.0.3-r1 12.0.5-r1 13.0.0-r1 13.0.1-r1 13.0.2-r1 13.0.3-r1 9999-r1: OpenGL-like graphic library for Linux
+media-libs/mesa 11.0.6-r1 11.0.9-r1 11.2.2-r1 12.0.1-r1 12.0.6-r1 13.0.3-r1 13.0.4-r1 9999-r1: OpenGL-like graphic library for Linux
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
 media-video/avidemux 2.6.15 2.6.16 2.6.17 2.6.18 9999: Avidemux is a simple cross-platform video editor
 media-video/filebot 4.1 4.7 4.7.5: Java-based tools to rename TV shows, download subtitles, and validate checksums
