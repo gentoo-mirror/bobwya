@@ -11,7 +11,7 @@ games-fps/dhewm3 1.4.0 1.4.1 9999: A Doom 3 GPL source modification.
 games-util/lutris 0.3.7-r1 0.3.7.1-r1 0.3.7.2-r1 0.3.7.3-r1 0.3.7.4-r1 0.3.7.5-r1 0.3.8-r1 0.4.0-r1 0.4.1-r1 0.4.2-r1 0.4.3 0.4.4 0.4.4.1 9999: Lutris is an open source gaming platform for GNU/Linux.
 kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for the rest of us
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
-kde-misc/kmozillahelper 0.6.4-r1 9999: Mozilla KDE Desktop Integration
+kde-misc/kmozillahelper 0.6.4-r1 4.9.9 4.9.10 4.9.11 4.9.12 4.9.13 4.9.14 4.9.15 5.0.0 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird-kde-opensuse 45.6.0-r1 45.7.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 mail-client/wmail-bin 2.1.0 2.1.1_pre: The missing desktop client for Gmail & Google Inbox
 media-libs/avidemux-core 2.6.15 2.6.16 2.6.17 2.6.18 9999: Avidemux is a simple cross-platform video editor (core libraries component)
