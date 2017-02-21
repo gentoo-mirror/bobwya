@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure prepare unpack
-DEPEND=dev-libs/libgcrypt:0 >=sys-fs/e2fsprogs-1.41.4 lzma? ( >=app-arch/xz-utils-4.999.9_beta ) lzo? ( >=dev-libs/lzo-2.02 ) static? ( lzma? ( app-arch/xz-utils[static-libs] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=dev-libs/libgcrypt:0= sys-apps/util-linux:0= >=sys-fs/e2fsprogs-1.41.4 lzma? ( >=app-arch/xz-utils-4.999.9_beta ) lzo? ( >=dev-libs/lzo-2.02 ) static? ( lzma? ( app-arch/xz-utils[static-libs] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Flexible filesystem archiver for backup and deployment tool
 EAPI=6
 HOMEPAGE=http://www.fsarchiver.org
 IUSE=debug lzma lzo static
 LICENSE=GPL-2
-RDEPEND=dev-libs/libgcrypt:0 >=sys-fs/e2fsprogs-1.41.4 lzma? ( >=app-arch/xz-utils-4.999.9_beta ) lzo? ( >=dev-libs/lzo-2.02 ) static? ( lzma? ( app-arch/xz-utils[static-libs] ) )
+RDEPEND=dev-libs/libgcrypt:0= sys-apps/util-linux:0= >=sys-fs/e2fsprogs-1.41.4 lzma? ( >=app-arch/xz-utils-4.999.9_beta ) lzo? ( >=dev-libs/lzo-2.02 ) static? ( lzma? ( app-arch/xz-utils[static-libs] ) )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=86d58c7d4c6bb7cd82d4b86bd70b05f3
+_md5_=b9bb8faa88f50c19ecfd36acbbe7e5e6
