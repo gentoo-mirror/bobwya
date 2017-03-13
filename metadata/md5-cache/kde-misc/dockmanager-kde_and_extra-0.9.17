@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://kde-look.org/CONTENT/content-files/151511-dockmanager-kde_and_extra-0.9.17.tgz
 _eclass_exported_funcs=src_install:-
 _eclasses_=eutils	3c847a0129fed780bd709b98e426f89c	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=8789b2979aed12c3a85984e0db89d473
+_md5_=b41cd81a2f966b1b4e98db18cbf3d7ca
