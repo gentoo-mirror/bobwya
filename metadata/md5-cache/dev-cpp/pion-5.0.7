@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install postinst prepare pretend
 DEPEND=>=dev-libs/boost-1.35.0[threads] bzip2? ( >=app-arch/bzip2-1.0.6 ) log4cplus? ( >=dev-libs/log4cplus-1.0.3 ) log4cxx? ( >=dev-libs/log4cxx-0.9.7 ) log4cpp? ( dev-libs/log4cpp ) ssl? ( >=dev-libs/openssl-0.9.8:0 ) zlib? ( >=sys-libs/zlib-1.2.3 ) !dev-cpp/pion-net >=dev-util/cmake-2.8.10 doc? ( app-doc/doxygen )
 DESCRIPTION=A C++ development library for implementing lightweight HTTP interfaces
-EAPI=5
+EAPI=6
 HOMEPAGE=https://github.com/cloudmeter/pion
 IUSE=+bzip2 debug doc logging log4cplus log4cxx log4cpp +ssl static-libs +zlib
 KEYWORDS=~x86 ~amd64
@@ -11,5 +11,5 @@ REQUIRED_USE=log4cplus? ( logging !log4cxx !log4cpp ) log4cxx? ( logging !log4cp
 SLOT=0
 SRC_URI=https://github.com/cloudmeter/pion/archive/5.0.7.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=epatch	122e1264e67c4f59a1482f2095e0b35d	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	1ef31aee2bd63ffbfcae8a1843c9208d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=7b61c96fa184f64a713bf970de6106e3
+_eclasses_=multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=e7446d47131b89e962d8b9f981a8acf3
