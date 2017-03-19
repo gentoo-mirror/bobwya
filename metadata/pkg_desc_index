@@ -24,8 +24,6 @@ media-video/avidemux 2.6.15 2.6.16 2.6.17 2.6.18 9999: Avidemux is a simple cros
 media-video/filebot 4.1 4.7 4.7.8: Java-based tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 net-dialup/dterm 0.3: Simple serial terminal emulator
-net-misc/fatrat 1.2.9999: Qt4 (C++) based download manager with multi-protocol support
-net-misc/teamviewer 11.0.53191: All-In-One Solution for Remote Access and Support over the Internet
 net-p2p/eiskaltdcpp 2.2.10-r1 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 sys-apps/cpuid 20151017 20160814 20161114 20161201 20170122: Utility to get detailed information about CPU(s) using the CPUID instruction
 sys-apps/hw-probe 1.0 1.1 1.2 9999: A tool to probe system hardware, check operability and upload results
