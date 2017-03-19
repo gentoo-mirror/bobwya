@@ -34,6 +34,7 @@ sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-auth/pam_kwallet 9999: PAM integration to automatically unlock kwallet when logged into KDE4 Session
 sys-auth/polkit-explorer 9999: Present PolicyKit information in a human-readable form
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
+sys-fs/exfat-utils-nofuse 1.2.6 9999: exFAT filesystem utilities (without fuse)
 sys-kernel/dracut 9999: Generic initramfs generation tool
 www-client/firefox-kde-opensuse 45.8.0 49.0.2-r1 52.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
