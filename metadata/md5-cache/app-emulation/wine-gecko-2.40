@@ -8,5 +8,5 @@ LICENSE=Apache-2.0 BSD BSD-2 MIT MPL-2.0
 SLOT=2.40
 SRC_URI=abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/2.40/wine_gecko-2.40-x86.msi ) abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/2.40/wine_gecko-2.40-x86_64.msi )
 _eclass_exported_funcs=src_install:-
-_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	e7491451996e8b54c3caeb713285b0fb	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
 _md5_=cb0e5e7ee1e1a963127b9b36df17af8a
