@@ -24,7 +24,7 @@ media-libs/avidemux-plugins 2.6.15 2.6.16 2.6.17 2.6.18 9999: Avidemux is a simp
 media-libs/fontconfig 2.12.0-r20160423: A library for configuring and customizing font access
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.6.3-r20160423: A high-quality and portable font engine
-media-libs/mesa 13.0.5-r1 13.0.6-r1 17.0.2-r1 9999-r1: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5-r1 13.0.6-r1 17.0.2-r1 17.0.3-r1 17.0.4-r1 9999-r1: OpenGL-like graphic library for Linux
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
 media-video/avidemux 2.6.15 2.6.16 2.6.17 2.6.18 9999: Avidemux is a simple cross-platform video editor
 media-video/filebot 4.1 4.7 4.7.8: Java-based tools to rename TV shows, download subtitles, and validate checksums
@@ -43,6 +43,6 @@ virtual/wine 0: Virtual for WINE that supports multiple variants and slotting
 www-client/firefox-kde-opensuse 45.7.0 45.8.0 49.0.2-r1 52.0.1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.18.4-r1 1.19.2-r1 1.19.3-r1 9999-r1: X.Org X servers
-x11-drivers/nvidia-drivers 304.134-r2 304.135-r1 340.101-r2 340.102-r1 346.96-r8 352.79-r6 355.11-r6 358.16-r7 361.42-r2 361.45.18-r2 364.19-r3 367.57-r3 370.28-r3 375.10-r3 375.26-r3 375.39-r1 378.13-r2: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 304.134-r2 304.135-r1 340.101-r2 340.102-r1 375.10-r3 375.26-r3 375.39-r1 378.13-r2 381.09: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-evdev 2.10.5 9999: Generic Linux input driver
 x11-drivers/xf86-input-synaptics 1.9.0 9999: Driver for Synaptics touchpads
