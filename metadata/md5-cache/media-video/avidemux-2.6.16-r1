@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=~media-libs/avidemux-core-2.6.16:2.6[nls?,sdl?,vaapi?,vdpau?,xv?] gtk? ( x11-libs/gtk+:3 ) opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtcore-4.8.3:4 >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) vaapi? ( x11-libs/libva:0 ) sys-devel/make >=dev-util/cmake-3.7.2
+DESCRIPTION=Avidemux is a simple cross-platform video editor
+EAPI=6
+HOMEPAGE=http://fixounet.free.fr/avidemux
+IUSE=cli debug gtk opengl nls qt4 qt5 sdl vaapi vdpau xv linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en linguas_es linguas_eu linguas_fr linguas_hu linguas_it linguas_ja linguas_pl linguas_pt_BR linguas_ru linguas_sr linguas_sr@latin linguas_tr linguas_zh_TW
+KEYWORDS=~amd64
+LICENSE=GPL-1 GPL-2 MIT PSF-2 public-domain
+PDEPEND=~media-libs/avidemux-plugins-2.6.16:2.6[cli?,gtk?,opengl?,qt4?,qt5?]
+RDEPEND=~media-libs/avidemux-core-2.6.16:2.6[nls?,sdl?,vaapi?,vdpau?,xv?] gtk? ( x11-libs/gtk+:3 ) opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtcore-4.8.3:4 >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) vaapi? ( x11-libs/libva:0 )
+REQUIRED_USE=|| ( cli gtk qt4 qt5 )
+SLOT=2.6
+SRC_URI=mirror://sourceforge/avidemux/avidemux/2.6.16/avidemux_2.6.16.tar.gz
+_eclass_exported_funcs=pkg_pretend:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	l10n	8f52d9ce1814aca2ed1a46920084ea66	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
+_md5_=3010cafb68a98b075aa0d4d37e964efa

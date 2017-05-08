@@ -87,10 +87,14 @@ mail-client/thunderbird-kde-opensuse:system-sqlite - Use the system-wide dev-db/
 media-libs/avidemux-core:system-ffmpeg - Use ffmpeg library provided by the system.
 media-libs/avidemux-plugins:aften - Enable A/52 (AC-3) audio encoder support.
 media-libs/avidemux-plugins:amr - Enable Adaptive Multi-Rate format support via media-libs/opencore-amr.
-media-libs/avidemux-plugins:cli - Enables command line interface for avidemux.
+media-libs/avidemux-plugins:cli - Enables command line interface for media-video/avidemux.
 media-libs/avidemux-plugins:fribidi - Enable unicode bidirectional algorithm support via dev-libs/fribidi.
 media-libs/avidemux-plugins:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 media-libs/avidemux-plugins:opus - Adds support for the Opus codec via media-libs/opus.
+media-libs/avidemux-plugins:system-a52dec - Use system media-libs/a52dec instead of bundled library.
+media-libs/avidemux-plugins:system-libass - Use system media-libs/libass instead of bundled library.
+media-libs/avidemux-plugins:system-libmad - Use system media-libs/libmad instead of bundled library.
+media-libs/avidemux-plugins:system-libmp4v2 - Use system media-libs/libmp4v2 instead of bundled library.
 media-libs/avidemux-plugins:twolame - Enable TwoLAME support via media-sound/twolame, an optimised MPEG Audio Layer 2 (MP2) encoder.
 media-libs/avidemux-plugins:vapoursynth - Enable Vapoursynth video manipulation library via media-libs/vapoursynth.
 media-libs/avidemux-plugins:vpx - Enable WebM VP8 Codec SDK support via media-libs/libvpx.
@@ -128,7 +132,7 @@ media-libs/mesa:vulkan - Enable Vulkan drivers
 media-libs/mesa:wayland - Enable support for dev-libs/wayland
 media-libs/mesa:xa - Enable the XA (X Acceleration) API for Gallium3D.
 media-libs/mesa:xvmc - Enable the XvMC acceleration interface for the Gallium3D Video Layer.
-media-video/avidemux:cli - Enables command line interface for avidemux.
+media-video/avidemux:cli - Enables command line interface for media-video/avidemux.
 media-video/h264enc:aacplus - Add support for AAC audio encoding supprt via package media-sound/aacplusenc.
 media-video/h264enc:faac - Add support for AAC audio encoding support via library media-libs/faac.
 media-video/h264enc:fdkaac - Add support for AAC audio encoding support via library media-libs/fdk-aac.
