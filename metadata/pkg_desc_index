@@ -17,7 +17,7 @@ games-util/lutris 0.4.7 9999: Lutris is an open source gaming platform for GNU/L
 kde-misc/beshell 9999: BE::Shell is a simple desktop shell on KDE technology for the rest of us
 kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4 applications
 kde-misc/kmozillahelper 0.6.4-r1 4.9.9 4.9.10 4.9.11 4.9.12 4.9.13 4.9.14 4.9.15 5.0.0 5.0.1 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird-kde-opensuse 45.8.0 52.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird-kde-opensuse 45.8.0 52.1.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 mail-client/wmail-bin 2.3.0 2.3.1_pre: The missing desktop client for Gmail & Google Inbox
 media-libs/avidemux-core 2.6.15-r1 2.6.16-r1 2.6.17-r1 2.6.18-r1 2.6.19 2.6.20 9999: Avidemux is a simple cross-platform video editor (core libraries component)
 media-libs/avidemux-plugins 2.6.15-r1 2.6.16-r1 2.6.17-r1 2.6.18-r1 2.6.19 2.6.20 9999: Avidemux is a simple cross-platform video editor (plugins component)
