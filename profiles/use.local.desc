@@ -157,11 +157,9 @@ www-client/firefox-kde-opensuse:gmp-autoupdate - Allow Gecko Media Plugins (bina
 www-client/firefox-kde-opensuse:gtk2 - Use the cairo-gtk2 rendering engine
 www-client/firefox-kde-opensuse:hwaccel - Force-enable hardware-accelerated rendering (Mozilla bug 594876)
 www-client/firefox-kde-opensuse:jemalloc - Enable or disable jemalloc
-www-client/firefox-kde-opensuse:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
 www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native Plasma Desktop file dialog via kde-misc/kmozillahelper.
 www-client/firefox-kde-opensuse:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox-kde-opensuse:rust - Enable support for using rust compiler (experimental)
-www-client/firefox-kde-opensuse:skia - Enable the SKIA engine for 2D rendering as an alternative to cairo
 www-client/firefox-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
 www-client/firefox-kde-opensuse:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
 www-client/firefox-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
