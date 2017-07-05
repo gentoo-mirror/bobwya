@@ -142,7 +142,7 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
-	>=app-eselect/eselect-wine-1.2
+	>=app-eselect/eselect-wine-1.3
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
 	mono? ( app-emulation/wine-mono:4.7.0 )
@@ -561,8 +561,19 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	eselect wine register --verbose  "${P}" || die "eselect wine register failed"
-	eselect wine register --verbose --vanilla "${P}" || die "eselect wine register failed"
+	local wine_git_commit wine_git_date
+	if [[ "${PV}" == "9999" ]]; then
+		pushd "${S}" || die "pushd failed"
+		wine_git_commit="$(git rev-parse HEAD || die "git rev-parse failed")"
+		wine_git_date="$(git show -s --format=%ci "${wine_git_commit}" || die "git show failed")"
+		# shellcheck disable=SC2089
+		[[ -z "${wine_git_commit}" ]] || wine_git_commit="--commit='${wine_git_commit}'"
+		# shellcheck disable=SC2089
+		[[ -z "${wine_git_date}" ]]   || wine_git_date="--date='${wine_git_date}'"
+		popd
+	fi
+	# shellcheck disable=SC2086,SC2090
+	eselect wine register ${wine_git_commit} ${wine_git_date} --verbose --wine --vanilla "${P}" || die "eselect wine register failed"
 	eselect wine update --verbose --all --if-unset || die "eselect wine update failed"
 
 	if ! use gecko; then
@@ -585,8 +596,7 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	eselect wine deregister --verbose  "${P}" || die "eselect wine deregister failed"
-	eselect wine deregister --verbose --vanilla "${P}" || die "eselect wine deregister failed"
+	eselect wine deregister --verbose --wine --vanilla "${P}" || die "eselect wine deregister failed"
 	eselect wine update --verbose --all --if-unset || die "eselect wine update failed"
 }
 
