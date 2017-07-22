@@ -12,13 +12,6 @@ inherit autotools fdo-mime flag-o-matic gnome2-utils l10n multilib multilib-mini
 MY_PN="${PN%%-*}"
 MY_PV="${PV}"
 version_component_count=$(get_version_component_count)
-# Hack, using Portage patch versioning, to implement multiple slots per single unique slotted version
-# (of the multislot wine-vanilla package)
-last_component="$( get_version_component_range $((version_component_count)) )"
-if [[ "${last_component}" =~ ^p[[:digit:]]+$ ]]; then
-	MY_PV="${MY_PV%_${last_component}}"
-	: $(( --version_component_count ))
-fi
 MY_P="${MY_PN}-${MY_PV}"
 if [[ ${MY_PV} == "9999" ]]; then
 	#KEYWORDS=""
@@ -58,7 +51,7 @@ DESCRIPTION="Free implementation of Windows(tm) on Unix, without any external pa
 HOMEPAGE="http://www.winehq.org/"
 
 LICENSE="LGPL-2.1"
-SLOT="${PV}"
+SLOT="0"
 IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
@@ -137,11 +130,10 @@ COMMON_DEPEND="
 	)"
 
 RDEPEND="${COMMON_DEPEND}
-	!app-emulation/wine:0
-	>=app-eselect/eselect-wine-1.4
+	!virtual/wine:*
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.6.4 )
+	mono? ( app-emulation/wine-mono:4.7.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -322,23 +314,20 @@ pkg_pretend() {
 		eerror "or >=media-sound/oss-4 (only available through an Overlay)."
 		die "USE=+oss currently unsupported on this system."
 	fi
+
+	ewarn "Hence forth the ${CATEGORY}/${PN} package is split into 4 seperate packages."
+	ewarn "It is necessary to unmerge any installed earlier revisions of ${CATEGORY}/${PN}."
+	ewarn "The new (3) split packages will be blocked from installation:"
+	ewarn "  app-emulation/wine-desktop-common"
+	ewarn "  app-emulation/wine-gecko"
+	ewarn "  app-emulation/wine-mono"
+	ewarn "due to file/directory install collisions. This will occur with any installed earlier revisions of ${CATEGORY}/${PN}"
+	ewarn "(earlier ebuild revisions - which have been purged from this Overlay)."
 }
 
 pkg_setup() {
 	wine_build_environment_prechecks || die "wine_build_environment_prechecks() failed"
 	wine_env_vcs_variable_prechecks || die "wine_env_vcs_variable_prechecks() failed"
-
-	WINE_VARIANT="${PN#wine}-${PV}"
-	WINE_VARIANT="${WINE_VARIANT#-}"
-
-	MY_PREFIX="${EPREFIX}/usr/lib/wine-${WINE_VARIANT}"
-	MY_DATAROOTDIR="${EPREFIX}/usr/share/wine-${WINE_VARIANT}"
-	MY_DATADIR="${MY_DATAROOTDIR}"
-	MY_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
-	MY_INCLUDEDIR="${EPREFIX}/usr/include/wine-${WINE_VARIANT}"
-	MY_LIBEXECDIR="${EPREFIX}/usr/libexec/wine-${WINE_VARIANT}"
-	MY_LOCALSTATEDIR="${EPREFIX}/var/wine-${WINE_VARIANT}"
-	MY_MANDIR="${MY_DATADIR}/man"
 }
 
 src_unpack() {
@@ -361,7 +350,6 @@ src_prepare() {
 		"${FILESDIR}/${MY_PN}-1.8_winecfg_detailed_version.patch"
 		"${FILESDIR}/${MY_PN}-1.5.26-winegcc.patch" #260726
 		"${FILESDIR}/${MY_PN}-1.6-memset-O3.patch" #480508
-		"${FILESDIR}/${MY_PN}-1.8-multislot-apploader.patch"
 	)
 	# shellcheck disable=SC2016
 	if ! grep -q 'WINE_CHECK_SONAME(OSMesa,OSMesaGetProcAddress,,,\[$X_LIBS -lm $X_EXTRA_LIBS\])' "${S}/configure.ac"; then
@@ -384,9 +372,7 @@ src_prepare() {
 		tools/make_requests || die "tools/make_requests failed" #432348
 	fi
 	sed -i '/^UPDATE_DESKTOP_DATABASE/s:=.*:=true:' tools/Makefile.in || die "sed failed"
-	if use run-exes; then
-		sed -i '\:^Exec=:{s:wine :wine-'"${WINE_VARIANT}"' :}' "${S}/loader/wine.desktop" || die "sed failed"
-	else
+	if ! use run-exes; then
 		sed -i '/^MimeType/d' "${S}/loader/wine.desktop" || die "sed failed" #117785
 	fi
 
@@ -408,15 +394,6 @@ src_configure() {
 
 multilib_src_configure() {
 	local myconf=(
-		"--prefix=${MY_PREFIX}"
-		"--datarootdir=${MY_DATAROOTDIR}"
-		"--datadir=${MY_DATADIR}"
-		"--docdir=${MY_DOCDIR}"
-		"--includedir=${MY_INCLUDEDIR}"
-		"--libdir=${EPREFIX}/usr/$(get_libdir)/wine-${WINE_VARIANT}"
-		"--libexecdir=${MY_LIBEXECDIR}"
-		"--localstatedir=${MY_LOCALSTATEDIR}"
-		"--mandir=${MY_MANDIR}"
 		"--sysconfdir=/etc/wine"
 		$(use_with alsa)
 		$(use_with capi)
@@ -507,36 +484,28 @@ multilib_src_install_all() {
 	prune_libtool_files --all
 
 	if ! use perl; then  # winedump calls function_grep.pl, and winemaker is a perl script
-		rm "${D%/}${MY_PREFIX}/bin"/{wine{dump,maker},function_grep.pl} || die "rm failed"
-		rm "${D%/}${MY_MANDIR}/man1/wine"{dump,maker}.1 || die "rm failed"
+		rm "${D%/}/usr/bin"/{wine{dump,maker},function_grep.pl} || die "rm failed"
+		rm "${D%/}/usr/share/man/man1/wine"{dump,maker}.1 || die "rm failed"
 	fi
 
 	# Remove wineconsole if neither backend is installed #551124
 	if ! use X && ! use ncurses; then
-		rm "${D%/}${MY_PREFIX}/bin/wineconsole"* || die "rm failed"
-		rm "${D%/}${MY_MANDIR}/man1/wineconsole"* || die "rm failed"
+		rm "${D%/}/usr/bin/wineconsole"* || die "rm failed"
+		rm "${D%/}/usr/share/man/man1/wineconsole"* || die "rm failed"
 
 		rm_wineconsole() {
-			rm "${MY_PREFIX}/$(get_libdir)/wine"/{,fakedlls/}wineconsole.exe* || die "rm failed"
+			rm "/usr/$(get_libdir)/wine"/{,fakedlls/}wineconsole.exe* || die "rm failed"
 		}
 		multilib_foreach_abi rm_wineconsole
 	fi
 
-	use abi_x86_32 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine"{,-preloader} #255055
-	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine64"{,-preloader}
+	use abi_x86_32 && pax-mark psmr "${D%/}/usr/bin/wine"{,-preloader} #255055
+	use abi_x86_64 && pax-mark psmr "${D%/}/usr/bin/wine64"{,-preloader}
 
 	if use abi_x86_64 && ! use abi_x86_32; then
-		dosym "${MY_PREFIX}/bin/wine"{64,} # 404331
-		dosym "${MY_PREFIX}/bin/wine"{64,}-preloader
+		dosym "/usr/bin/wine"{64,} # 404331
+		dosym "/usr/bin/wine"{64,}-preloader
 	fi
-
-	# Make wrappers for binaries for handling multiple variants
-	local binary_file
-	while IFS= read -r -d '' binary_file; do
-		make_wrapper "${binary_file}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${binary_file}"
-	done < <(find "${D%/}${MY_PREFIX}/bin" -mindepth 1 -maxdepth 1 \( -type f -o -type l \) -printf '%f\0' -exec false {} + \
-			&& die "find failed - no binary file matches in \"${D%/}${MY_PREFIX}/bin\""
-			)
 
 	# respect LINGUAS when installing man pages, #469418
 	local locale_man locale_man_directory
@@ -545,9 +514,9 @@ multilib_src_install_all() {
 			use linguas_${locale_man} && continue
 
 			rm -r "${locale_man_directory}" || die "rm failed"
-		done < <(find "${D%/}${MY_MANDIR}" -mindepth 1 -maxdepth 1 -type d \
+		done < <(find "${D%/}/usr/share/man" -mindepth 1 -maxdepth 1 -type d \
 			\( -name "${locale_man}" -o -name "${locale_man}.*" \) -print0 -exec false {} + \
-				&& die "find failed - no \"${locale_man}\" locale manpage directory matches in \"${D%/}${MY_MANDIR}\""
+				&& die "find failed - no \"${locale_man}\" locale manpage directory matches in \"${D%/}/usr/share/man\""
 				)
 	done
 }
@@ -557,23 +526,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	local wine_git_commit wine_git_date wine_git_commit_option wine_git_date_option
+	gnome2_icon_cache_update
 
-	if [[ "${PV}" == "9999" ]]; then
-		pushd "${S}" || die "pushd failed"
-		wine_git_commit="$(git rev-parse HEAD || die "git rev-parse failed")"
-		wine_git_date="$(git show -s --format=%cd "${wine_git_commit}" || die "git show failed")"
-		# shellcheck disable=SC2089
-		[[ -z "${wine_git_commit}" ]] || wine_git_commit_option="--commit="
-		# shellcheck disable=SC2089
-		[[ -z "${wine_git_date}" ]] || wine_git_date_option="--date="
-		popd
-	fi
-	# shellcheck disable=SC2086,SC2090
-	eselect wine register ${wine_git_commit_option}"${wine_git_commit}" ${wine_git_date_option}"${wine_git_date}" --verbose --wine --vanilla "${P}" \
-		|| die "eselect wine register --wine --vanilla \"${P}\" failed"
-	eselect wine set --verbose --wine --vanilla --if-unset "${P}" \
-		|| die "eselect wine set --wine --vanilla --if-unset \"${P}\" failed"
+	fdo-mime_desktop_database_update
+
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, wine prefixes will not have a default"
 		ewarn "implementation of iexplore.  Many older windows applications"
@@ -588,11 +544,7 @@ pkg_postinst() {
 	fi
 }
 
-pkg_prerm() {
-	eselect wine deregister --verbose --wine --vanilla "${P}" \
-		|| die "eselect wine deregister --wine --vanilla \"${P}\" failed"
-}
-
 pkg_postrm() {
+	gnome2_icon_cache_update
 	fdo-mime_desktop_database_update
 }
