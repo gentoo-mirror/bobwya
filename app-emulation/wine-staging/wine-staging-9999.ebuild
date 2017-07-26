@@ -7,7 +7,7 @@ EAPI=6
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools fdo-mime flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator
+inherit autotools flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_PV="${PV}"
@@ -52,10 +52,9 @@ GST_P="wine-1.8-gstreamer-1.0"
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine Staging patchset"
 HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
-	gstreamer? ( https://dev.gentoo.org/~np-hardass/distfiles/${MY_PN}/${GST_P}.patch.bz2 )
-	"
+	gstreamer? ( https://dev.gentoo.org/~np-hardass/distfiles/${MY_PN}/${GST_P}.patch.bz2 )"
 
-if [[ ${MY_PV} == "9999" ]]; then
+if [[ "${MY_PV}" == "9999" ]]; then
 	STAGING_EGIT_REPO_URI="git://github.com/wine-compholio/wine-staging.git"
 	SRC_URI="${SRC_URI}
 		https://github.com/bobwya/${STAGING_HELPER_PN}/archive/${STAGING_HELPER_PV}.tar.gz -> ${STAGING_HELPER_P}.tar.gz"
@@ -66,7 +65,8 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes s3tc samba scanner selinux +ssl test themes +threads +truetype udev +udisks v4l vaapi +X +xcomposite xinerama +xml"
+
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags cuda dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes s3tc samba scanner selinux +ssl test themes +threads +truetype udev +udisks v4l vaapi vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -208,18 +208,6 @@ wine_env_vcs_variable_prechecks() {
 	fi
 }
 
-wine_git_unpack() {
-	if [[ ! -z "${EGIT_WINE_COMMIT}" ]]; then
-		ewarn "Building Wine against Wine git commit EGIT_WINE_COMMIT=\"${EGIT_WINE_COMMIT}\" ."
-		EGIT_CHECKOUT_DIR="${S}" EGIT_COMMIT="${EGIT_WINE_COMMIT}" git-r3_src_unpack
-	elif [[ ! -z "${EGIT_WINE_BRANCH}" ]]; then
-		ewarn "Building Wine against Wine git branch EGIT_WINE_BRANCH=\"${EGIT_WINE_BRANCH}\" ."
-		EGIT_CHECKOUT_DIR="${S}" EGIT_BRANCH="${EGIT_WINE_BRANCH}" git-r3_src_unpack
-	else
-		EGIT_CHECKOUT_DIR="${S}" EGIT_BRANCH="master" git-r3_src_unpack
-	fi
-}
-
 wine_build_environment_prechecks() {
 	[[ "${MERGE_TYPE}" = "binary" ]] && return 0
 
@@ -318,28 +306,19 @@ wine_generic_compiler_pretests() {
 	fi
 }
 
-wine_generic_compiler_pretests() {
-	[[ "${MERGE_TYPE}" = "binary" ]] && return 0
-
-	if use abi_x86_64; then
-		ebegin "(subshell): checking compiler support for (64-bit) builtin_ms_va_list ..."
-		( # Compile in a subshell to prevent "Aborted" message
-			$(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list &>/dev/null || die "test for builtin_ms_va_list support failed"
-		)
-		if ! eend $?; then
-			eerror "(subshell): $(tc-getCC) does not support builtin_ms_va_list."
-			eerror "Please re-emerge using a compiler (version) that supports building 64-bit Wine."
-			eerror "Use >=sys-devel/gcc-4.4 or >=sys-devel/clang-3.8 to build ${CATEGORY}/${PN}."
-			eerror
-			return 1
-		fi
+wine_git_unpack() {
+	if [[ ! -z "${EGIT_WINE_COMMIT}" ]]; then
+		ewarn "Building Wine against Wine git commit EGIT_WINE_COMMIT=\"${EGIT_WINE_COMMIT}\" ."
+		EGIT_CHECKOUT_DIR="${S}" EGIT_COMMIT="${EGIT_WINE_COMMIT}" git-r3_src_unpack
+	elif [[ ! -z "${EGIT_WINE_BRANCH}" ]]; then
+		ewarn "Building Wine against Wine git branch EGIT_WINE_BRANCH=\"${EGIT_WINE_BRANCH}\" ."
+		EGIT_CHECKOUT_DIR="${S}" EGIT_BRANCH="${EGIT_WINE_BRANCH}" git-r3_src_unpack
+	else
+		EGIT_CHECKOUT_DIR="${S}" EGIT_BRANCH="master" git-r3_src_unpack
 	fi
 }
 
 pkg_pretend() {
-	wine_build_environment_prechecks || die "wine_build_environment_prechecks() failed"
-
-	# Verify OSS support
 	if use oss && ! use kernel_FreeBSD && ! has_version '>=media-sound/oss-4'; then
 		eerror "You cannot build wine with USE=+oss without having support from a FreeBSD kernel"
 		eerror "or >=media-sound/oss-4 (only available through an Overlay)."
@@ -348,8 +327,8 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	wine_build_environment_prechecks || die "wine_build_environment_prechecks() failed"
 	wine_env_vcs_variable_prechecks || die "wine_env_vcs_variable_prechecks() failed"
+	wine_build_environment_prechecks || die "wine_build_environment_prechecks() failed"
 
 	WINE_VARIANT="${PN#wine}-${PV}"
 	WINE_VARIANT="${WINE_VARIANT#-}"
@@ -446,7 +425,9 @@ src_prepare() {
 
 	# Declare Wine Staging excluded patchsets
 	local -a STAGING_EXCLUDE_PATCHSETS=( "configure-OSMesa" "winhlp32-Flex_Workaround" )
+	use cuda || STAGING_EXCLUDE_PATCHSETS+=( "nvapi-Stub_DLL" "nvcuda-CUDA_Support" "nvcuvid-CUDA_Video_Support" "nvencodeapi-Video_Encoder" )
 	use pipelight || STAGING_EXCLUDE_PATCHSETS+=( "Pipelight" )
+	use vulkan || STAGING_EXCLUDE_PATCHSETS+=( "vulkan-Vulkan_Implementation" )
 
 	# Process Wine Staging exluded patchsets
 	local indices=( ${!STAGING_EXCLUDE_PATCHSETS[*]} )
@@ -508,7 +489,7 @@ src_configure() {
 	wine_gcc_specific_pretests || die "wine_gcc_specific_pretests() failed"
 	wine_generic_compiler_pretests || die "wine_generic_compiler_pretests() failed"
 
-	export LDCONFIG=/bin/true
+	export LDCONFIG="/bin/true"
 	use custom-cflags || strip-flags
 
 	multilib-minimal_src_configure
@@ -586,21 +567,20 @@ multilib_src_configure() {
 	fi
 
 	ECONF_SOURCE=${S} \
-	econf "${myconf[@]}"
+		econf "${myconf[@]}"
 	emake depend
 }
 
 multilib_src_test() {
 	# FIXME: win32-only; wine64 tests fail with "could not find the Wine loader"
-	if [[ ${ABI} == x86 ]]; then
-		if [[ $(id -u) == 0 ]]; then
+	if [[ "${ABI}" == "x86" ]]; then
+		if [[ "$(id -u)" == "0" ]]; then
 			ewarn "Skipping tests since they cannot be run under the root user."
 			ewarn "To run the test ${PN} suite, add userpriv to FEATURES in make.conf"
 			return
 		fi
-
 		WINEPREFIX="${T}/.wine-${ABI}" \
-		Xemake test
+			Xemake test
 	fi
 }
 
@@ -633,12 +613,14 @@ multilib_src_install_all() {
 		multilib_foreach_abi rm_wineconsole
 	fi
 
-	use abi_x86_32 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine"{,-preloader} #255055
-	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine64"{,-preloader}
+	use abi_x86_32 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine"{,-preloader}   #255055
+	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine64"{,-preloader} #255055
 
 	if use abi_x86_64 && ! use abi_x86_32; then
-		dosym "${MY_PREFIX}/bin/wine"{64,} # 404331
-		dosym "${MY_PREFIX}/bin/wine"{64,}-preloader
+		pushd "${MY_PREFIX}/bin/" || die "pushd failed"
+		dosym wine{64,}           #404331
+		dosym wine{64,}-preloader #404331
+		popd || die "popd failed"
 	fi
 
 	# Make wrappers for binaries for handling multiple variants
@@ -659,7 +641,7 @@ multilib_src_install_all() {
 		done < <(find "${D%/}${MY_MANDIR}" -mindepth 1 -maxdepth 1 -type d \
 			\( -name "${locale_man}" -o -name "${locale_man}.*" \) -print0 -exec false {} + \
 				&& die "find failed - no \"${locale_man}\" locale manpage directory matches in \"${D%/}${MY_MANDIR}\""
-				)
+			)
 	done
 }
 
@@ -678,13 +660,15 @@ pkg_postinst() {
 		[[ -z "${wine_git_commit}" ]] || wine_git_commit_option="--commit="
 		# shellcheck disable=SC2089
 		[[ -z "${wine_git_date}" ]] || wine_git_date_option="--date="
-		popd
+		popd || die "popd failed"
 	fi
+
 	# shellcheck disable=SC2086,SC2090
 	eselect wine register ${wine_git_commit_option}"${wine_git_commit}" ${wine_git_date_option}"${wine_git_date}" --verbose --wine --staging "${P}" \
 		|| die "eselect wine register --wine --staging \"${P}\" failed"
 	eselect wine set --verbose --wine --staging --if-unset "${P}" \
 		|| die "eselect wine set --wine --staging --if-unset \"${P}\" failed"
+
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, wine prefixes will not have a default"
 		ewarn "implementation of iexplore.  Many older windows applications"
@@ -710,5 +694,6 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+
+	xdg_mimeinfo_database_update
 }
