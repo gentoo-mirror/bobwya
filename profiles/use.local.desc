@@ -3,6 +3,7 @@
 # * generated automatically using pmaint *
 
 app-emulation/wine:capi - Enable ISDN support via net-libs/libcapi.
+app-emulation/wine:cuda - Apply Wine Staging patches for Nvidia CUDA support.
 app-emulation/wine:custom-cflags - Bypass strip-flags; use at your own peril.
 app-emulation/wine:dos - Pull in games-emulation/dosbox to run DOS applications.
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
@@ -13,16 +14,18 @@ app-emulation/wine:opencl - Enable OpenCL support.
 app-emulation/wine:osmesa - Add support for OpenGL in bitmaps using libOSMesa.
 app-emulation/wine:pcap - Support packet capture software (e.g. wireshark).
 app-emulation/wine:perl - Install helpers written in perl (winedump/winemaker).
-app-emulation/wine:pipelight - Apply Wine-Staging patches for Pipelight/Silverlight support.
+app-emulation/wine:pipelight - Apply Wine Staging patches for Pipelight/Silverlight support.
 app-emulation/wine:prelink - Run prelink on DLLs during build; For Gentoo hardened, do not disable if you do not know what this means as it can break things at runtime.
 app-emulation/wine:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support.
 app-emulation/wine:run-exes - Use Wine to open and run .EXE and .MSI files.
 app-emulation/wine:s3tc - Pull in media-libs/libtxc_dxtn for DXTn texture compression, needed for many games.
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing.
-app-emulation/wine:staging - Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet
+app-emulation/wine:staging - Apply Wine Staging patches for advanced feature support that haven't made it into upstream Wine yet
 app-emulation/wine:themes - Support GTK+:3 window theming through Wine Staging.
 app-emulation/wine:udev - Use virtual/libudev to provide plug and play support.
+app-emulation/wine:vulkan - Apply Wine Staging patches for Vulkan support.
 app-emulation/wine-staging:capi - Enable ISDN support via net-libs/libcapi.
+app-emulation/wine-staging:cuda - Apply Wine Staging patches for Nvidia CUDA support.
 app-emulation/wine-staging:custom-cflags - Bypass strip-flags; use at your own peril.
 app-emulation/wine-staging:dos - Pull in games-emulation/dosbox to run DOS applications.
 app-emulation/wine-staging:gecko - Add support for the Gecko engine when using iexplore
@@ -33,7 +36,7 @@ app-emulation/wine-staging:opencl - Enable OpenCL support.
 app-emulation/wine-staging:osmesa - Add support for OpenGL in bitmaps using libOSMesa.
 app-emulation/wine-staging:pcap - Support packet capture software (e.g. wireshark).
 app-emulation/wine-staging:perl - Install helpers written in perl (winedump/winemaker).
-app-emulation/wine-staging:pipelight - Apply Wine-Staging patches for Pipelight/Silverlight support.
+app-emulation/wine-staging:pipelight - Apply Wine Staging patches for Pipelight/Silverlight support.
 app-emulation/wine-staging:prelink - Run prelink on DLLs during build; For Gentoo hardened, do not disable if you do not know what this means as it can break things at runtime.
 app-emulation/wine-staging:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support.
 app-emulation/wine-staging:run-exes - Use Wine to open and run .EXE and .MSI files.
@@ -41,6 +44,7 @@ app-emulation/wine-staging:s3tc - Pull in media-libs/libtxc_dxtn for DXTn textur
 app-emulation/wine-staging:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing.
 app-emulation/wine-staging:themes - Support GTK+:3 window theming through Wine Staging.
 app-emulation/wine-staging:udev - Use virtual/libudev to provide plug and play support.
+app-emulation/wine-staging:vulkan - Apply Wine Staging patches for Vulkan support.
 app-emulation/wine-vanilla:capi - Enable ISDN support via net-libs/libcapi.
 app-emulation/wine-vanilla:custom-cflags - Bypass strip-flags; use at your own peril.
 app-emulation/wine-vanilla:dos - Pull in games-emulation/dosbox to run DOS applications.
