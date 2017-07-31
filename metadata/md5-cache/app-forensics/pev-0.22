@@ -7,4 +7,4 @@ LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://github.com/merces/pev/archive/v0.22.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=f603343a793e0e892792f2f2ab5d5201
+_md5_=8bfad2defede4c81c73a3fe7d762afa9
