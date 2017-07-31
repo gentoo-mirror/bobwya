@@ -1,4 +1,4 @@
-DEFINED_PHASES=prepare unpack
+DEFINED_PHASES=compile install prepare unpack
 DEPEND=dev-libs/openssl:0 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=The PE file analysis toolkit
 EAPI=6
@@ -8,6 +8,6 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/openssl:0
 SLOT=0
 SRC_URI=https://github.com/merces/pev/archive/v0.80.tar.gz
-_eclass_exported_funcs=src_unpack:- src_prepare:-
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
 _eclasses_=git-r3	cbafa3261c37c7e3af44bb16a34ea390
-_md5_=abf94d5ef0e743fbde1af65739decf9a
+_md5_=6286f98ddced96a8b00115817419da35
