@@ -142,7 +142,7 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
-	>=app-eselect/eselect-wine-1.4
+	>=app-eselect/eselect-wine-1.5
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
 	mono? ( app-emulation/wine-mono:4.7.1 )
@@ -562,8 +562,8 @@ pkg_postinst() {
 	# shellcheck disable=SC2086,SC2090
 	eselect wine register ${wine_git_commit_option}"${wine_git_commit}" ${wine_git_date_option}"${wine_git_date}" --verbose --wine --vanilla "${P}" \
 		|| die "eselect wine register --wine --vanilla \"${P}\" failed"
-	eselect wine set --verbose --wine --vanilla --if-unset "${P}" \
-		|| die "eselect wine set --wine --vanilla --if-unset \"${P}\" failed"
+	eselect wine set --force --verbose --wine --vanilla --if-unset "${P}" \
+		|| die "eselect wine set --force --wine --vanilla --if-unset \"${P}\" failed"
 
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, wine prefixes will not have a default"
@@ -586,7 +586,7 @@ pkg_postinst() {
 
 pkg_prerm() {
 	eselect wine deregister --verbose --wine --vanilla "${P}" \
-		|| die "eselect wine deregister --wine --vanilla \"${P}\" failed"
+		|| die "eselect wine deregister --force --wine --vanilla \"${P}\" failed"
 }
 
 pkg_postrm() {
