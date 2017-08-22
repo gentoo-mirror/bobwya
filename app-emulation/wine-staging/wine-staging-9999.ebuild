@@ -78,7 +78,7 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 RESTRICT="test"
 
 COMMON_DEPEND="
-	>=app-emulation/wine-desktop-common-20170410
+	>=app-emulation/wine-desktop-common-20170822
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
