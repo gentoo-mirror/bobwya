@@ -1,16 +1,16 @@
 DEFINED_PHASES=compile configure install prepare pretend test
-DEPEND=~media-libs/avidemux-core-2.6.18:2.6[nls?,sdl?,vaapi?,vdpau?,xv?] gtk? ( x11-libs/gtk+:3 ) opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtcore-4.8.3:4 >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) vaapi? ( x11-libs/libva:0 ) sys-devel/make >=dev-util/cmake-3.7.2
+DEPEND=!media-video/avidemux:2.6 ~media-libs/avidemux-core-2.6.18:0[nls?,sdl?,vaapi?,vdpau?,xv?] gtk? ( x11-libs/gtk+:3 ) opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtcore-4.8.3:4 >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) vaapi? ( x11-libs/libva:0 ) sys-devel/make >=dev-util/cmake-3.7.2
 DESCRIPTION=Avidemux is a simple cross-platform video editor
 EAPI=6
 HOMEPAGE=http://fixounet.free.fr/avidemux
 IUSE=cli debug gtk opengl nls qt4 qt5 sdl vaapi vdpau xv linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en linguas_es linguas_eu linguas_fr linguas_hu linguas_it linguas_ja linguas_pl linguas_pt_BR linguas_ru linguas_sr linguas_sr@latin linguas_tr linguas_zh_TW
 KEYWORDS=~amd64
 LICENSE=GPL-1 GPL-2 MIT PSF-2 public-domain
-PDEPEND=~media-libs/avidemux-plugins-2.6.18:2.6[cli?,gtk?,opengl?,qt4?,qt5?]
-RDEPEND=~media-libs/avidemux-core-2.6.18:2.6[nls?,sdl?,vaapi?,vdpau?,xv?] gtk? ( x11-libs/gtk+:3 ) opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtcore-4.8.3:4 >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) vaapi? ( x11-libs/libva:0 )
+PDEPEND=~media-libs/avidemux-plugins-2.6.18:0=[cli?,gtk?,opengl?,qt4?,qt5?]
+RDEPEND=!media-video/avidemux:2.6 ~media-libs/avidemux-core-2.6.18:0[nls?,sdl?,vaapi?,vdpau?,xv?] gtk? ( x11-libs/gtk+:3 ) opengl? ( virtual/opengl:0 ) qt4? ( >=dev-qt/qtcore-4.8.3:4 >=dev-qt/qtgui-4.8.3:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) vaapi? ( x11-libs/libva:0 )
 REQUIRED_USE=|| ( cli gtk qt4 qt5 )
-SLOT=2.6
+SLOT=0
 SRC_URI=mirror://sourceforge/avidemux/avidemux/2.6.18/avidemux_2.6.18.tar.gz
 _eclass_exported_funcs=pkg_pretend:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	026933aff3889190eeb565b642cfe252	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	l10n	2c2e15383ba891d642f51896a7f0ecfe	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	185a06792159ca143528e7010368e8af	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=3010cafb68a98b075aa0d4d37e964efa
+_md5_=7c32704955ad763fb666cb2e7f8b9e5a

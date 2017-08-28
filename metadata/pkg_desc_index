@@ -19,14 +19,14 @@ kde-misc/dockmanager-kde_and_extra 0.9.17: Dockmanager scripts for various KDE 4
 kde-misc/kmozillahelper 0.6.4-r1 4.9.9 4.9.10 4.9.11 4.9.12 4.9.13 4.9.14 4.9.15 5.0.0 5.0.1 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird-kde-opensuse 52.3.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 mail-client/wmail-bin 2.3.0 2.3.1_pre: The missing desktop client for Gmail & Google Inbox
-media-libs/avidemux-core 2.6.15-r2 2.6.16-r2 2.6.17-r2 2.6.18-r2 2.6.19-r1 2.6.20-r1 9999: Avidemux is a simple cross-platform video editor (core libraries component)
-media-libs/avidemux-plugins 2.6.15-r2 2.6.16-r2 2.6.17-r2 2.6.18-r2 2.6.19-r1 2.6.20-r1 9999: Avidemux is a simple cross-platform video editor (plugins component)
+media-libs/avidemux-core 2.6.15-r2 2.6.16-r2 2.6.17-r2 2.6.18-r2 2.6.19-r1 2.6.20-r1 2.7.0 9999: Avidemux is a simple cross-platform video editor (core libraries component)
+media-libs/avidemux-plugins 2.6.15-r2 2.6.16-r2 2.6.17-r2 2.6.18-r2 2.6.19-r1 2.6.20-r1 2.7.0 9999: Avidemux is a simple cross-platform video editor (plugins component)
 media-libs/fontconfig 2.12.0-r20160423: A library for configuring and customizing font access
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.6.3-r20160423: A high-quality and portable font engine
 media-libs/mesa 13.0.5-r2 13.0.6-r2 17.0.6-r1 17.0.7-r1 17.1.0-r1 17.1.1-r1 17.1.2-r1 17.1.3-r1 17.1.4-r1 17.1.5-r1 17.1.6-r1 17.1.7 9999: OpenGL-like graphic library for Linux
 media-tv/freetuxtv 9999: WebTV player for french people to watch ADSL TV
-media-video/avidemux 2.6.15-r1 2.6.16-r1 2.6.17-r1 2.6.18-r1 2.6.19 2.6.20 9999: Avidemux is a simple cross-platform video editor
+media-video/avidemux 2.6.15-r1 2.6.16-r1 2.6.17-r1 2.6.18-r1 2.6.19 2.6.20 2.7.0 9999: Avidemux is a simple cross-platform video editor
 media-video/filebot 4.1 4.7 4.7.8: Java-based tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 net-dialup/dterm 0.3: Simple serial terminal emulator
