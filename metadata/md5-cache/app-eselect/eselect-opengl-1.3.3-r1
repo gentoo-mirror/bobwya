@@ -8,6 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.4 >=media-libs/mesa-11.0.6-r1 >=x11-base/xorg-server-1.16.4-r6 !<x11-proto/glproto-1.4.17-r1 !<x11-drivers/ati-drivers-14.9-r2 !=x11-drivers/ati-drivers-14.12 !<=app-emulation/emul-linux-x86-opengl-20140508
 SLOT=0
 SRC_URI=https://github.com/bobwya/eselect-opengl/archive/1.3.3.tar.gz -> eselect-opengl-1.3.3.tar.gz
-_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_install:-
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	185a06792159ca143528e7010368e8af
 _md5_=b086ed03fea8ceed0bb67e79bc574482

@@ -7,5 +7,4 @@ LICENSE=GPL-2+
 RDEPEND=app-admin/eselect dev-util/desktop-file-utils !!app-emulation/wine:0
 SLOT=0
 SRC_URI=https://github.com/bobwya/eselect-wine/archive/1.5.tar.gz -> eselect-wine-1.5.tar.gz
-_eclass_exported_funcs=pkg_pretend:- pkg_prerm:- src_install:-
 _md5_=ad7ccaa60d7cd9ba60cbe60a0d72d642
