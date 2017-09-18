@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/openssl:0
 SLOT=0
 SRC_URI=https://github.com/merces/pev/archive/v0.80.tar.gz
-_eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
+_eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
 _md5_=651db125061e473e13fd3ad06d7f4fb1
