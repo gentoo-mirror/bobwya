@@ -40,7 +40,7 @@ sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.2.7 9999: exFAT filesystem utilities (without fuse)
 sys-kernel/dracut 9999: Generic initramfs generation tool
 virtual/wine 0: Virtual for WINE that supports multiple variants and slotting
-www-client/firefox-kde-opensuse 52.4.0 56.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
+www-client/firefox-kde-opensuse 52.4.0 56.0.1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.18.4-r2 1.19.2-r2 1.19.3-r2 1.19.4 1.19.5 9999: X.Org X servers
 x11-drivers/nvidia-drivers 304.137 340.104 375.39-r2 375.66-r1 378.13-r3 381.22-r1 384.59-r2 384.69-r1 384.90-r1 387.12: NVIDIA Accelerated Graphics Driver
