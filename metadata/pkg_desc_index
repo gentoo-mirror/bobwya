@@ -30,6 +30,7 @@ media-video/avidemux 2.6.15-r1 2.6.16-r1 2.6.17-r1 2.6.18-r1 2.6.19 2.6.20 2.7.0
 media-video/filebot 4.1 4.7 4.7.9: Java-based tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 net-dialup/dterm 0.3 0.5: Simple serial terminal emulator
+net-dns/ndjbdns 1.06_p20151013 9999: Fork of djbdns, a collection of DNS client/server software
 net-p2p/eiskaltdcpp 2.2.10-r1 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 sys-apps/cpuid 20151017 20160814 20161114 20161201 20170122: Utility to get detailed information about CPU(s) using the CPUID instruction
 sys-apps/hw-probe 1.0 1.1 1.2 9999: A tool to probe system hardware, check operability and upload results
