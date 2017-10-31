@@ -7,7 +7,7 @@ app-emulation/wine:cuda - Apply Wine Staging patches for Nvidia CUDA support.
 app-emulation/wine:custom-cflags - Bypass strip-flags; use at your own peril.
 app-emulation/wine:dos - Pull in games-emulation/dosbox to run DOS applications.
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
-app-emulation/wine:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality; for versions: wine-1.9.0, wine-1.9.1 ; a stable branch patch is applied in an unofficial capacity
+app-emulation/wine:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
 app-emulation/wine:mono - Add support for .NET using Wine's Mono add-on.
 app-emulation/wine:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
 app-emulation/wine:opencl - Enable OpenCL support.
@@ -49,7 +49,7 @@ app-emulation/wine-vanilla:capi - Enable ISDN support via net-libs/libcapi.
 app-emulation/wine-vanilla:custom-cflags - Bypass strip-flags; use at your own peril.
 app-emulation/wine-vanilla:dos - Pull in games-emulation/dosbox to run DOS applications.
 app-emulation/wine-vanilla:gecko - Add support for the Gecko engine when using iexplore
-app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality; for versions: wine-1.9.0, wine-1.9.1 ; a stable branch patch is applied in an unofficial capacity
+app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
 app-emulation/wine-vanilla:mono - Add support for .NET using Wine's Mono add-on.
 app-emulation/wine-vanilla:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
 app-emulation/wine-vanilla:opencl - Enable OpenCL support.
