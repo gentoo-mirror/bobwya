@@ -1,7 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for WINE that supports multiple variants and slotting
-EAPI=6
-KEYWORDS=~amd64 ~x86
-RDEPEND=|| ( app-emulation/wine-vanilla app-emulation/wine-staging ) !app-emulation/wine:0
-SLOT=0
-_md5_=2a4232b9c60ec311b8d5c395a7c1399b
