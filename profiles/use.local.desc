@@ -72,9 +72,6 @@ dev-cpp/pion:ssl - Enables SSL support using dev-libs/openssl library.
 dev-cpp/pion:zlib - Add support for gzip compression using sys-libs/zlib library.
 games-fps/dhewm3:dedicated - install only as a dedicated game server
 games-fps/dhewm3:sdl2 - Enable support for SDL2 - enable SDL1 support if this flag is disabled
-kde-misc/beshell:examples - Install bespin example configuration files.
-kde-misc/beshell:scripts - Install bespin script files.
-kde-misc/beshell:wallpapers - Install stock bespin wallpapers.
 mail-client/thunderbird-kde-opensuse:bindist - Disable official Thunderbird branding (icons, name) which are not binary-redistributable according to upstream.
 mail-client/thunderbird-kde-opensuse:crypt - Enable encryption support with enigmail
 mail-client/thunderbird-kde-opensuse:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
