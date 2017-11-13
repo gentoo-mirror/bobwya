@@ -29,7 +29,6 @@ net-dns/ndjbdns 1.06_p20151013 9999: Fork of djbdns, a collection of DNS client/
 net-p2p/eiskaltdcpp 2.2.10-r1 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 sys-apps/cpuid 20151017 20160814 20161114 20161201 20170122: Utility to get detailed information about CPU(s) using the CPUID instruction
 sys-apps/hw-probe 1.0 1.1 1.2 9999: A tool to probe system hardware, check operability and upload results
-sys-apps/uksmstat 9999: Small tool to show UKSM statistics.
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.2.7 9999: exFAT filesystem utilities (without fuse)
 virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
