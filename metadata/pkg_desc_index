@@ -20,7 +20,7 @@ media-libs/avidemux-plugins 2.6.15-r2 2.6.16-r2 2.6.17-r2 2.6.18-r2 2.6.19-r1 2.
 media-libs/fontconfig 2.12.0-r20160423: A library for configuring and customizing font access
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.6.3-r20160423: A high-quality and portable font engine
-media-libs/mesa 13.0.5-r2 13.0.6-r2 17.0.6-r1 17.1.8 17.1.9 17.1.10 17.2.0 17.2.1 17.2.2 17.2.3 17.2.4 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 13.0.5-r2 13.0.6-r2 17.0.6-r1 17.1.8 17.1.9 17.1.10 17.2.0 17.2.1 17.2.2 17.2.3 17.2.4 17.2.5 9999: OpenGL-like graphic library for Linux
 media-video/avidemux 2.6.15-r1 2.6.16-r1 2.6.17-r1 2.6.18-r1 2.6.19 2.6.20 2.7.0 9999: Avidemux is a simple cross-platform video editor
 media-video/filebot 4.1 4.7 4.7.9: Java-based tools to rename TV shows, download subtitles, and validate checksums
 media-video/h264enc 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
