@@ -165,6 +165,7 @@ www-client/firefox-kde-opensuse:jemalloc - Enable or disable jemalloc
 www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native Plasma Desktop file dialog via kde-misc/kmozillahelper.
 www-client/firefox-kde-opensuse:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox-kde-opensuse:rust - Enable support for using rust compiler (experimental)
+www-client/firefox-kde-opensuse:screenshot - Allow to disable screenshot extension in global profile
 www-client/firefox-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
 www-client/firefox-kde-opensuse:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
 www-client/firefox-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.

@@ -32,7 +32,7 @@ sys-apps/hw-probe 1.0 1.1 1.2 9999: A tool to probe system hardware, check opera
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.2.7 9999: exFAT filesystem utilities (without fuse)
 virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
-www-client/firefox-kde-opensuse 52.4.0 56.0.1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
+www-client/firefox-kde-opensuse 52.4.0 56.0.1 57.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.18.4-r2 1.19.2-r2 1.19.3-r2 1.19.4 1.19.5 9999: X.Org X servers
 x11-drivers/nvidia-drivers 304.137 340.104 375.82 378.13-r3 381.22-r1 384.90-r1 387.12-r1 387.22: NVIDIA Accelerated Graphics Driver
