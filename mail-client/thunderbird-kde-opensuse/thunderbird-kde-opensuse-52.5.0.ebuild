@@ -5,7 +5,7 @@
 EAPI=6
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="5.4.4"
+MOZ_LIGHTNING_VER="5.4.5"
 MOZ_LIGHTNING_GDATA_VER="3.3"
 
 # This list can be updated using scripts/get_langs.sh from the mozilla overlay
@@ -60,7 +60,6 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 CDEPEND="
 	>=dev-libs/nss-3.28.3
 	>=dev-libs/nspr-4.13.1
-	crypt? ( >=x11-plugins/enigmail-1.9.7 )
 	"
 
 DEPEND="rust? ( dev-lang/rust )
@@ -71,6 +70,7 @@ DEPEND="rust? ( dev-lang/rust )
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-thunderbird )
+	crypt? ( >=x11-plugins/enigmail-1.9.8.3-r1 )
 	kde? ( kde-misc/kmozillahelper )
 	!!mail-client/thunderbird"
 
@@ -329,16 +329,6 @@ src_install() {
 		doins -r "${T}/${emid}"
 	fi
 
-	if use crypt; then
-		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EROOT%/}/usr/share/enigmail/install.rdf")
-		if [[ -n "${emid}" ]]; then
-			dosym "${EPREFIX}/usr/share/enigmail" "${MOZILLA_FIVE_HOME}/extensions/${emid}"
-		else
-			eerror "${EPREFIX}/usr/share/enigmail/install.rdf: No such file or directory"
-			die "<EM:ID> tag for x11-plugins/enigmail could not be found!"
-		fi
-	fi
-
 	# Required in order to use plugins and even run thunderbird on hardened.
 	pax-mark pm "${ED}${MOZILLA_FIVE_HOME}"/{thunderbird,thunderbird-bin,plugin-container}
 
@@ -351,31 +341,19 @@ src_install() {
 
 pkg_preinst() {
 	gnome2_icon_savelist
-
-	# Because PM's dont seem to properly merge a symlink replacing a directory
-	if use crypt; then
-		local emid emidpath
-		emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' "${EROOT%/}/usr/share/enigmail/install.rdf")
-		emidpath="${EROOT%/}${MOZILLA_FIVE_HOME}/extensions/${emid}"
-		if [[ -z "${emid}" ]]; then
-			eerror "${EROOT%/}/usr/share/enigmail/install.rdf: No such file or directory"
-			die "Could not find enigmail on disk during pkg_preinst()"
-		fi
-		if [[ ! -h "${emidpath}" ]] && [[ -d "${emidpath}" ]]; then
-			rm -Rf "${emidpath}" || (
-			eerror "Could not remove enigmail directory from previous installation,"
-			eerror "You must remove this by hand and rename the symbolic link yourself:"
-			eerror
-			eerror "\t cd ${EPREFIX}${MOZILLA_FIVE_HOME}/extensions"
-			eerror "\t rm -Rf ${emid}"
-			eerror "\t mv ${emid}.backup* ${emid}" )
-		fi
-	fi
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
+
+	if use crypt; then
+		elog
+		elog "USE=crypt will be dropped from thunderbird with version 52.6.0 as"
+		elog "x11-plugins/enigmail-1.9.8.3-r1 and above is now a fully standalone"
+		elog "package.  For continued enigmail support in thunderbird please add"
+		elog "x11-plugins/enigmail to your @world set."
+	fi
 
 	elog
 	elog "If you experience problems with plugins please issue the"
