@@ -15,7 +15,7 @@ dev-cpp/zstr 1.0.0 1.0.1 9999: C++ header-only library allowing iostream access 
 games-fps/dhewm3 1.4.0 1.4.1 9999: A Doom 3 GPL source modification.
 games-util/lutris 0.4.13 0.4.14 9999: Lutris is an open source gaming platform for GNU/Linux.
 kde-misc/kmozillahelper 0.6.4-r1 4.9.9 4.9.10 4.9.11 4.9.12 4.9.13 4.9.14 4.9.15 5.0.0 5.0.1 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird-kde-opensuse 52.4.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird-kde-opensuse 52.5.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/avidemux-core 2.6.15-r2 2.6.16-r2 2.6.17-r2 2.6.18-r2 2.6.19-r1 2.6.20-r1 2.7.0 9999: Avidemux is a simple cross-platform video editor (core libraries component)
 media-libs/avidemux-plugins 2.6.15-r2 2.6.16-r2 2.6.17-r2 2.6.18-r2 2.6.19-r1 2.6.20-r1 2.7.0 9999: Avidemux is a simple cross-platform video editor (plugins component)
 media-libs/fontconfig 2.12.0-r20160423: A library for configuring and customizing font access
@@ -33,7 +33,7 @@ sys-apps/hw-probe 1.0 1.1 1.2 9999: A tool to probe system hardware, check opera
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.2.7 9999: exFAT filesystem utilities (without fuse)
 virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
-www-client/firefox-kde-opensuse 52.4.0 56.0.1 57.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
+www-client/firefox-kde-opensuse 52.2.0 52.4.0 52.5.0 57.0.1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.18.4-r2 1.19.2-r2 1.19.3-r2 1.19.4 1.19.5 9999: X.Org X servers
 x11-drivers/nvidia-drivers 304.137 340.104 375.82-r1 378.13-r4 381.22-r2 384.90-r2 387.12-r2 387.22-r1 387.34: NVIDIA Accelerated Graphics Driver
