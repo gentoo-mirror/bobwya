@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2034
@@ -557,15 +557,28 @@ src_prepare() {
 		sed -i -e 's/Staging/Staging'"${STAGING_SUFFIX}"'/' "${S}/libs/wine/Makefile.in" || die "sed failed"
 	fi
 
-	local -a array_locale_man=( "de" "fr" "pl" )
+	local -a array_locale_man=( "de" "fr" "pl" ) \
+		array_disabled_locale_man \
+		array_enabled_locale_man \
+		array_l10n_locales
 
-	# respect LINGUAS when installing man pages, #469418
-	local makefile_in sed_expression
+	array_l10n_locales=( $(l10n_get_locales) )
+
+	local locale_man makefile_in sed_expression
+	# disable non en-locale manpages using L10N #643576
 	# shellcheck disable=SC2068
 	for locale_man in ${array_locale_man[@]}; do
 		# shellcheck disable=SC2086
-		use linguas_${locale_man} && continue
+		if has "${locale_man}" ${array_l10n_locales[@]}; then
+			array_enabled_locale_man+=( "${locale_man}" )
+		else
+			array_disabled_locale_man+=( "${locale_man}" )
+		fi
+	done
 
+	# respect LINGUAS/L10N when installing man pages, #469418
+	# shellcheck disable=SC2068
+	for locale_man in ${array_disabled_locale_man[@]}; do
 		sed_expression="${sed_expression}s/[\-\_[:alnum:]]*\.${locale_man}\.UTF-8\.man\.in//g;"
 	done
 	[[ -z "${sed_expression}" ]] || while IFS= read -r -d '' makefile_in; do
@@ -579,10 +592,7 @@ src_prepare() {
 		local -r loader_directory="${S%/}/loader"
 		local man_in
 		# shellcheck disable=SC2068
-		for locale_man in ${array_locale_man[@]}; do
-			# shellcheck disable=SC2086
-			use linguas_${locale_man} || continue
-
+		for locale_man in ${array_enabled_locale_man[@]}; do
 			man_in="wine.${locale_man}.UTF-8.man.in"
 			mv	"${loader_directory}/${man_in}" "${loader_directory}/${man_in/#wine/wine64}" \
 				|| die "mv failed"
