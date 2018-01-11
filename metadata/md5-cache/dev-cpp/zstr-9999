@@ -7,4 +7,4 @@ IUSE=examples
 LICENSE=MIT
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a
-_md5_=237cabdb27bd4812da60fa28cbbbaf43
+_md5_=7dd0141aa961387c6f71aac305396b48
