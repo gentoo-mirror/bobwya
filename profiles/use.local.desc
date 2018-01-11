@@ -2,22 +2,3 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-www-client/firefox-kde-opensuse:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
-www-client/firefox-kde-opensuse:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
-www-client/firefox-kde-opensuse:egl - Enable EGL as the GL provider (unsupported).
-www-client/firefox-kde-opensuse:eme-free - Disable EME (DRM plugin) cabability at build time
-www-client/firefox-kde-opensuse:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
-www-client/firefox-kde-opensuse:gtk2 - Use the cairo-gtk2 rendering engine
-www-client/firefox-kde-opensuse:hwaccel - Force-enable hardware-accelerated rendering (Mozilla bug 594876)
-www-client/firefox-kde-opensuse:jemalloc - Enable or disable jemalloc
-www-client/firefox-kde-opensuse:kde - Use OpenSUSE patchset to build in support for native Plasma Desktop file dialog via kde-misc/kmozillahelper.
-www-client/firefox-kde-opensuse:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
-www-client/firefox-kde-opensuse:rust - Enable support for using rust compiler (experimental)
-www-client/firefox-kde-opensuse:screenshot - Allow to disable screenshot extension in global profile
-www-client/firefox-kde-opensuse:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
-www-client/firefox-kde-opensuse:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
-www-client/firefox-kde-opensuse:system-icu - Use the system-wide dev-libs/icu instead of bundled.
-www-client/firefox-kde-opensuse:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
-www-client/firefox-kde-opensuse:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
-www-client/firefox-kde-opensuse:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
-www-client/firefox-kde-opensuse:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
