@@ -163,7 +163,7 @@ RDEPEND="${COMMON_DEPEND}
 		samba? ( >=net-fs/samba-3.0.25[winbind] )
 		udisks? ( sys-fs/udisks:2 )
 	)
-	>=app-eselect/eselect-wine-1.5.3
+	>=app-eselect/eselect-wine-1.5.4
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
 	mono? ( app-emulation/wine-mono:4.7.1 )
 	perl? (
@@ -646,9 +646,11 @@ multilib_src_install_all() {
 	fi
 
 	# Make wrappers for binaries for handling multiple variants
-	local binary_file
+	local binary_file binary_file_base binary_file_extension
 	while IFS= read -r -d '' binary_file; do
-		make_wrapper "${binary_file}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${binary_file}"
+		binary_file_base="${binary_file%%.*}"
+		binary_file_extension="${binary_file#${binary_file_base}}"
+		make_wrapper "${binary_file_base}-${WINE_VARIANT}${binary_file_extension}" "${MY_PREFIX}/bin/${binary_file}"
 	done < <(find "${D%/}${MY_PREFIX}/bin" -mindepth 1 -maxdepth 1 \( -type f -o -type l \) -printf '%f\0' 2>/dev/null)
 }
 

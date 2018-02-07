@@ -13,14 +13,13 @@ MY_PN="${PN%%-*}"
 MY_PV="${PV}"
 version_component_count=$(get_version_component_count)
 # Hack, using Portage patch versioning, to implement multiple slots per single unique slotted version
-# (of the multislot wine-staging package)
+# (of the multislot wine-vanilla package)
 last_component="$( get_version_component_range $((version_component_count)) )"
 if [[ "${last_component}" =~ ^p[[:digit:]]+$ ]]; then
 	MY_PV="${MY_PV%_${last_component}}"
 	: $(( --version_component_count ))
 fi
 MY_P="${MY_PN}-${MY_PV}"
-STAGING_SUFFIX=""
 if [[ "${MY_PV}" == "9999" ]]; then
 	#KEYWORDS=""
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
@@ -28,11 +27,24 @@ if [[ "${MY_PV}" == "9999" ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+	last_component="$( get_version_component_range $((version_component_count)) )"
+	rc_version=0
+	if [[ "${last_component}" =~ ^rc[[:digit:]]+$ ]]; then
+		rc_version=1
+		: $(( --version_component_count ))
+		MY_PV=$(replace_version_separator $((version_component_count)) '''-''')
+		MY_P="${MY_PN}-${MY_PV}"
+	fi
 	major_version=$(get_major_version)
 	minor_version=$(get_version_component_range 2)
 	stable_version=$(( (major_version == 1 && (minor_version % 2 == 0)) || (major_version >= 2 && minor_version == 0) ))
 	base_version=$(( stable_version && (version_component_count == 2) ))
-	if (( (major_version < 2) || ((major_version == 2) && base_version) )); then
+	if (( stable_version && rc_version && !base_version )); then
+		# Pull Wine RC intermediate stable versions from alternate Github repository...
+		STABLE_PREFIX="wine-stable"
+		MY_P="${STABLE_PREFIX}-${MY_P}"
+		SRC_URI="https://github.com/mstefani/wine-stable/archive/${MY_PN}-${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	elif (( (major_version < 2) || ((version_component_count == 2) && (major_version == 2) && (minor_version == 0)) )); then
 		# The base Wine 2.0 release tarball was bzip2 compressed - switching to xz shortly after...
 		SRC_URI="https://dl.winehq.org/wine/source/${major_version}.${minor_version}/${MY_P}.tar.bz2 -> ${MY_P}.tar.bz2"
 	elif (( (major_version >= 2) && (minor_version == 0) )); then
@@ -40,12 +52,8 @@ else
 	else
 		SRC_URI="https://dl.winehq.org/wine/source/${major_version}.x/${MY_P}.tar.xz -> ${MY_P}.tar.xz"
 	fi
-	((major_version == 1 && minor_version == 8)) && STAGING_SUFFIX="-unofficial"
 fi
-unset -v base_version last_component minor_version major_version stable_version version_component_count
-
-STAGING_P="wine-staging-${MY_PV}"
-STAGING_DIR="${WORKDIR}/${STAGING_P}${STAGING_SUFFIX}"
+unset -v base_version last_component minor_version major_version rc_version stable_version version_component_count
 
 GENTOO_WINE_EBUILD_COMMON_P="gentoo-wine-ebuild-common-20171106"
 GENTOO_WINE_EBUILD_COMMON_PN="${GENTOO_WINE_EBUILD_COMMON_P%-*}"
@@ -55,26 +63,16 @@ WINE_STAGING_GIT_HELPER_P="wine-staging-git-helper-0.1.9"
 WINE_STAGING_GIT_HELPER_PN="${WINE_STAGING_GIT_HELPER_P%-*}"
 WINE_STAGING_GIT_HELPER_PV="${WINE_STAGING_GIT_HELPER_P##*-}"
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine Staging patchset"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, without any external patchsets"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	https://github.com/bobwya/${GENTOO_WINE_EBUILD_COMMON_PN}/archive/${GENTOO_WINE_EBUILD_COMMON_PV}.tar.gz -> ${GENTOO_WINE_EBUILD_COMMON_P}.tar.gz"
 
-if [[ "${MY_PV}" == "9999" ]]; then
-	STAGING_EGIT_REPO_URI="https://github.com/wine-compholio/wine-staging.git"
-	SRC_URI="${SRC_URI}
-		https://github.com/bobwya/${WINE_STAGING_GIT_HELPER_PN}/archive/${WINE_STAGING_GIT_HELPER_PV}.tar.gz -> ${WINE_STAGING_GIT_HELPER_P}.tar.gz"
-else
-	SRC_URI="${SRC_URI}
-		https://github.com/wine-compholio/wine-staging/archive/v${MY_PV}${STAGING_SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz"
-fi
-
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
 
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cuda cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes s3tc samba scanner selinux +ssl test themes +threads +truetype udev +udisks v4l vaapi vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
-	!amd64? ( !vulkan )
 	X? ( truetype )
 	elibc_glibc? ( threads )
 	osmesa? ( opengl )
@@ -85,12 +83,10 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 RESTRICT="test"
 
 COMMON_DEPEND="
-	!x86-fbsd? ( sys-apps/attr[${MULTILIB_USEDEP}] )
 	>=app-emulation/wine-desktop-common-20170822
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
@@ -108,7 +104,6 @@ COMMON_DEPEND="
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
@@ -130,18 +125,12 @@ COMMON_DEPEND="
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
-	themes? (
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		x11-libs/cairo[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
-	)
 	truetype? ( >=media-libs/freetype-2.0.5[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	!x86-fbsd? (
 		udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	)
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vaapi? ( x11-libs/libva:=[drm,X?,${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	xml? (
@@ -170,12 +159,11 @@ RDEPEND="${COMMON_DEPEND}
 	!x86-fbsd? (
 		dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 		samba? ( >=net-fs/samba-3.0.25[winbind] )
-		s3tc? ( >=media-libs/libtxc_dxtn-1.0.1-r1[${MULTILIB_USEDEP}] )
 		udisks? ( sys-fs/udisks:2 )
 	)
 	>=app-eselect/eselect-wine-1.5.4
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.1 )
+	mono? ( app-emulation/wine-mono:4.7.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -203,7 +191,6 @@ DEPEND="${COMMON_DEPEND}
 		x11-proto/xextproto
 		x11-proto/xf86vidmodeproto
 	)
-	amd64? ( vulkan? ( >=media-libs/vulkan-loader-1.0.30[X,${MULTILIB_USEDEP}] ) )
 	xinerama? ( x11-proto/xineramaproto )"
 
 S="${WORKDIR}/${MY_P}"
@@ -213,18 +200,12 @@ wine_env_vcs_variable_prechecks() {
 	local pn_live_value="${!pn_live_variable}"
 	local env_error=0
 
-	if [[ ! -z "${pn_live_value}" ]]; then
-		eerror "Because ${PN} is multi-repository based, ${pn_live_variable}"
-		eerror "cannot be used to set the commit."
-		env_error=1
-	fi
 	[[ ! -z ${EGIT_COMMIT} || ! -z ${EGIT_BRANCH} ]] \
 		&& env_error=1
 	if (( env_error )); then
 		eerror "Git commit (and branch) overrides must now be specified"
 		eerror "using ONE of following the environmental variables:"
 		eerror "  EGIT_WINE_COMMIT or EGIT_WINE_BRANCH (Wine)"
-		eerror "  EGIT_STAGING_COMMIT or EGIT_STAGING_BRANCH (Wine Staging)."
 		eerror
 		return 1
 	fi
@@ -325,73 +306,6 @@ wine_generic_compiler_pretests() {
 	fi
 }
 
-# wine_git_unpack() {
-#	1>  : Target Wine Git Source directory
-wine_git_unpack() {
-	(($# == 1))	|| die "invalid number of arguments: ${#} (1)"
-
-	local wine_git_directory
-
-	wine_git_directory="$( dirname "${1}" )" || die "dirname failed"
-	if [[ ! -d "${wine_git_directory}" ]]; then
-		die "argument (1): path \"${wine_git_directory}\" is not a valid directory"
-	fi
-	wine_git_directory="${1%/}"
-	if [[ ! -z "${EGIT_WINE_COMMIT}" ]]; then
-		ewarn "Building Wine against Wine git commit EGIT_WINE_COMMIT=\"${EGIT_WINE_COMMIT}\" ."
-		EGIT_CHECKOUT_DIR="${wine_git_directory}" EGIT_COMMIT="${EGIT_WINE_COMMIT}" git-r3_src_unpack
-	elif [[ ! -z "${EGIT_WINE_BRANCH}" ]]; then
-		ewarn "Building Wine against Wine git branch EGIT_WINE_BRANCH=\"${EGIT_WINE_BRANCH}\" ."
-		EGIT_CHECKOUT_DIR="${wine_git_directory}" EGIT_BRANCH="${EGIT_WINE_BRANCH}" git-r3_src_unpack
-	else
-		EGIT_CHECKOUT_DIR="${wine_git_directory}" EGIT_BRANCH="master" git-r3_src_unpack
-	fi
-}
-
-# sieve_patchset_array_by_git_commit()
-#	1>  : Git Source directory
-#	2[-N]>  : Patch-set array(s) (reference(s))
-sieve_patchset_array_by_git_commit() {
-	(($# >= 2))	|| die "invalid number of arguments: ${#} (2-)"
-
-	local -r SHA1_REGEXP="[[:xdigit:]]{40}" VARIABLE_NAME_REGEXP="^[_[:alpha:]][_[:alnum:]]+$"
-	local __commit_hash __git_directory __git_log __patch_array_reference i_arg i_array __line
-
-	__git_directory="${1%/}"
-	if [[ ! -d "${__git_directory}/.git" ]]; then
-		die "argument (1): path \"${__git_directory}\" is not a valid Git repository directory"
-	fi
-	pushd "${__git_directory}" || die "pushd failed"
-	__git_log="$( git log --pretty=format:%H 2>/dev/null || die "git log failed" )"
-	popd || die "popd failed"
-
-	for (( i_arg=1 ; $# > 1 ; ++i_arg)); do
-		shift 1
-		__patch_array_reference="${1}"
-		if [[ ! "${__patch_array_reference}" =~ ${VARIABLE_NAME_REGEXP} ]]; then
-			die "argument (${i_arg}): invalid reference name (${VARIABLE_NAME_REGEXP}): '${__patch_array_reference}'"
-		fi
-
-		declare -n patch_array="${__patch_array_reference}"
-		for i_array in "${!patch_array[@]}"; do
-			[[ -f "${patch_array[i_array]}" ]] || die "patch file: \"${patch_array[i_array]}\" does not exist"
-
-			__line=0
-			while
-				: $((++__line))
-				__commit_hash="$( sed -n -e "${__line}"'s/^.*\([[:xdigit:]]\{40\}\).*$/\1/p' "${patch_array[i_array]}" )"
-				[[ "${__commit_hash}" =~ ${SHA1_REGEXP} ]]
-			do
-				[[ "${__git_log}" =~ ${__commit_hash} ]] || continue
-
-				einfo "excluding patch: \"${patch_array[i_array]}\"; parent Wine Git commit: ${__commit_hash} (parent of HEAD)"
-				unset 'patch_array[i_array]'
-				break
-			done
-		done
-	done
-}
-
 pkg_pretend() {
 	if use oss && ! use kernel_FreeBSD && ! has_version '>=media-sound/oss-4'; then
 		eerror "You cannot build ${CATEGORY}/${PN} with USE=+oss without having support from a FreeBSD kernel"
@@ -422,52 +336,7 @@ src_unpack() {
 		# Fully Mirror git tree, Wine, so we can access commits in all branches
 		EGIT_MIN_CLONE_TYPE="mirror"
 		EGIT_CHECKOUT_DIR="${S}"
-		if [[ ! -z "${EGIT_STAGING_COMMIT:-${EGIT_STAGING_BRANCH}}" ]]; then
-			# References are relative to Wine Staging git tree (checkout Wine Staging git tree first)
-			# Use env variables "EGIT_STAGING_COMMIT" or "EGIT_STAGING_BRANCH" to reference Wine Staging git tree
-			#588604 Use git-r3 internal functions for secondary Wine Staging repository
-			ebegin "(subshell): Wine Staging git reference specified. Building Wine git with Wine Staging patchset ..."
-			(
-				# shellcheck source=/dev/null
-				source "${WORKDIR%/}/${WINE_STAGING_GIT_HELPER_P%/}/${WINE_STAGING_GIT_HELPER_PN}.sh" || exit 1
-				if [[ ! -z "${EGIT_STAGING_COMMIT}" ]]; then
-					ewarn "Building Wine against Wine Staging git commit EGIT_STAGING_COMMIT=\"${EGIT_STAGING_COMMIT}\" ."
-					git-r3_fetch "${STAGING_EGIT_REPO_URI}" "${EGIT_STAGING_COMMIT}"
-				else
-					ewarn "Building Wine against Wine Staging git branch EGIT_STAGING_BRANCH=\"${EGIT_STAGING_BRANCH}\" ."
-					git-r3_fetch "${STAGING_EGIT_REPO_URI}" "refs/heads/${EGIT_STAGING_BRANCH}"
-				fi
-				git-r3_checkout "${STAGING_EGIT_REPO_URI}" "${STAGING_DIR}"
-				wine_staging_target_commit="${EGIT_VERSION}"
-				get_upstream_wine_commit  "${STAGING_DIR}" "${wine_staging_target_commit}" "wine_commit"
-				EGIT_COMMIT="${wine_commit}" git-r3_src_unpack
-				einfo "Building Wine commit \"${wine_commit}\" referenced by Wine Staging commit \"${wine_staging_target_commit}\" ..."
-			)
-			eend $? || die "(subshell): ... failed to determine target Wine commit."
-		else
-			# References are relative to Wine git tree (post-checkout Wine Staging git tree)
-			# Use env variables "EGIT_WINE_COMMIT" or "EGIT_WINE_BRANCH" to reference Wine git tree
-			#588604 Use git-r3 internal functions for secondary Wine Staging repository
-			ebegin "(subshell): Wine git reference specified or inferred. Building Wine git with with Wine Staging patchset ..."
-			(
-				# shellcheck source=/dev/null
-				source "${WORKDIR%/}/${WINE_STAGING_GIT_HELPER_P%/}/${WINE_STAGING_GIT_HELPER_PN}.sh" || exit 1
-				wine_git_unpack "${S}"
-				wine_commit="${EGIT_VERSION}"
-				wine_target_commit="${wine_commit}"
-				git-r3_fetch "${STAGING_EGIT_REPO_URI}" "HEAD"
-				git-r3_checkout "${STAGING_EGIT_REPO_URI}" "${STAGING_DIR}"
-				wine_staging_commit=""; wine_commit_offset=""
-				if ! walk_wine_staging_git_tree "${STAGING_DIR}" "${S}" "${wine_commit}" "wine_staging_commit" ; then
-					find_closest_wine_commit "${STAGING_DIR}" "${S}" "wine_commit" "wine_staging_commit" "wine_commit_offset" \
-						&& display_closest_wine_commit_message "${wine_commit}" "${wine_staging_commit}" "${wine_commit_offset}"
-					ewarn "Failed to find Wine Staging git commit corresponding to supplied Wine git commit \"${wine_target_commit}\" ."
-					exit 1
-				fi
-				einfo "Building Wine Staging commit \"${wine_staging_commit}\" corresponding to Wine commit \"${wine_target_commit}\" ..."
-			)
-			eend $? || die "(subshell): ... failed to determine target Wine Staging commit."
-		fi
+		wine_git_unpack "${S}"
 	fi
 
 	l10n_find_plocales_changes "${S}/po" "" ".po"
@@ -485,13 +354,12 @@ src_prepare() {
 
 	local md5hash
 	md5hash="$(md5sum server/protocol.def)" || die "md5sum failed"
+	[[ ! -z "${STABLE_PREFIX}" ]] && sed -i -e 's/[\-\.[:alnum:]]\+$/'"${MY_PV}"'/' "${S}/VERSION"
 	local -a PATCHES PATCHES_BIN
 	PATCHES+=(
 		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.8_winecfg_detailed_version.patch"
 		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
 		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
-		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.9.9-sysmacros.patch" #580046
-		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.9.13-gnutls-3.5-compat.patch" #587028
 		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.8-multislot-apploader.patch" #310611
 	)
 	if use truetype; then
@@ -502,12 +370,6 @@ src_prepare() {
 		PATCHES_BIN+=( "${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-2.18-freetype-2.8.1-implement_minimum_em_size_required_by_opentype_1.8.2.patch" ) #631376
 	fi
 
-	# https://bugs.winehq.org/show_bug.cgi?id=40851
-	use cups && PATCHES+=( "${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.9.14-cups-2.2-cupsgetppd-build-fix.patch" )
-
-	# https://bugs.winehq.org/show_bug.cgi?id=31836
-	use gstreamer && PATCHES+=( "${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.8-gstreamer-1.0_"{01,02,03,04,05,06,07,08,09,10,11}".patch" )
-
 	[[ "${MY_PV}" == "9999" ]] && sieve_patchset_array_by_git_commit "${S}" "PATCHES" "PATCHES_BIN"
 
 	#395615 - run bash/sed script, combining both versions of the multilib-portage.patch
@@ -517,50 +379,6 @@ src_prepare() {
 		source "${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/scripts/${MY_PN}-multilib-portage-sed.sh"
 	)
 	eend $? || die "(subshell) script: \"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/scripts/${MY_PN}-multilib-portage-sed.sh\"."
-
-	ewarn "Applying the Wine Staging patchset. Any bug reports to Wine Bugzilla"
-	ewarn "should explicitly state that Wine Staging was used."
-
-	# Declare Wine Staging excluded patchsets
-	local -a STAGING_EXCLUDE_PATCHSETS=( "configure-OSMesa" "winhlp32-Flex_Workaround" )
-	use gstreamer && STAGING_EXCLUDE_PATCHSETS+=( "quartz-NULL_TargetFormat" )
-	use cuda || STAGING_EXCLUDE_PATCHSETS+=( "nvapi-Stub_DLL" "nvcuda-CUDA_Support" "nvcuvid-CUDA_Video_Support" "nvencodeapi-Video_Encoder" )
-	use pipelight || STAGING_EXCLUDE_PATCHSETS+=( "Pipelight" )
-	use vulkan || STAGING_EXCLUDE_PATCHSETS+=( "vulkan-Vulkan_Implementation" )
-
-	# Process Wine Staging exluded patchsets
-	local indices=( ${!STAGING_EXCLUDE_PATCHSETS[*]} )
-	for ((i=0; i<${#indices[*]}; i++)); do
-		if grep -q "${STAGING_EXCLUDE_PATCHSETS[indices[i]]}" "${STAGING_DIR}/patches/patchinstall.sh"; then
-			einfo "Excluding Wine Staging patchset: \"${STAGING_EXCLUDE_PATCHSETS[indices[i]]}\""
-		else
-			unset -v 'STAGING_EXCLUDE_PATCHSETS[indices[i]]'
-		fi
-	done
-
-	# Disable Upstream (Wine Staging) about tab customisation, for winecfg utility, to support our own version
-	if [[ -f "${STAGING_DIR}/patches/winecfg-Staging/0001-winecfg-Add-staging-tab-for-CSMT.patch" ]]; then
-		sed -i '/SetDlgItemTextA(hDlg, IDC_ABT_PANEL_TEXT, PACKAGE_VERSION " (Staging)");/{s/PACKAGE_VERSION " (Staging)"/PACKAGE_VERSION/}' \
-			"${STAGING_DIR}/patches/winecfg-Staging/0001-winecfg-Add-staging-tab-for-CSMT.patch" \
-			|| die "sed failed"
-	fi
-
-	# Launch wine-staging patcher in a subshell, using epatch as a backend, and gitapply.sh as a backend for binary patches
-	ebegin "Running Wine-Staging patch installer"
-	(
-		# shellcheck disable=SC2068
-		set -- DESTDIR="${S}" --backend=epatch --no-autoconf --all ${STAGING_EXCLUDE_PATCHSETS[@]/#/-W }
-		cd "${STAGING_DIR}/patches" || { eerror "cd failed"; exit 1; }
-		# shellcheck source=/dev/null
-		source "${STAGING_DIR}/patches/patchinstall.sh"
-	)
-	eend $? || die "(subshell) script: failed to apply Wine Staging patches (excluding: \"${STAGING_EXCLUDE_PATCHSETS[*]}\")."
-
-	# Apply Staging branding to reported Wine version...
-	sed -r -i -e '/^AC_INIT\(.*\)$/{s/\[Wine\]/\[Wine Staging\]/}' "${S}/configure.ac" || die "sed failed"
-	if [[ ! -z "${STAGING_SUFFIX}" ]]; then
-		sed -i -e 's/Staging/Staging'"${STAGING_SUFFIX}"'/' "${S}/libs/wine/Makefile.in" || die "sed failed"
-	fi
 
 	disable_man_file() {
 		(($# == 3))	|| die "invalid number of arguments: ${#} (3)"
@@ -659,7 +477,6 @@ multilib_src_configure() {
 		$(use_with gstreamer)
 		--without-hal
 		$(use_with jpeg)
-		$(use_with kerberos krb5)
 		$(use_with ldap)
 		$(use_enable mono mscoree)
 		$(use_with mp3 mpg123)
@@ -673,7 +490,6 @@ multilib_src_configure() {
 		$(use_with pcap)
 		$(use_with png)
 		$(use_with pulseaudio pulse)
-		$(use_with themes gtk3)
 		$(use_with threads pthread)
 		$(use_with scanner sane)
 		$(use_enable test tests)
@@ -681,10 +497,7 @@ multilib_src_configure() {
 		$(use_with udev)
 		$(use_with udisks dbus)
 		$(use_with v4l)
-		$(use_with vaapi va)
 		$(use_with X x)
-		$(use_with X xfixes)
-		--with-xattr
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(use_with xml)
@@ -774,10 +587,10 @@ pkg_postinst() {
 
 	# shellcheck disable=SC2086,SC2090
 	eselect wine register ${wine_git_commit:+--commit=}"${wine_git_commit}" ${wine_git_date:+--date=}"${wine_git_date}" \
-			--verbose --wine --staging "${P}" \
-		|| die "eselect wine register --wine --staging \"${P}\" failed"
-	eselect wine set --force --verbose --wine --staging --if-unset "${P}" \
-		|| die "eselect wine set --force --wine --staging --if-unset \"${P}\" failed"
+			--verbose --wine --vanilla "${P}" \
+		|| die "eselect wine register --wine --vanilla \"${P}\" failed"
+	eselect wine set --force --verbose --wine --vanilla --if-unset "${P}" \
+		|| die "eselect wine set --force --wine --vanilla --if-unset \"${P}\" failed"
 
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, wine prefixes will not have a default"
@@ -794,8 +607,8 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	eselect wine deregister --force --verbose --wine --staging "${P}" \
-		|| die "eselect wine deregister --force --wine --staging \"${P}\" failed"
+	eselect wine deregister --force --verbose --wine --vanilla "${P}" \
+		|| die "eselect wine deregister --force --wine --vanilla \"${P}\" failed"
 }
 
 pkg_postrm() {
