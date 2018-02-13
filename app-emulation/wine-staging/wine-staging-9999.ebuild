@@ -564,9 +564,11 @@ src_prepare() {
 
 	disable_man_file() {
 		(($# == 3))	|| die "invalid number of arguments: ${#} (3)"
-		local makefile="${1}" man_file="${2}" locale
-		[[ "${3}" = "en" ]] || locale="\.${3}\.UTF-8"
 
+		# Not all manpages are translated - so always install all English locale manpages
+		[[ "${3}" = "en" ]] && return
+
+		local makefile="${1}" man_file="${2}" locale="\.${3}\.UTF-8"
 		sed -i -e "\|${man_file}${locale}\.man\.in|d" "${makefile}" || die "sed failed"
 	}
 
