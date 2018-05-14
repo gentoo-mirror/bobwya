@@ -12,13 +12,6 @@ inherit autotools flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-u
 MY_PN="${PN%%-*}"
 MY_PV="${PV}"
 version_component_count=$(get_version_component_count)
-# Hack, using Portage patch versioning, to implement multiple slots per single unique slotted version
-# (of the multislot wine-vanilla package)
-last_component="$( get_version_component_range $((version_component_count)) )"
-if [[ "${last_component}" =~ ^p[[:digit:]]+$ ]]; then
-	MY_PV="${MY_PV%_${last_component}}"
-	: $(( --version_component_count ))
-fi
 MY_P="${MY_PN}-${MY_PV}"
 if [[ "${MY_PV}" == "9999" ]]; then
 	#KEYWORDS=""
@@ -69,9 +62,9 @@ SRC_URI="${SRC_URI}
 	https://github.com/bobwya/${GENTOO_WINE_EBUILD_COMMON_PN}/archive/${GENTOO_WINE_EBUILD_COMMON_PV}.tar.gz -> ${GENTOO_WINE_EBUILD_COMMON_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="${PV}"
+SLOT="0"
 
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink prefix pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -136,8 +129,6 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
-	!app-emulation/wine:0
-	>=app-eselect/eselect-wine-1.5.4
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
 	mono? ( app-emulation/wine-mono:4.7.1 )
@@ -294,17 +285,6 @@ pkg_pretend() {
 pkg_setup() {
 	wine_env_vcs_variable_prechecks || die "wine_env_vcs_variable_prechecks() failed"
 	wine_build_environment_prechecks || die "wine_build_environment_prechecks() failed"
-
-	WINE_VARIANT="${PN#wine}-${PV}"
-	WINE_VARIANT="${WINE_VARIANT#-}"
-	MY_PREFIX="${EPREFIX%/}/usr/lib/wine-${WINE_VARIANT}"
-	MY_DATAROOTDIR="${EPREFIX%/}/usr/share/wine-${WINE_VARIANT}"
-	MY_DATADIR="${MY_DATAROOTDIR}"
-	MY_DOCDIR="${EPREFIX%/}/usr/share/doc/${PF}"
-	MY_INCLUDEDIR="${EPREFIX%/}/usr/include/wine-${WINE_VARIANT}"
-	MY_LIBEXECDIR="${EPREFIX%/}/usr/libexec/wine-${WINE_VARIANT}"
-	MY_LOCALSTATEDIR="${EPREFIX%/}/var/wine-${WINE_VARIANT}"
-	MY_MANDIR="${MY_DATADIR}/man"
 }
 
 src_unpack() {
@@ -337,7 +317,6 @@ src_prepare() {
 		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.8_winecfg_detailed_version.patch"
 		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
 		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
-		"${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/patches/${MY_PN}-1.8-multislot-apploader.patch" #310611
 	)
 
 	[[ "${MY_PV}" == "9999" ]] && sieve_patchset_array_by_git_commit "${S}" "PATCHES" "PATCHES_BIN"
@@ -402,9 +381,7 @@ src_prepare() {
 		tools/make_requests || die "tools/make_requests failed" #432348
 	fi
 	sed -i '/^UPDATE_DESKTOP_DATABASE/s:=.*:=true:' tools/Makefile.in || die "sed failed"
-	if use run-exes; then
-		sed -i '\:^Exec=:{s:wine :wine-'"${WINE_VARIANT}"' :}' "${S}/loader/wine.desktop" || die "sed failed"
-	else
+	if ! use run-exes; then
 		sed -i '/^MimeType/d' "${S}/loader/wine.desktop" || die "sed failed" #117785
 	fi
 
@@ -426,16 +403,6 @@ src_configure() {
 
 multilib_src_configure() {
 	local myconf=(
-		"--prefix=${MY_PREFIX}"
-		"--datarootdir=${MY_DATAROOTDIR}"
-		"--datadir=${MY_DATADIR}"
-		"--docdir=${MY_DOCDIR}"
-		"--includedir=${MY_INCLUDEDIR}"
-		"--libdir=${EPREFIX}/usr/$(get_libdir)/wine-${WINE_VARIANT}"
-		"--libexecdir=${MY_LIBEXECDIR}"
-		"--localstatedir=${MY_LOCALSTATEDIR}"
-		"--mandir=${MY_MANDIR}"
-		"--sysconfdir=/etc/wine"
 		"$(use_with alsa)"
 		"$(use_with capi)"
 		"$(use_with lcms cms)"
@@ -525,46 +492,24 @@ multilib_src_install_all() {
 
 	prune_libtool_files --all
 
-	use abi_x86_32 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine"{,-preloader}   #255055
-	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}/bin/wine64"{,-preloader} #255055
+	use abi_x86_32 && pax-mark psmr "${D%/}/usr/bin/wine"{,-preloader}   #255055
+	use abi_x86_64 && pax-mark psmr "${D%/}/usr/bin/wine64"{,-preloader} #255055
 
 	if use abi_x86_64 && ! use abi_x86_32; then
 		#404331
-		dosym "wine64" "${MY_PREFIX}/bin/wine"
-		dosym "wine64-preloader" "${MY_PREFIX}/bin/wine-preloader"
+		dosym "wine64" "/usr/bin/wine"
+		dosym "wine64-preloader" "/usr/bin/wine-preloader"
 
 		# Symlink wine manpage - for all active locales
 		local manpage manpage_target="wine64.1"
 		while IFS= read -r -d '' manpage; do
 			dosym "${manpage_target}" "${manpage/%${manpage_target}/${manpage_target/64/}}"
-		done < <(find "${MY_MANDIR}" -type f -name "${manpage_target}" -printf '%p\0' 2>/dev/null)
+		done < <(find "/usr/share/man" -type f -name "${manpage_target}" -printf '%p\0' 2>/dev/null)
 	fi
-
-	# Make wrappers for binaries for handling multiple variants
-	local binary_file binary_file_base binary_file_extension
-	while IFS= read -r -d '' binary_file; do
-		binary_file_base="${binary_file%%.*}"
-		binary_file_extension="${binary_file#${binary_file_base}}"
-		make_wrapper "${binary_file_base}-${WINE_VARIANT}${binary_file_extension}" "${MY_PREFIX}/bin/${binary_file}"
-	done < <(find "${D%/}${MY_PREFIX}/bin" -mindepth 1 -maxdepth 1 \( -type f -o -type l \) -printf '%f\0' 2>/dev/null)
 }
 
 pkg_postinst() {
-	local wine_git_commit wine_git_date
-
-	if [[ "${MY_PV}" == "9999" ]]; then
-		pushd "${S}" || die "pushd failed"
-		wine_git_commit="$(git rev-parse HEAD)" || die "git rev-parse failed"
-		wine_git_date="$(git show -s --format=%cd "${wine_git_commit}")" || die "git show failed"
-		popd || die "popd failed"
-	fi
-
-	# shellcheck disable=SC2086,SC2090
-	eselect wine register ${wine_git_commit:+--commit=}"${wine_git_commit}" ${wine_git_date:+--date=}"${wine_git_date}" \
-			--verbose --wine --vanilla "${P}" \
-		|| die "eselect wine register --wine --vanilla \"${P}\" failed"
-	eselect wine set --force --verbose --wine --vanilla --if-unset "${P}" \
-		|| die "eselect wine set --force --wine --vanilla --if-unset \"${P}\" failed"
+	xdg_mimeinfo_database_update
 
 	if ! use gecko; then
 		ewarn "Without Wine Gecko, Wineprefixes will not have a default"
@@ -579,12 +524,6 @@ pkg_postinst() {
 		ewarn "to install an external one, using winetricks."
 	fi
 }
-
-pkg_prerm() {
-	eselect wine deregister --force --verbose --wine --vanilla "${P}" \
-		|| die "eselect wine deregister --force --wine --vanilla \"${P}\" failed"
-}
-
 pkg_postrm() {
 	xdg_mimeinfo_database_update
 }
