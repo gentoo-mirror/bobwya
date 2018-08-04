@@ -1,10 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=dev-libs/openssl:0 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=dev-libs/openssl:0
 DESCRIPTION=The PE file analysis toolkit
-EAPI=6
+EAPI=7
 HOMEPAGE=http://pev.sourceforge.net/
 LICENSE=GPL-2+
 RDEPEND=dev-libs/openssl:0
 SLOT=0
 _eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
-_md5_=12d9ead400c73f0eba4fd4dd8f58833b
+_md5_=fba6ab7094f25caacac9dd0269ab39e6

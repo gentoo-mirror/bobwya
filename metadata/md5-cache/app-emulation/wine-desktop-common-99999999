@@ -1,0 +1,9 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=postinst postrm preinst unpack
+DESCRIPTION=Core desktop menu entries and icons for Wine
+EAPI=7
+HOMEPAGE=https://github.com/bobwya/wine-desktop-common
+LICENSE=LGPL-2.1
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
+_md5_=21f7ffe22b767d81ad1ab941c4b3dd0a
