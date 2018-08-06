@@ -21,8 +21,13 @@ version_component_count=${#array_components[@]}
 	MY_PV="${MY_PV%_${patch_version}}"
 	: $(( version_component_count -= 2 ))
 fi
+
+STAGING_REVISION=""
+STAGING_PV="${MY_PV}"
+STAGING_P="wine-staging-${STAGING_PV}"
+MY_PV="${MY_PV%${STAGING_REVISION}}"
 MY_P="${MY_PN}-${MY_PV}"
-STAGING_SUFFIX=""
+
 if [[ "${MY_PV}" == "9999" ]]; then
 	#KEYWORDS=""
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
@@ -43,14 +48,12 @@ else
 	else
 		SRC_URI="https://dl.winehq.org/wine/source/${major_version}.x/${MY_P}.tar.xz -> ${MY_P}.tar.xz"
 	fi
-	((major_version == 1 && minor_version == 8)) && STAGING_SUFFIX="-unofficial"
 fi
 unset -v array_components is_major_base is_stable minor_version major_version patch_version version_component_count
 
-STAGING_P="wine-staging-${MY_PV}"
-STAGING_DIR="${WORKDIR}/${STAGING_P}${STAGING_SUFFIX}"
+STAGING_DIR="${WORKDIR}/${STAGING_P}"
 
-GENTOO_WINE_EBUILD_COMMON_P="gentoo-wine-ebuild-common-20171106"
+GENTOO_WINE_EBUILD_COMMON_P="gentoo-wine-ebuild-common-20180805"
 GENTOO_WINE_EBUILD_COMMON_PN="${GENTOO_WINE_EBUILD_COMMON_P%-*}"
 GENTOO_WINE_EBUILD_COMMON_PV="${GENTOO_WINE_EBUILD_COMMON_P##*-}"
 
@@ -63,7 +66,7 @@ if [[ "${MY_PV}" == "9999" ]]; then
 	STAGING_EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
 else
 	SRC_URI="${SRC_URI}
-		https://github.com/wine-staging/wine-staging/archive/v${MY_PV}${STAGING_SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz"
+		https://github.com/wine-staging/wine-staging/archive/v${STAGING_PV}.tar.gz -> ${STAGING_P}.tar.gz"
 fi
 
 LICENSE="LGPL-2.1"
@@ -180,6 +183,7 @@ DEPEND="${COMMON_DEPEND}
 	xinerama? ( x11-base/xorg-proto )"
 
 S="${WORKDIR}/${MY_P}"
+[[ "${MY_PV}" == "9999" ]] && EGIT_CHECKOUT_DIR="${S}"
 
 wine_env_vcs_variable_prechecks() {
 	local pn_live_variable="${MY_PN//[-+]/_}_LIVE_COMMIT"
@@ -301,23 +305,16 @@ wine_generic_compiler_pretests() {
 # wine_git_unpack() {
 #	1>  : Target Wine Git Source directory
 wine_git_unpack() {
-	(($# == 1))	|| die "invalid number of arguments: ${#} (1)"
+	(($# == 0))	|| die "invalid number of arguments: ${#} (0)"
 
-	local wine_git_directory
-
-	wine_git_directory="$( dirname "${1}" )" || die "dirname failed"
-	if [[ ! -d "${wine_git_directory}" ]]; then
-		die "argument (1): path \"${wine_git_directory}\" is not a valid directory"
-	fi
-	wine_git_directory="${1%/}"
 	if [[ ! -z "${EGIT_WINE_COMMIT}" ]]; then
 		ewarn "Building Wine against Wine git commit EGIT_WINE_COMMIT=\"${EGIT_WINE_COMMIT}\" ."
-		EGIT_CHECKOUT_DIR="${wine_git_directory}" EGIT_COMMIT="${EGIT_WINE_COMMIT}" git-r3_src_unpack
+		EGIT_COMMIT="${EGIT_WINE_COMMIT}" git-r3_src_unpack
 	elif [[ ! -z "${EGIT_WINE_BRANCH}" ]]; then
 		ewarn "Building Wine against Wine git branch EGIT_WINE_BRANCH=\"${EGIT_WINE_BRANCH}\" ."
-		EGIT_CHECKOUT_DIR="${wine_git_directory}" EGIT_BRANCH="${EGIT_WINE_BRANCH}" git-r3_src_unpack
+		EGIT_BRANCH="${EGIT_WINE_BRANCH}" git-r3_src_unpack
 	else
-		EGIT_CHECKOUT_DIR="${wine_git_directory}" EGIT_BRANCH="master" git-r3_src_unpack
+		EGIT_BRANCH="master" git-r3_src_unpack
 	fi
 }
 
@@ -390,11 +387,12 @@ pkg_setup() {
 }
 
 src_unpack() {
+	# Fully Mirror git tree, Wine, so we can access commits in all branches
+	[[ "${MY_PV}" == "9999" ]] && EGIT_MIN_CLONE_TYPE="mirror"
+
 	default
+
 	if [[ "${MY_PV}" == "9999" ]]; then
-		# Fully Mirror git tree, Wine, so we can access commits in all branches
-		EGIT_MIN_CLONE_TYPE="mirror"
-		EGIT_CHECKOUT_DIR="${S}"
 		if [[ ! -z "${EGIT_STAGING_COMMIT:-${EGIT_STAGING_BRANCH}}" ]]; then
 			# References are relative to Wine Staging git tree (checkout Wine Staging git tree first)
 			# Use env variables "EGIT_STAGING_COMMIT" or "EGIT_STAGING_BRANCH" to reference Wine Staging git tree
@@ -425,7 +423,7 @@ src_unpack() {
 			(
 				# shellcheck source=/dev/null
 				source "${WORKDIR%/}/${GENTOO_WINE_EBUILD_COMMON_P%/}/scripts/wine-staging-git-helper.sh"
-				wine_git_unpack "${S}"
+				wine_git_unpack
 				wine_commit="${EGIT_VERSION}"
 				wine_target_commit="${wine_commit}"
 				git-r3_fetch "${STAGING_EGIT_REPO_URI}" "HEAD"
@@ -535,10 +533,7 @@ src_prepare() {
 	eend
 
 	# Apply Staging branding to reported Wine version...
-	sed -r -i -e '/^AC_INIT\(.*\)$/{s/\[Wine\]/\[Wine Staging\]/}' "${S}/configure.ac" || die "sed failed"
-	if [[ ! -z "${STAGING_SUFFIX}" ]]; then
-		sed -i -e 's/Staging/Staging'"${STAGING_SUFFIX}"'/' "${S}/libs/wine/Makefile.in" || die "sed failed"
-	fi
+	sed -i -e '/^AC_INIT(.*)$/{s/\[Wine\]/\[Wine Staging\]/}' "${S}/configure.ac" || die "sed failed"
 
 	disable_man_file() {
 		(($# == 3))	|| die "invalid number of arguments: ${#} (3)"
