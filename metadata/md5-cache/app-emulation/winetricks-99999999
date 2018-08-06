@@ -10,4 +10,4 @@ RDEPEND=app-arch/cabextract app-arch/p7zip app-arch/unzip net-misc/wget virtual/
 SLOT=0
 SRC_URI=https://github.com/bobwya/winetricks/commit/8a07089d182c36bd1ec04d515facb5b5a04081b2.diff -> winetricks-20180603_add_bashcomp.patch gtk? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 )
 _eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
-_md5_=b82d2e81e63601c6eb1c409ed05ea8bc
+_md5_=853db625ae836b43b66793b8fc4c2cd4
