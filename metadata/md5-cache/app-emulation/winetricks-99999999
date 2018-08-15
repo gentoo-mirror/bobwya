@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=app-arch/cabextract app-arch/p7zip app-arch/unzip net-misc/wget virtual/wine x11-misc/xdg-utils gtk? ( gnome-extra/zenity ) kde? ( kde-apps/kdialog ) rar? ( app-arch/unrar )
 SLOT=0
 SRC_URI=https://github.com/bobwya/winetricks/commit/8a07089d182c36bd1ec04d515facb5b5a04081b2.diff -> winetricks-20180603_add_bashcomp.patch gtk? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 )
-_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	918d6a744039c29af2cadc7317459765	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
 _md5_=94b6d2d738de9419fec255b2a5f30264
