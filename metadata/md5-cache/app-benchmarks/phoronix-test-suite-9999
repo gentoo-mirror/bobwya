@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=app-arch/p7zip media-libs/libpng >=dev-lang/php-5.3:=[cli,curl,gd,json,posix,pcntl,sockets,truetype,zip] www-servers/apache x11-base/xorg-server sdl? ( media-libs/libsdl media-libs/sdl-net media-libs/sdl-image media-libs/libsdl2 media-libs/sdl2-net media-libs/sdl2-image media-libs/sdl2-mixer )
 SLOT=0
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	918d6a744039c29af2cadc7317459765	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
-_md5_=fd9221f297f2d8eed5d90b98d3322ae5
+_md5_=1ba8f9d1fb8cb9d23232bbf694b3881c
