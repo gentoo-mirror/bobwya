@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install prepare unpack
+DEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/fontconfig-infinality media-libs/freetype:2[infinality]
+DESCRIPTION=A set of font rendering and replacement rules for fontconfig-infinality
+EAPI=7
+HOMEPAGE=https://github.com/archfan/infinality_bundle
+LICENSE=MIT
+RDEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/fontconfig-infinality media-libs/freetype:2[infinality]
+SLOT=0
+_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=8bce01e4a6c5956efcf2adb07b815aa7
