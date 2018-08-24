@@ -18,10 +18,7 @@ Testing and updating of these ebuild package build scripts is irregular. So YMMV
 	games-fps/dhewm3 : Doom 3 GPL source modification (with updates including SDL2 support).
 	games-util/lutris : Lutris is an open gaming platform for Linux. It helps you install and manage your games in a unified interface.
 	kde-misc/kmozillahelper : helper application that allows Mozilla Firefox to use KDE/Plasma 5 file dialogs, file associations, protocol handlers and other KDE/Plasma 5 integration features.
-	mail-client/thunderbird-kde-opensuse : Thunderbird mail client, with OpenSUSE Patchset for better KDE Desktop integration. 
-	media-libs/avidemux-core : Avidemux is a free open-source program designed for multi-purpose video editing and processing (core libraries).
-	media-libs/avidemux-plugins : Avidemux is a free open-source program designed for multi-purpose video editing and processing (plugins).
-	media-video/avidemux : Avidemux is a free open-source program designed for multi-purpose video editing and processing (main frontends).
+	mail-client/thunderbird : Thunderbird mail client, with OpenSUSE Patchset for better KDE Desktop integration. 
 	media-video/filebot : Java-based tools to rename TV shows, download subtitles, and validate checksums.
 	media-video/h264enc : h264enc is an advanced and powerful interactive menu-driven shell script written for the GNU/Linux operating system to encode video files
 	net-dialup/dterm : dterm is a simple terminal emulator for serial connections.
@@ -30,7 +27,7 @@ Testing and updating of these ebuild package build scripts is irregular. So YMMV
 	sys-apps/hw-probe : A tool to probe system hardware, check operability and upload results.
 	sys-fs/exfat-nofuse : Non-fuse kernel driver for exFat and VFat file systems.
 	sys-fs/exfat-utils-nofuse : exFAT filesystem utilities (without fuse).
-	www-client/firefox-kde-opensuse : Firefox web browser, with OpenSUSE Patchset, for better KDE Desktop integration.
+	www-client/firefox : Firefox web browser, with OpenSUSE Patchset, for better KDE Desktop integration.
 	x11-apps/starfield : Reminiscence to the screensaver that shipped, with Windows, until Windows XP.
 
 
@@ -58,18 +55,29 @@ These packages are masked and are NOT extensively tested (but I use them persona
 ### Infinality Fonts package set
 --------------------------------
 
-Package Set to provide updated Infinality Fonts (subpixel font rendering enhancements for freetype2 and associated packages). These four packages are designed to be used __in__ __conjunction__ with each other. The __media-libs/fontconfig-infinality__ package is in the main __Gentoo__ Portage tree.
+Package Set to provide updated Infinality Fonts (subpixel font rendering enhancements for freetype2 and associated packages). These four packages are designed to be used __in__ __conjunction__ with each other. The __media-libs/fontconfig-ultimate__ package can be installed to @World. This will pull in the other 3 font packages - with the **+infinality** USE flag enabled and the font configuration files.
 
-	media-libs/fontconfig-infinality : Provides configuration to be used in conjunction with the freetype-infinality subpixel hinting.
+The package set contains:
+
 	media-libs/fontconfig : A library for configuring and customizing font access - with updated infinality support.
+	media-libs/fontconfig-infinality : Provides configuration to be used in conjunction with the freetype-infinality subpixel hinting.
 	media-libs/fontconfig-ultimate : A set of font rendering and replacement rules for fontconfig-infinality.
 	media-libs/freetype : A high-quality font engine - with updated infinality support.
+
+
+You will need to force a reverse **package.use.mask** for the **infinality** USE flag (which is globally masked in Gentoo profiles):
+
+	/etc/portage/profile/package.use.mask/media-libs
+
+        media-libs/freetype -infinality
+        media-libs/fontconfig -infinality
+
 
 See [Gentoo Wiki: Fontconfig (Infinality)](https://wiki.gentoo.org/wiki/Fontconfig#Infinality "Gentoo Wiki: Fontconfig (Infinality)").
 
 See [Arch Wiki: Infinality](https://wiki.archlinux.org/index.php/Infinality "Arch Wiki: Infinality").
 
-_todo_: update to support latest build. See [Arch AUR freetype2-infinality-ultimate package](https://aur.archlinux.org/packages/freetype2-infinality-ultimate/).
+
 ***
 
-Credit to the Arch AUR firefox-kde-opensuse PKGBUILD script used as the main basis for the  www-client/firefox-kde-opensuse (OpenSUSE KDE patchset) ebuild.
+Credit to the **Arch AUR firefox-kde-opensuse** PKGBUILD script used as the main basis for the  **www-client/firefox** (OpenSUSE KDE patchset) ebuild.
