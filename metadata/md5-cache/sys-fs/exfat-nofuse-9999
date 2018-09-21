@@ -8,5 +8,5 @@ IUSE=kernel_linux kernel_linux
 LICENSE=GPL-2+
 RDEPEND=!sys-fs/fuse-exfat kernel_linux? ( virtual/modutils )
 SLOT=0
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	linux-info	915cae3d7d636732918d18827fb1c226	linux-mod	8ce5c5f548ed010d6499eb792ac1a638	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	linux-info	915cae3d7d636732918d18827fb1c226	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=6e0e2833111bef6aa02c2cbb39080f32
