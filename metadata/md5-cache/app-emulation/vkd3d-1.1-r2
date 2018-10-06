@@ -11,4 +11,4 @@ REQUIRED_USE=demos? ( xcb )
 SLOT=0
 SRC_URI=https://dl.winehq.org/vkd3d/source/vkd3d-1.1.tar.xz
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=cce47b0728b30c80610f5eb3b1a3c507
+_md5_=75c50ac9e154821e3f7a2ff826fdb7d9
