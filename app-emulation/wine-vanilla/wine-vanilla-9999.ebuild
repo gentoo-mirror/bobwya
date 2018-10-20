@@ -63,15 +63,20 @@ GENTOO_WINE_EBUILD_COMMON_P="gentoo-wine-ebuild-common-20180805"
 GENTOO_WINE_EBUILD_COMMON_PN="${GENTOO_WINE_EBUILD_COMMON_P%-*}"
 GENTOO_WINE_EBUILD_COMMON_PV="${GENTOO_WINE_EBUILD_COMMON_P##*-}"
 
+GENTOO_WINE_PBA_P="gentoo-wine-pba-20181019"
+GENTOO_WINE_PBA_PN="${GENTOO_WINE_PBA_P%-*}"
+GENTOO_WINE_PBA_PV="${GENTOO_WINE_PBA_P##*-}"
+
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without any external patchsets"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
+	https://github.com/bobwya/${GENTOO_WINE_PBA_PN}/archive/${GENTOO_WINE_PBA_PV}.tar.gz -> ${GENTOO_WINE_PBA_P}.tar.gz
 	https://github.com/bobwya/${GENTOO_WINE_EBUILD_COMMON_PN}/archive/${GENTOO_WINE_EBUILD_COMMON_PV}.tar.gz -> ${GENTOO_WINE_EBUILD_COMMON_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
 
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pcap +perl +png prelink prefix pulseaudio +realtime +run-exes samba scanner sdl2 selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pba pcap +perl +png prelink prefix pulseaudio +realtime +run-exes samba scanner sdl2 selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -414,6 +419,45 @@ src_prepare() {
 		source "${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/scripts/${MY_PN}-multilib-portage-sed.sh"
 	)
 	eend
+
+	if use pba; then
+		# See: https://github.com/acomminos/wine-pba
+		ewarn "Queuing the Wine-PBA patchset for inclusion."
+		ewarn "Note: this third-party patchset is not officially supported!"
+		if [[ "${MY_PV}" == "9999" ]]; then
+			local -a pba_patchset_commits sieved_pba_patchset_commits
+			local i_array pba_base_patchset_commit pba_patchset wine_git_commit
+
+			pba_patchset_commits=(
+				"429e0c913087bdc2c183f74f346a9438278ec960" "7772c4fdbf33507b2262da375b465d4c2cbc316d"
+				"f08342f5737c2bb3f965059f930e5d9a25ff6268" "6eb562210cb154749b1da5c399a69320d87365e6"
+				"1251fe692165077f9ee38992ac33a999bf26b69d" "0e9f94ec1c201c56442124eb8754be1e30840299"
+				"ea7186348f48a749ab28ecc405fb56601c56e4f8" "cf9536b6bfbefbf5003c7633446a91f6e399c4de"
+				"580ea44bc65472c0304d74b7e873acfb7f680b85"
+			)
+			sieved_pba_patchset_commits=( "${pba_patchset_commits[@]}" )
+			sieve_patchset_array_by_git_commit "${S}" "sieved_pba_patchset_commits"
+			for i_array in "${!pba_patchset_commits[@]}"; do
+				# shellcheck disable=SC2068
+				has "${pba_patchset_commits[i_array]}" ${sieved_pba_patchset_commits[@]} && break
+
+				pba_patchset="${WORKDIR}/${GENTOO_WINE_PBA_P%/}/${PN}-pba/${pba_patchset_commits[i_array]}"
+			done
+			if [[ -z "${pba_patchset}" ]]; then
+				pushd "${S}" || die "pushd failed"
+				wine_git_commit="$(git rev-parse HEAD)" || die "git rev-parse failed"
+				popd || die "popd failed"
+				ewarn "The PBA patchset is only unsupported for Wine Git commit: '${pba_patchset_commits[0]}' (+child commits)"
+				ewarn "This Wine Git commit corresponds to Wine Git tag: wine-3.0-rc1~98"
+				ewarn "The PBA patchset cannot be applied on Wine Git commit: '${wine_git_commit}'"
+				ewarn "USE +pba will omitted for this build"
+			else
+				PATCHES+=( "${pba_patchset}" )
+			fi
+		else
+			PATCHES+=( "${WORKDIR}/${GENTOO_WINE_PBA_P%/}/${PN}-pba/580ea44bc65472c0304d74b7e873acfb7f680b85" )
+		fi
+	fi
 
 	disable_man_file() {
 		(($# == 3))	|| die "invalid number of arguments: ${#} (3)"
