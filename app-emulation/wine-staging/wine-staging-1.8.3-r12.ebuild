@@ -428,6 +428,7 @@ src_prepare() {
 	# Declare Wine Staging excluded patchsets
 	local -a STAGING_EXCLUDE_PATCHSETS=( "configure-OSMesa" "winhlp32-Flex_Workaround" )
 	use gstreamer && STAGING_EXCLUDE_PATCHSETS+=( "quartz-NULL_TargetFormat" )
+	use esync && STAGING_EXCLUDE_PATCHSETS+=( "msvfw32-ICGetDisplayFormat" )
 	use pipelight || STAGING_EXCLUDE_PATCHSETS+=( "Pipelight" )
 
 	# Process Wine Staging exluded patchsets
@@ -437,6 +438,7 @@ src_prepare() {
 		if grep -q "${STAGING_EXCLUDE_PATCHSETS[indices[i]]}" "${STAGING_DIR}/patches/patchinstall.sh"; then
 			einfo "Excluding Wine Staging patchset: \"${STAGING_EXCLUDE_PATCHSETS[indices[i]]}\""
 		else
+			einfo "Ignoring Wine Staging patchset: \"${STAGING_EXCLUDE_PATCHSETS[indices[i]]}\""
 			unset -v 'STAGING_EXCLUDE_PATCHSETS[indices[i]]'
 		fi
 	done
