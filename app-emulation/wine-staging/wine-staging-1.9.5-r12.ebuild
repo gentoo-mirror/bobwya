@@ -423,7 +423,6 @@ src_prepare() {
 	# Declare Wine Staging excluded patchsets
 	local -a STAGING_EXCLUDE_PATCHSETS=( "configure-OSMesa" "winhlp32-Flex_Workaround" )
 	use gstreamer && STAGING_EXCLUDE_PATCHSETS+=( "quartz-NULL_TargetFormat" )
-	use esync && STAGING_EXCLUDE_PATCHSETS+=( "msvfw32-ICGetDisplayFormat" )
 	use pipelight || STAGING_EXCLUDE_PATCHSETS+=( "Pipelight" )
 	#577198 only affects 1.9.5
 	use nls || STAGING_EXCLUDE_PATCHSETS+=( "makefiles-Disabled_Rules" )

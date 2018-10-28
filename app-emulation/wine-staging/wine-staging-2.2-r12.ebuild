@@ -421,7 +421,6 @@ src_prepare() {
 	use gstreamer && STAGING_EXCLUDE_PATCHSETS+=( "quartz-NULL_TargetFormat" )
 	# https://bugs.winehq.org/show_bug.cgi?id=42512
 	STAGING_EXCLUDE_PATCHSETS+=( "wined3d-buffer_create" )
-	use esync && STAGING_EXCLUDE_PATCHSETS+=( "msvfw32-ICGetDisplayFormat" )
 	use pipelight || STAGING_EXCLUDE_PATCHSETS+=( "Pipelight" )
 
 	# Process Wine Staging exluded patchsets
