@@ -4,9 +4,9 @@ DESCRIPTION=A tool to probe system hardware, check operability and upload result
 EAPI=6
 HOMEPAGE=https://github.com/linuxhw/hw-probe
 KEYWORDS=-* amd64 ~ppc x86 ~amd64-linux ~arm-linux ~x86-linux
-LICENSE=LGPL-2
+LICENSE=LGPL-2.1+
 RDEPEND=>=dev-lang/perl-5.20 net-misc/curl sys-apps/dmidecode sys-apps/hwinfo sys-apps/pciutils sys-apps/usbutils dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/linuxhw/hw-probe/archive/1.0.tar.gz -> hw-probe-1.0.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=e62d0d72eb7f1e72893d2ad204b80b2f
+_md5_=5c2a37a631bde5a7912ad61c919bc125
