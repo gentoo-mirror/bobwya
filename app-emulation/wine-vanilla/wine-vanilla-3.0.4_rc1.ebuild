@@ -63,15 +63,31 @@ GENTOO_WINE_EBUILD_COMMON_P="gentoo-wine-ebuild-common-20180805"
 GENTOO_WINE_EBUILD_COMMON_PN="${GENTOO_WINE_EBUILD_COMMON_P%-*}"
 GENTOO_WINE_EBUILD_COMMON_PV="${GENTOO_WINE_EBUILD_COMMON_P##*-}"
 
+ESYNC_VERSION="esyncb4478b7"
+GENTOO_WINE_ESYNC_P="gentoo-wine-esync-20181112"
+GENTOO_WINE_ESYNC_PN="${GENTOO_WINE_ESYNC_P%-*}"
+GENTOO_WINE_ESYNC_PV="${GENTOO_WINE_ESYNC_P##*-}"
+
+GENTOO_WINE_PBA_P="gentoo-wine-pba-20181031"
+GENTOO_WINE_PBA_PN="${GENTOO_WINE_PBA_P%-*}"
+GENTOO_WINE_PBA_PV="${GENTOO_WINE_PBA_P##*-}"
+
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without any external patchsets"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
+	esync? (
+		https://github.com/zfigura/wine/releases/download/${ESYNC_VERSION}/esync.tgz -> esync-${ESYNC_VERSION}.tar.gz
+		https://github.com/bobwya/${GENTOO_WINE_ESYNC_PN}/archive/${GENTOO_WINE_ESYNC_PV}.tar.gz -> ${GENTOO_WINE_ESYNC_P}.tar.gz
+	)
+	pba? (
+		https://github.com/bobwya/${GENTOO_WINE_PBA_PN}/archive/${GENTOO_WINE_PBA_PV}.tar.gz -> ${GENTOO_WINE_PBA_P}.tar.gz
+	)
 	https://github.com/bobwya/${GENTOO_WINE_EBUILD_COMMON_PN}/archive/${GENTOO_WINE_EBUILD_COMMON_PV}.tar.gz -> ${GENTOO_WINE_EBUILD_COMMON_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
 
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pcap +perl +png prelink prefix pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc esync +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pba pcap +perl +png prelink prefix pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -282,6 +298,106 @@ wine_generic_compiler_pretests() {
 	fi
 }
 
+# eapply_esync_patchset()
+#   See: https://github.com/zfigura/wine/blob/esync/README.esync
+eapply_esync_patchset() {
+	(($# == 0)) || die "invalid number of arguments: ${#} (0)"
+
+	local -a esync_patchset_commits sieved_esync_patchset_commits
+	local i_array esync_awk_dir esync_rebase_patchset esync_patch
+
+	esync_patchset_commits=(
+		"f8e0bd1b0d189d5950dc39082f439cd1fc9569d5" "12276796c95007fc12eb38a41ca25b4daee7e1b3"
+		"a7aa192a78d02d28f2bbae919a3f5c726e4e9e60" "c61c33ee66ea0e97450ac793ebc4ac41a1ccc793"
+		"57212f64f8e4fef0c63c633940e13d407c0f2069" "24f47812165a5dcb2b22825e47ccccbbd7437b8b"
+		"2f17e0112dc0af3f0b246cf377e2cb8fd7a6cf58" "2600ecd4edfdb71097105c74312f83845305a4f2"
+	)
+
+	if [[ "${MY_PV}" == "9999" ]]; then
+		sieved_esync_patchset_commits=( "${esync_patchset_commits[@]}" )
+		sieve_patchset_array_by_git_commit "${S}" "sieved_esync_patchset_commits"
+		for i_array in "${!esync_patchset_commits[@]}"; do
+			# shellcheck disable=SC2068
+			has "${esync_patchset_commits[i_array]}" ${sieved_esync_patchset_commits[@]} && break
+
+			esync_rebase_patchset="${esync_patchset_commits[i_array]}"
+		done
+		if [[ -z "${esync_rebase_patchset}" ]]; then
+			ewarn "The esync patchset is only supported for Wine Git commit (+child commits): '${esync_patchset_commits[0]}'"
+			ewarn "The esync patchset cannot be applied on Wine Git commit: '${WINE_GIT_COMMIT_HASH}'"
+			ewarn "USE +esync will be omitted for this build."
+			return 1
+		fi
+	else
+		esync_rebase_patchset="f8e0bd1b0d189d5950dc39082f439cd1fc9569d5"
+	fi
+
+	einfo "Using esync rebase revision: '${esync_rebase_patchset}'"
+	esync_awk_dir="${WORKDIR}/${GENTOO_WINE_ESYNC_P%/}"
+	for esync_patch in "${WORKDIR}/esync/00"{01..83}*".patch"; do
+		if awk 	-vesync_patchset_commits="${esync_patchset_commits[*]}" \
+			-vesync_rebase_patchset="${esync_rebase_patchset}" \
+			-vstaging=0 \
+			-f "${esync_awk_dir}/wine-esync-common.awk" \
+			-f "${esync_awk_dir}/wine-esync-preprocess.awk" \
+			"${esync_patch}"
+		then
+			mv "${esync_patch}.new" "${esync_patch}" || die "mv failed"
+		elif (($?!=255)); then
+			die "wine-esync-preprocess.awk script: esync patchset rebasing failed"
+		fi
+	done
+
+	ewarn "Applying the wine-esync patchset."
+	ewarn "Note: this third-party patchset is not officially supported!"
+
+	eapply "${WORKDIR}/esync"
+}
+
+# eapply_pba_patchset()
+#   See: https://github.com/acomminos/wine-pba
+eapply_pba_patchset() {
+	(($# == 0)) || die "invalid number of arguments: ${#} (0)"
+
+	local pba_patchset
+
+	if [[ "${MY_PV}" == "9999" ]]; then
+		local -a pba_patchset_commits sieved_pba_patchset_commits
+		local i_array
+
+		pba_patchset_commits=(
+			"429e0c913087bdc2c183f74f346a9438278ec960" "7772c4fdbf33507b2262da375b465d4c2cbc316d"
+			"f08342f5737c2bb3f965059f930e5d9a25ff6268" "6eb562210cb154749b1da5c399a69320d87365e6"
+			"1251fe692165077f9ee38992ac33a999bf26b69d" "0e9f94ec1c201c56442124eb8754be1e30840299"
+			"ea7186348f48a749ab28ecc405fb56601c56e4f8" "cf9536b6bfbefbf5003c7633446a91f6e399c4de"
+			"580ea44bc65472c0304d74b7e873acfb7f680b85" "944e92ba06ecadeb933d95e30035323483dfe7c7"
+			"12b5c9148588464d621131e80a2b751e7dbce55b" "b579afd30ae48fef03c9333e31c1349d54ed681a"
+			"22b3a4f044036e62104a6994828d18d3536b3d78" "45bf95278d669779e6ca3cde9215556a043a8cf8"
+		)
+		sieved_pba_patchset_commits=( "${pba_patchset_commits[@]}" )
+		sieve_patchset_array_by_git_commit "${S}" "sieved_pba_patchset_commits"
+		for i_array in "${!pba_patchset_commits[@]}"; do
+			# shellcheck disable=SC2068
+			has "${pba_patchset_commits[i_array]}" ${sieved_pba_patchset_commits[@]} && break
+
+			pba_patchset="${WORKDIR}/${GENTOO_WINE_PBA_P%/}/${PN}-pba/${pba_patchset_commits[i_array]}"
+		done
+		if [[ -z "${pba_patchset}" ]]; then
+			ewarn "The PBA patchset is only supported for Wine Git commit (+child commits): '${pba_patchset_commits[0]}'"
+			ewarn "The PBA patchset cannot be applied on Wine Git commit: '${WINE_GIT_COMMIT_HASH}'"
+			ewarn "USE +pba will be omitted for this build."
+			return 1
+		fi
+	else
+		pba_patchset="${WORKDIR}/${GENTOO_WINE_PBA_P%/}/${PN}-pba/429e0c913087bdc2c183f74f346a9438278ec960"
+	fi
+
+	ewarn "Applying the wine-pba patchset."
+	ewarn "Note: this third-party patchset is not officially supported!"
+
+	eapply "${pba_patchset}"
+}
+
 pkg_pretend() {
 	if use oss && ! use kernel_FreeBSD && ! has_version '>=media-sound/oss-4'; then
 		eerror "You cannot build ${CATEGORY}/${PN} with USE=+oss without having support from a FreeBSD kernel"
@@ -350,6 +466,10 @@ src_prepare() {
 		source "${WORKDIR}/${GENTOO_WINE_EBUILD_COMMON_P%/}/scripts/${MY_PN}-multilib-portage-sed.sh"
 	)
 	eend
+
+	use esync && eapply_esync_patchset
+
+	use pba && eapply_pba_patchset
 
 	disable_man_file() {
 		(($# == 3))	|| die "invalid number of arguments: ${#} (3)"
