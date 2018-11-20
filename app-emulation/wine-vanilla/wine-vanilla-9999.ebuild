@@ -68,7 +68,7 @@ GENTOO_WINE_ESYNC_P="gentoo-wine-esync-20181112"
 GENTOO_WINE_ESYNC_PN="${GENTOO_WINE_ESYNC_P%-*}"
 GENTOO_WINE_ESYNC_PV="${GENTOO_WINE_ESYNC_P##*-}"
 
-GENTOO_WINE_PBA_P="gentoo-wine-pba-20181031"
+GENTOO_WINE_PBA_P="gentoo-wine-pba-20181119"
 GENTOO_WINE_PBA_PN="${GENTOO_WINE_PBA_P%-*}"
 GENTOO_WINE_PBA_PV="${GENTOO_WINE_PBA_P##*-}"
 
@@ -466,8 +466,9 @@ eapply_pba_patchset() {
 
 			pba_patchset="${WORKDIR}/${GENTOO_WINE_PBA_P%/}/${PN}-pba/${pba_patchset_commits[i_array]}"
 		done
-		if [[ -z "${pba_patchset}" ]]; then
-			ewarn "The PBA patchset is only supported for Wine Git commit (+child commits): '${pba_patchset_commits[0]}'"
+		# shellcheck disable=SC2068
+		if [[ -z "${pba_patchset}" ]] || ! has "${pba_patchset_commits[9]}" ${sieved_pba_patchset_commits[@]}; then
+			ewarn "The PBA patchset is only supported for Wine Git commit range: ['${pba_patchset_commits[0]}'-'${pba_patchset_commits[9]}')"
 			ewarn "The PBA patchset cannot be applied on Wine Git commit: '${WINE_GIT_COMMIT_HASH}'"
 			ewarn "USE +pba will be omitted for this build."
 			return 1
