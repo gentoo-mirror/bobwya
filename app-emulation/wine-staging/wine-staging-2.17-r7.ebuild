@@ -11,38 +11,30 @@ inherit autotools flag-o-matic l10n multilib multilib-minimal pax-utils toolchai
 
 if [[ "${WINE_PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
+	EGIT_REPO_WINE_STAGING="https://github.com/wine-staging/wine-staging.git"
 	inherit git-r3
 else
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, without any external patchsets"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine Staging patchset"
 HOMEPAGE="https://www.winehq.org/"
-SRC_URI="${SRC_URI}
-	esync? (
-		https://github.com/zfigura/wine/releases/download/${WINE_ESYNC_VERSION}/esync.tgz -> esync-${WINE_ESYNC_VERSION}.tar.gz
-		https://github.com/bobwya/${WINE_ESYNC_PN}/archive/${WINE_ESYNC_PV}.tar.gz -> ${WINE_ESYNC_P}.tar.gz
-	)
-	pba? (
-		https://github.com/bobwya/${WINE_PBA_PN}/archive/${WINE_PBA_PV}.tar.gz -> ${WINE_PBA_P}.tar.gz
-	)"
-
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
 
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc esync +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pba pcap +perl +png prelink prefix pulseaudio +realtime +run-exes samba scanner sdl2 selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pcap +perl pipelight +png prelink prefix pulseaudio +realtime +run-exes s3tc samba scanner selinux +ssl test themes +threads +truetype udev +udisks v4l vaapi +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
 	osmesa? ( opengl )
-	test? ( abi_x86_32 )
-	vkd3d? ( vulkan )" #286560 osmesa-opengl  #551124 X-truetype
+	test? ( abi_x86_32 )" #286560 osmesa-opengl  #551124 X-truetype
 
 # FIXME: the test suite is unsuitable for us; many tests require net access
 # or fail due to Xvfb's opengl limitations.
 RESTRICT="test"
 
 COMMON_DEPEND="
+	sys-apps/attr[${MULTILIB_USEDEP}]
 	>=app-emulation/wine-desktop-common-20180412
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
@@ -63,7 +55,6 @@ COMMON_DEPEND="
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
@@ -82,14 +73,17 @@ COMMON_DEPEND="
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
-	sdl2? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	themes? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		x11-libs/cairo[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+	)
 	truetype? ( >=media-libs/freetype-2.0.5[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	vkd3d? ( app-emulation/vkd3d[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[X,${MULTILIB_USEDEP}] )
+	vaapi? ( x11-libs/libva:=[drm,X?,${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	xml? (
@@ -103,7 +97,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-eselect/eselect-wine-1.5.4
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.3 )
+	mono? ( app-emulation/wine-mono:4.7.1 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -111,6 +105,7 @@ RDEPEND="${COMMON_DEPEND}
 	pulseaudio? (
 		realtime? ( sys-auth/rtkit )
 	)
+	s3tc? ( >=media-libs/libtxc_dxtn-1.0.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.0.25[winbind] )
 	selinux? ( sec-policy/selinux-wine )
 	udisks? ( sys-fs/udisks:2 )
@@ -139,7 +134,7 @@ src_unpack() {
 	default
 
 	if [[ "${WINE_PV}" == "9999" ]]; then
-		git-r3_src_unpack
+		wine_staging_git_src_unpack
 		wine_get_git_commit_info "${S}" WINE_GIT_COMMIT_HASH WINE_GIT_COMMIT_DATE
 	fi
 
@@ -149,7 +144,6 @@ src_unpack() {
 src_prepare() {
 	local md5hash
 	md5hash="$(md5sum server/protocol.def)" || die "md5sum failed"
-	[[ ! -z "${WINE_STABLE_PREFIX}" ]] && sed -i -e 's/[-.[:alnum:]]\+$/'"${WINE_PV}"'/' "${S}/VERSION"
 	local -a PATCHES PATCHES_BIN
 
 	wine_add_stock_gentoo_patches
@@ -158,9 +152,8 @@ src_prepare() {
 
 	wine_fix_gentoo_multilib_support
 
-	use esync && wine_eapply_esync_patchset "${WORKDIR}/esync"
-
-	use pba && wine_eapply_pba_patchset "${WORKDIR}/${WINE_PBA_P%/}/${PN}-pba"
+	wine_eapply_staging_patchset
+	wine_src_set_staging_versioning
 	#617864 Generate wine64 man pages for 64-bit bit only installation
 	if use abi_x86_64 && ! use abi_x86_32; then
 		wine_src_force_64bit_manpages
@@ -176,11 +169,6 @@ src_prepare() {
 	use X || use ncurses || wine_src_prepare_disable_tools wineconsole
 
 	default
-
-	if ((WINE_IS_RC_VERSION)); then
-		sed -i -e '/^m4_define/{s/\[\\1\]/\[\\1\]'"${WINE_PV/#*-rc/-rc}"'/}' \
-			"${S}/configure.ac" || die "sed failed"
-	fi
 
 	wine_eapply_bin
 	eautoreconf
@@ -228,8 +216,6 @@ multilib_src_configure() {
 		"$(use_with gstreamer)"
 		--without-hal
 		"$(use_with jpeg)"
-		"$(use_with kerberos gssapi)"
-		"$(use_with kerberos krb5)"
 		"$(use_with ldap)"
 		"$(use_enable mono mscoree)"
 		"$(use_with mp3 mpg123)"
@@ -243,18 +229,18 @@ multilib_src_configure() {
 		"$(use_with pcap)"
 		"$(use_with png)"
 		"$(use_with pulseaudio pulse)"
+		"$(use_with themes gtk3)"
 		"$(use_with threads pthread)"
 		"$(use_with scanner sane)"
-		"$(use_with sdl2 sdl)"
 		"$(use_enable test tests)"
 		"$(use_with truetype freetype)"
 		"$(use_with udev)"
 		"$(use_with udisks dbus)"
 		"$(use_with v4l)"
-		"$(use_with vkd3d)"
-		"$(use_with vulkan)"
+		"$(use_with vaapi va)"
 		"$(use_with X x)"
 		"$(use_with X xfixes)"
+		--with-xattr
 		"$(use_with xcomposite)"
 		"$(use_with xinerama)"
 		"$(use_with xml)"
