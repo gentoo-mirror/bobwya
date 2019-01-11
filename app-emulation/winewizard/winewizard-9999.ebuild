@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,10 @@ RDEPEND="${CDEPEND}
 "
 
 src_prepare() {
-	local PATCHES=( "${FILESDIR}/${PN}-3.0.0_purge_ad_support.patch" )
+	local PATCHES=(
+		"${FILESDIR}/${PN}-3.0.0_purge_ad_support.patch"
+		"${FILESDIR}/${PN}-3.0.2-qt-5.11.patch"
+	)
 	default
 }
 
