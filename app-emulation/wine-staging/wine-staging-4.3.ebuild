@@ -11,25 +11,23 @@ inherit autotools flag-o-matic l10n multilib multilib-minimal pax-utils toolchai
 
 if [[ "${WINE_PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
+	EGIT_REPO_WINE_STAGING="https://github.com/wine-staging/wine-staging.git"
 	inherit git-r3
 else
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, without any external patchsets"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine Staging patchset"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	esync? (
 		https://github.com/bobwya/${WINE_ESYNC_PN}/archive/${WINE_ESYNC_PV}.tar.gz -> ${WINE_ESYNC_P}.tar.gz
-	)
-	pba? (
-		https://github.com/bobwya/${WINE_PBA_PN}/archive/${WINE_PBA_PV}.tar.gz -> ${WINE_PBA_P}.tar.gz
 	)"
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
 
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc esync faudio +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pba pcap +perl +png prelink prefix pulseaudio +realtime +run-exes samba scanner sdl2 selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc esync faudio +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss pcap +perl pipelight +png prelink prefix pulseaudio +realtime +run-exes s3tc samba scanner sdl2 selinux +ssl test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -42,6 +40,7 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 RESTRICT="test"
 
 COMMON_DEPEND="
+	sys-apps/attr[${MULTILIB_USEDEP}]
 	>=app-emulation/wine-desktop-common-20180412
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
@@ -84,11 +83,17 @@ COMMON_DEPEND="
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
 	sdl2? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	themes? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		x11-libs/cairo[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+	)
 	truetype? ( >=media-libs/freetype-2.0.5[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	vkd3d? ( app-emulation/vkd3d[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
+	vaapi? ( x11-libs/libva:=[drm,X?,${MULTILIB_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[X,${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
@@ -111,6 +116,7 @@ RDEPEND="${COMMON_DEPEND}
 	pulseaudio? (
 		realtime? ( sys-auth/rtkit )
 	)
+	s3tc? ( >=media-libs/libtxc_dxtn-1.0.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.0.25[winbind] )
 	selinux? ( sec-policy/selinux-wine )
 	udisks? ( sys-fs/udisks:2 )
@@ -139,7 +145,7 @@ src_unpack() {
 	default
 
 	if [[ "${WINE_PV}" == "9999" ]]; then
-		git-r3_src_unpack
+		wine_staging_git_src_unpack
 		wine_get_git_commit_info "${S}" WINE_GIT_COMMIT_HASH WINE_GIT_COMMIT_DATE
 	fi
 
@@ -149,7 +155,6 @@ src_unpack() {
 src_prepare() {
 	local md5hash
 	md5hash="$(md5sum server/protocol.def)" || die "md5sum failed"
-	[[ -n "${WINE_STABLE_PREFIX}" ]] && sed -i -e 's/[-.[:alnum:]]\+$/'"${WINE_PV}"'/' "${S}/VERSION"
 	local -a PATCHES PATCHES_BIN
 
 	wine_add_stock_gentoo_patches
@@ -158,9 +163,10 @@ src_prepare() {
 
 	wine_fix_gentoo_multilib_support
 
-	use esync && wine_eapply_esync_patchset "${WORKDIR}/${WINE_ESYNC_P}"
+	wine_eapply_staging_patchset
+	wine_src_set_staging_versioning
 
-	use pba && wine_eapply_pba_patchset "${WORKDIR}/${WINE_PBA_P%/}/${PN}-pba"
+	use esync && wine_eapply_esync_patchset "${WORKDIR}/${WINE_ESYNC_P}"
 	#617864 Generate wine64 man pages for 64-bit bit only installation
 	if use abi_x86_64 && ! use abi_x86_32; then
 		wine_src_force_64bit_manpages
@@ -215,6 +221,7 @@ multilib_src_configure() {
 		"$(use_with lcms cms)"
 		"$(use_with cups)"
 		"$(use_with ncurses curses)"
+		"$(use_with faudio)"
 		"$(use_with fontconfig)"
 		"$(use_with ssl gnutls)"
 		"$(use_enable gecko mshtml)"
@@ -238,6 +245,7 @@ multilib_src_configure() {
 		"$(use_with pcap)"
 		"$(use_with png)"
 		"$(use_with pulseaudio pulse)"
+		"$(use_with themes gtk3)"
 		"$(use_with threads pthread)"
 		"$(use_with scanner sane)"
 		"$(use_with sdl2 sdl)"
@@ -246,17 +254,17 @@ multilib_src_configure() {
 		"$(use_with udev)"
 		"$(use_with udisks dbus)"
 		"$(use_with v4l)"
+		"$(use_with vaapi va)"
 		"$(use_with vkd3d)"
 		"$(use_with vulkan)"
 		"$(use_with X x)"
 		"$(use_with X xfixes)"
+		--with-xattr
 		"$(use_with xcomposite)"
 		"$(use_with xinerama)"
 		"$(use_with xml)"
 		"$(use_with xml xslt)"
 	)
-
-	wine_use_disabled faudio || myconf+=( "$(use_with faudio)" )
 
 	local PKG_CONFIG AR RANLIB
 	#472038 Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64
