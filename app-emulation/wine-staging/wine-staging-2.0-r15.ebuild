@@ -35,7 +35,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=app-emulation/wine-desktop-common-20180412
+	>=app-emulation/wine-desktop-common-20190412
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
@@ -142,6 +142,7 @@ src_prepare() {
 	wine_add_stock_gentoo_patches
 
 	wine_fix_gentoo_cc_multilib_support
+	wine_fix_gentoo_O3_compilation_support
 	wine_fix_gentoo_winegcc_support
 
 	wine_eapply_staging_patchset
