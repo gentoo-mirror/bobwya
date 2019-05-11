@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=!!net-dns/djbdns !!sys-apps/ucspi-tcp
 SLOT=0
 SRC_URI=https://github.com/pjps/ndjbdns/archive/64d371b6f887621de7bf8bd495be10442b2accd0.tar.gz -> ndjbdns-1.06_p20151013.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=96ec4afbcf3fbe5fb3d731b105d74317
