@@ -1,11 +1,12 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=install prepare
 DEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/fontconfig-infinality media-libs/freetype:2[infinality]
 DESCRIPTION=A set of font rendering and replacement rules for fontconfig-infinality
 EAPI=7
-HOMEPAGE=https://github.com/archfan/infinality_bundle
+HOMEPAGE=https://github.com/bohoomil
+KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/fontconfig-infinality media-libs/freetype:2[infinality]
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=8bce01e4a6c5956efcf2adb07b815aa7
+SRC_URI=https://github.com/bohoomil/fontconfig-ultimate/archive/2016-04-23.tar.gz -> fontconfig-ultimate-2016.04.23.tar.gz
+_eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=d4ec935561c45c5c163801f8e49ed780
