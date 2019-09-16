@@ -27,7 +27,7 @@ media-libs/fontconfig 2.12.6-r1 2.13.0-r1 2.13.1: A library for configuring and 
 media-libs/fontconfig-infinality 20130404: freetype configuration for infinality subpixel hinting
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.9.1-r1 2.10.0 9999: A high-quality and portable font engine
-media-libs/mesa 19.0.8 19.1.3 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.0.8-r1 19.1.3-r1 19.1.4 19.1.5 19.1.6 9999: OpenGL-like graphic library for Linux
 media-sound/neroaac 1.5.4-r1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-video/ffx264 3.7.0: Script to encode video files to H.264/AVC video using the FFmpeg encoder
 media-video/filebot 4.1 4.7 4.7.9: Java-based tools to rename TV shows, download subtitles, and validate checksums
@@ -44,4 +44,4 @@ virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
 www-client/firefox 52.9.0 60.8.0 60.9.0 68.1.0 69.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.20.4 1.20.5 9999: X.Org X servers
-x11-drivers/nvidia-drivers 340.107-r5 390.116-r2 410.104-r1 415.27-r2 418.52.18 418.74 430.34 430.40: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.107-r5 390.129 410.104-r1 415.27-r2 418.88 430.34 430.40 435.17 435.19.03 435.21: NVIDIA Accelerated Graphics Driver
