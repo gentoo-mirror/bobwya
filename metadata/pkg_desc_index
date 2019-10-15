@@ -2,7 +2,7 @@ app-arch/cabextract 1.9 1.9.1 9999: Extracts files from Microsoft cabinet archiv
 app-arch/unshield 1.0 1.1 1.2 1.3 1.4 1.4.1 1.4.2 1.4.3 9999: Tool and library to extract CAB files from InstallShield installers
 app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/phoronix-test-suite 8.2.0-r1 8.4.1 8.6.0 8.8.1 9.0.0 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
-app-emulation/faudio 19.01-r2 19.02-r2 19.03-r1 19.04-r1 19.05-r1 19.06.07-r1 19.07 19.08 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
+app-emulation/faudio 19.06.07-r1 19.07 19.08 19.09 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/vkd3d 1.0-r4 1.1-r4 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20180412 99999999: Core desktop menu entries and icons for Wine
 app-emulation/wine-gecko 2.40 2.44 2.47_beta1 2.47: A Mozilla Gecko based version of Internet Explorer for Wine
@@ -28,7 +28,7 @@ media-libs/fontconfig-infinality 20130404: freetype configuration for infinality
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.9.1-r1 2.10.0 9999: A high-quality and portable font engine
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
-media-libs/mesa 19.0.8-r1 19.1.3-r1 19.1.4 19.1.5 19.1.6 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.1.7 19.2.0 19.2.1 9999: OpenGL-like graphic library for Linux
 media-sound/neroaac 1.5.4-r1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-video/ffx264 3.7.0: Script to encode video files to H.264/AVC video using the FFmpeg encoder
 media-video/filebot 4.1 4.7 4.7.9: Java-based tools to rename TV shows, download subtitles, and validate checksums
@@ -45,4 +45,4 @@ virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
 www-client/firefox 52.9.0 60.9.0 68.1.0 69.0.2 69.0.3: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.20.4 1.20.5 9999: X.Org X servers
-x11-drivers/nvidia-drivers 340.107-r5 390.129 410.104-r1 415.27-r2 418.88 430.34 430.40 435.17 435.19.03 435.21: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.107-r5 390.129 430.50 435.21-r1 435.27.00: NVIDIA Accelerated Graphics Driver
