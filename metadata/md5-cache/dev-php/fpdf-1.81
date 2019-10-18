@@ -8,4 +8,4 @@ LICENSE=freedist
 RDEPEND=dev-lang/php:*[gd,zlib]
 SLOT=0
 SRC_URI=http://www.fpdf.org/en/dl.php?v=181&f=tgz -> fpdf181.tgz
-_md5_=87127d79aa02caca599bdbfbd43c521d
+_md5_=eae6cd364d6bf5a40210456da6c1794d

@@ -121,10 +121,6 @@ media-libs/mesa:vulkan-overlay - Build vulkan-overlay-layer which displays Frame
 media-libs/mesa:wayland - Enable support for dev-libs/wayland
 media-libs/mesa:xa - Enable the XA (X Acceleration) API for Gallium3D.
 media-libs/mesa:xvmc - Enable the XvMC acceleration interface for the Gallium3D Video Layer.
-media-video/h264enc:aacplus - Add support for AAC audio encoding supprt via package media-sound/aacplusenc.
-media-video/h264enc:faac - Add support for AAC audio encoding support via library media-libs/faac.
-media-video/h264enc:fdkaac - Add support for AAC audio encoding support via library media-libs/fdk-aac.
-media-video/h264enc:neroaac - Add support for AAC audio encoding support via binary package media-sound/neroaac.
 media-video/h264enc:ogm - Support for OGM container format
 www-client/firefox:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox:clang - Use Clang compiler instead of GCC
@@ -154,6 +150,7 @@ x11-base/xorg-server:elogind - Use elogind to get control over framebuffer when 
 x11-base/xorg-server:fop - Support for generating pdf documentation using dev-java/fop
 x11-base/xorg-server:glamor - Enable Glamor OpenGL 2D acceleration
 x11-base/xorg-server:kdrive - Build the kdrive X servers
+x11-base/xorg-server:libglvnd - Use libglvnd for dispatch.
 x11-base/xorg-server:unwind - Enable libunwind usage for backtraces
 x11-base/xorg-server:xcsecurity - Build Security extension
 x11-base/xorg-server:xephyr - Build the Xephyr server

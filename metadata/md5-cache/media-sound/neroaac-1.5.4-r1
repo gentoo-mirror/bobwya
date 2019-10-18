@@ -9,4 +9,4 @@ LICENSE=Nero-AAC-EULA
 RESTRICT=fetch strip mirror test
 SLOT=0
 SRC_URI=NeroAACCodec-1.5.4.zip
-_md5_=9bf22ed1268184e8847d702ecd45e8ca
+_md5_=1833f22b89bb9175b410088820f91726

@@ -9,7 +9,7 @@ app-emulation/wine-gecko 2.40 2.44 2.47_beta1 2.47: A Mozilla Gecko based versio
 app-emulation/wine-mono 4.5.6 4.6.0 4.6.2 4.6.3 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1-r1 4.8.3-r1 4.9.0-r1 4.9.2-r1 4.9.3: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 1.8-r17 1.8.1-r17 1.8.2-r17 1.8.3-r17 1.8.4-r17 1.8.5-r17 1.8.6-r17 1.9.0-r17 1.9.1-r17 1.9.2-r17 1.9.3-r17 1.9.4-r17 1.9.5-r17 1.9.6-r17 1.9.7-r17 1.9.8-r17 1.9.9-r17 1.9.10-r17 1.9.11-r17 1.9.12-r17 1.9.13-r17 1.9.14-r17 1.9.15-r17 1.9.16-r17 1.9.17-r17 1.9.18-r17 1.9.19-r17 1.9.20-r17 1.9.21-r17 1.9.22-r17 1.9.23-r17 2.0-r17 2.1-r17 2.2-r17 2.3-r17 2.4-r17 2.5-r17 2.6-r17 2.7-r17 2.8-r17 2.9-r17 2.10-r17 2.11-r17 2.12-r16 2.13-r14 2.14-r14 2.15-r12 2.16-r12 2.17-r11 2.18-r10 2.19-r10 2.20-r10 2.21-r10 3.3-r14 3.3_p1-r14 3.4-r14 3.4_p1-r14 3.5-r14 3.5_p1-r14 3.6-r14 3.6_p1-r14 3.7-r14 3.7_p1-r14 3.8-r15 3.8_p1-r15 3.9-r15 3.9_p1-r15 3.10-r13 3.10_p1-r13 3.11-r14 3.11_p1-r14 3.12-r15 3.12_p1-r15 3.13.1-r13 3.13.1_p1-r13 3.14-r13 3.14_p1-r13 3.15-r13 3.15_p1-r13 3.16-r13 3.16_p1-r13 3.17-r13 3.17_p1-r13 3.18-r13 3.18_p1-r13 3.19-r11 3.19_p1-r11 3.20-r10 3.20_p1-r10 3.21-r8 3.21_p1-r8 4.0-r6 4.0_p1-r6 4.1-r7 4.1_p1-r7 4.2-r6 4.2_p1-r6 4.3-r5 4.3_p1-r5 4.4-r5 4.4_p1-r5 4.5-r5 4.5_p1-r5 4.6-r5 4.6_p1-r5 4.7-r5 4.7_p1-r5 4.8-r3 4.8_p1-r3 4.9-r3 4.9_p1-r3 4.10-r3 4.10_p1-r3 4.11-r2 4.11_p1-r2 4.12.1-r3 4.12.1_p1-r3 4.13-r2 4.13_p1-r2 4.14-r1 4.14_p1-r1 4.15-r1 4.15_p1-r1 4.16-r1 4.16_p1-r1 4.17 4.17_p1 9999 9999_p1: Free implementation of Windows(tm) on Unix, with Wine Staging patchset
 app-emulation/wine-vanilla 1.8-r15 1.8.1-r15 1.8.2-r15 1.8.3-r15 1.8.4-r15 1.8.5-r15 1.8.6-r15 1.8.7-r15 1.9.0-r15 1.9.1-r15 1.9.2-r15 1.9.3-r15 1.9.4-r15 1.9.5-r15 1.9.6-r15 1.9.7-r15 1.9.8-r15 1.9.9-r15 1.9.10-r15 1.9.11-r15 1.9.12-r15 1.9.13-r15 1.9.14-r15 1.9.15-r15 1.9.16-r15 1.9.17-r15 1.9.18-r15 1.9.19-r15 1.9.20-r15 1.9.21-r15 1.9.22-r15 1.9.23-r15 1.9.24-r15 2.0-r15 2.0.1-r15 2.0.2-r13 2.0.3-r8 2.0.4-r8 2.0.5-r5 2.1-r15 2.2-r15 2.3-r15 2.4-r15 2.5-r15 2.6-r15 2.7-r15 2.8-r15 2.9-r15 2.10-r15 2.11-r15 2.12-r14 2.13-r13 2.14-r12 2.15-r11 2.16-r10 2.17-r9 2.18-r8 2.19-r8 2.20-r8 2.21-r8 2.22-r8 3.0-r12 3.0_p1-r12 3.0.1-r10 3.0.1_p1-r10 3.0.2-r9 3.0.2_p1-r9 3.0.3-r8 3.0.3_p1-r8 3.0.4-r2 3.0.4_p1-r2 3.0.5-r1 3.0.5_p1-r1 3.1-r13 3.1_p1-r13 3.2-r12 3.2_p1-r12 3.3-r12 3.3_p1-r12 3.4-r11 3.4_p1-r11 3.5-r11 3.5_p1-r11 3.6-r11 3.6_p1-r11 3.7-r11 3.7_p1-r11 3.8-r12 3.8_p1-r12 3.9-r12 3.9_p1-r12 3.10-r10 3.10_p1-r10 3.11-r10 3.11_p1-r10 3.12-r10 3.12_p1-r10 3.13-r10 3.13_p1-r10 3.14-r9 3.14_p1-r9 3.15-r9 3.15_p1-r9 3.16-r9 3.16_p1-r9 3.17-r9 3.17_p1-r9 3.18-r9 3.18_p1-r9 3.19-r7 3.19_p1-r7 3.20-r6 3.20_p1-r6 3.21-r4 3.21_p1-r4 4.0-r2 4.0_p1-r2 4.0.1-r1 4.0.1_p1-r1 4.0.2 4.0.2_p1 4.1-r5 4.1_p1-r5 4.2-r5 4.2_p1-r5 4.3-r4 4.3_p1-r4 4.4-r4 4.4_p1-r4 4.5-r4 4.5_p1-r4 4.6-r4 4.6_p1-r4 4.7-r2 4.7_p1-r2 4.8-r2 4.8_p1-r2 4.9-r2 4.9_p1-r2 4.10-r2 4.10_p1-r2 4.11-r1 4.11_p1-r1 4.12.1-r2 4.12.1_p1-r2 4.13-r1 4.13_p1-r1 4.14 4.14_p1 4.15 4.15_p1 4.16 4.16_p1 4.17 4.17_p1 9999 9999_p1: Free implementation of Windows(tm) on Unix, without any external patchsets
-app-emulation/winetricks 20190912 99999999: Winetricks is an easy way to work around deficiencies in Wine
+app-emulation/winetricks 20190912-r1 99999999: Winetricks is an easy way to work around deficiencies in Wine
 app-emulation/winewizard 3.0.0-r1 3.0.1-r1 3.0.2-r1 9999: Wine Wizard is a new GUI for Wine written in Qt
 app-eselect/eselect-opengl 1.3.3-r3: Utility to change the OpenGL interface being used
 app-eselect/eselect-wine 1.5.5: Manage active wine version
@@ -18,30 +18,30 @@ dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP 
 dev-cpp/zstr 1.0.0 1.0.1 9999: C++ header-only library allowing iostream access ZLib-compressed streams
 dev-php/fpdf 1.81: FPDF is a PHP class which allows to generate PDF files with pure PHP
 dev-python/python-evdev 9999: Python library for evdev bindings
-dev-util/spirv-headers 1.3.7 1.3.8 1.4.1 9999: Machine-readable files for the SPIR-V Registry
+dev-util/spirv-headers 1.3.7 1.3.8 1.4.1 1.4.2 1.5.1 9999: Machine-readable files for the SPIR-V Registry
 games-fps/dhewm3 1.4.0 1.4.1 1.5.0 9999: A Doom 3 GPL source modification.
-games-util/lutris 0.5.2 0.5.2.1 9999: An open source gaming platform for GNU/Linux
-mail-client/thunderbird 52.9.1-r1 60.8.0 68.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+games-util/lutris 0.5.2 0.5.2.1 0.5.2.2 0.5.3 9999: An open source gaming platform for GNU/Linux
+mail-client/thunderbird 52.9.1-r1 60.9.0 68.1.1 68.1.2: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/fontconfig 2.12.6-r1 2.13.0-r1 2.13.1: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20130404: freetype configuration for infinality subpixel hinting
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
-media-libs/freetype 2.9.1-r1 2.10.0 9999: A high-quality and portable font engine
+media-libs/freetype 2.9.1-r1 2.10.0 2.10.1 9999: A high-quality and portable font engine
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/mesa 19.1.7 19.2.0 19.2.1 9999: OpenGL-like graphic library for Linux
 media-sound/neroaac 1.5.4-r1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-video/ffx264 3.7.0: Script to encode video files to H.264/AVC video using the FFmpeg encoder
 media-video/filebot 4.1 4.7 4.7.9: Java-based tools to rename TV shows, download subtitles, and validate checksums
-media-video/h264enc 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
+media-video/h264enc 10.4.7-r1: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 net-dialup/dterm 0.3 0.5: Simple serial terminal emulator
 net-dns/ndjbdns 1.06_p20151013 9999: Fork of djbdns, a collection of DNS client/server software
-sys-apps/cpuid 20151017 20160814 20161114 20161201 20170122 20180419 20180519: Utility to get detailed information about CPU(s) using the CPUID instruction
-sys-apps/hw-probe 1.0 1.1 1.2 1.3 1.4 9999: A tool to probe system hardware, check operability and upload results
-sys-apps/inxi 3.0.28_p1 3.0.29_p1 3.0.30_p1 3.0.31_p1 3.0.32_p1 3.0.33_p1 9999: Perl script that collects and displays system information.
+sys-apps/cpuid 20170122 20180419 20180519: Utility to get detailed information about CPU(s) using the CPUID instruction
+sys-apps/hw-probe 1.0 1.1 1.2 1.3 1.4-r1 9999: A tool to probe system hardware, check operability and upload results
+sys-apps/inxi 3.0.33_p1 3.0.34_p1 3.0.35_p1 3.0.36_p1 9999: Perl script that collects and displays system information.
 sys-apps/tuxclocker 0.1.1 9999: Qt5-based GPU overclocking tool
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
-sys-fs/exfat-utils-nofuse 1.2.7 9999: exFAT filesystem utilities (without fuse)
+sys-fs/exfat-utils-nofuse 1.3.0 9999: exFAT filesystem utilities (without fuse)
 virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
 www-client/firefox 52.9.0 60.9.0 68.1.0 69.0.2 69.0.3: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
-x11-base/xorg-server 1.20.4 1.20.5 9999: X.Org X servers
+x11-base/xorg-server 1.20.5 9999: X.Org X servers
 x11-drivers/nvidia-drivers 340.107-r5 390.129 430.50 435.21-r1 435.27.00: NVIDIA Accelerated Graphics Driver

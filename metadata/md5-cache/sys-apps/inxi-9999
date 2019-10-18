@@ -8,4 +8,4 @@ PROPERTIES=live
 RDEPEND=app-text/tree dev-lang/perl:0= dev-perl/Cpanel-JSON-XS sys-apps/pciutils sys-apps/usbutils virtual/perl-HTTP-Tiny virtual/perl-IO-Socket-IP virtual/perl-Time-HiRes
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
-_md5_=69b17e12b81fc3693bf21e3b8b796d0b
+_md5_=54733526bd2200581a59ec464b1dfa5e

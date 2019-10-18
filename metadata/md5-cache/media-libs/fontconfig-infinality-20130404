@@ -10,4 +10,4 @@ RDEPEND=app-eselect/eselect-fontconfig app-eselect/eselect-infinality app-eselec
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jstein/dist/fontconfig-infinality-20130404.tar.xz nyx? ( https://dev.gentoo.org/~jstein/dist/fontconfig-nyx-2.tar.xz )
 _eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=e2615b3eabe2f551767e741450431fb4
+_md5_=0d6acb4003e95962fe21c2eb923ac8d1

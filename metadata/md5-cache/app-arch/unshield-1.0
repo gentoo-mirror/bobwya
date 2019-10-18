@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure preinst prepare
-DEPEND=!libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=!libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib
 DESCRIPTION=Tool and library to extract CAB files from InstallShield installers
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/twogood/unshield
 IUSE=libressl static-libs
 KEYWORDS=~amd64 ~hppa ~ppc ~x86
@@ -10,4 +11,4 @@ RDEPEND=!libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:0= ) sys
 SLOT=0
 SRC_URI=https://github.com/twogood/unshield/archive/1.0.tar.gz -> unshield-1.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a
-_md5_=a7554a6f85dd68a991738b31acb1c01a
+_md5_=96ad05d8435ad094547ff8233cadb946

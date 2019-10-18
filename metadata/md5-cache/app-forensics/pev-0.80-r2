@@ -11,4 +11,4 @@ RDEPEND=dev-libs/openssl:0
 SLOT=0
 SRC_URI=https://github.com/merces/pev/archive/v0.80.tar.gz
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
-_md5_=fba6ab7094f25caacac9dd0269ab39e6
+_md5_=8d73d641fa706324259a4ba419deda32
