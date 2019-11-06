@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=|| ( net-misc/aria2 net-misc/curl net-misc/wget www-client/fetch ) app-arch/cabextract app-arch/p7zip app-arch/unzip virtual/wine x11-misc/xdg-utils gtk? ( gnome-extra/zenity ) kde? ( kde-apps/kdialog ) rar? ( app-arch/unrar )
 SLOT=0
 SRC_URI=https://github.com/Winetricks/winetricks/archive/20190912.tar.gz -> winetricks-20190912.tar.gz gtk? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 )
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	2f8b8f320bee13b71a8a54cc6d09e08a	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
 _md5_=253e44fff0a48dc38826381c19969ed6
