@@ -45,5 +45,5 @@ virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
 www-client/firefox 52.9.0 60.9.0 68.1.0 69.0.2 69.0.3: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.20.5 9999: X.Org X servers
-x11-drivers/nvidia-drivers 340.107-r5 390.129 430.50 435.21-r1 435.27.00: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.107-r5 390.129-r1 430.50-r1 435.21-r2 435.27.03 440.26 440.31: NVIDIA Accelerated Graphics Driver
 x11-misc/edid-decode 9999: EDID decoder and conformance tester
