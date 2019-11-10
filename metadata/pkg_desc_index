@@ -28,7 +28,7 @@ media-libs/fontconfig-infinality 20130404: freetype configuration for infinality
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freetype 2.9.1-r1 2.10.0 2.10.1-r1 9999: A high-quality and portable font engine
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
-media-libs/mesa 19.1.7 19.2.0 19.2.1 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.1.7 19.1.8 19.2.2 9999: OpenGL-like graphic library for Linux
 media-sound/neroaac 1.5.4-r1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-video/ffx264 3.7.0: Script to encode video files to H.264/AVC video using the FFmpeg encoder
 media-video/filebot 4.1 4.7 4.7.9: Java-based tools to rename TV shows, download subtitles, and validate checksums
