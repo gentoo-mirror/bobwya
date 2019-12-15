@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/bobwya/wine-desktop-common
 LICENSE=LGPL-2.1
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	6d22636df236df4cc8475f7b7668bdcd	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
 _md5_=9f48ad25b4ad9dd11b9ec376cadea6fb
