@@ -16,6 +16,7 @@ app-emulation/wine-staging:dos - Pull in games-emulation/dosbox to run DOS appli
 app-emulation/wine-staging:esync - Add support for the wine-esync patchset (unofficial). See: https://github.com/zfigura/wine
 app-emulation/wine-staging:faudio - Enable support using FAudio, in place of the Wine XAudio 2 layer (unofficial). Injects the app-emulation/faudio package, into the current Wine variant. See: https://github.com/FNA-XNA/FAudio
 app-emulation/wine-staging:ffmpeg - Use ffmpeg to convert WMA formats, requires: media-video/ffmpeg (this feature is not supported by media-video/libav).
+app-emulation/wine-staging:gcrypt - Add support for the Diffie-Hellman key exchanges using dev-libs/libgcrypt.
 app-emulation/wine-staging:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-staging:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
 app-emulation/wine-staging:mono - Add support for .NET using Wine's Mono add-on.
@@ -34,6 +35,7 @@ app-emulation/wine-staging:samba - Add support for NTLM auth. See: https://web.a
 app-emulation/wine-staging:sdl2 - Enable controller and joystick support using media-libs/libsdl2.
 app-emulation/wine-staging:themes - Support GTK+:3 window theming through Wine Staging.
 app-emulation/wine-staging:udev - Use virtual/libudev to provide plug and play support.
+app-emulation/wine-staging:unwind - Use external sys-libs/libunwind library for stack unwinding (exception handling).
 app-emulation/wine-staging:vkd3d - Use app-emulation/vkd3d to provide DirectX D3D12 support
 app-emulation/wine-staging:vulkan - Enable Vulkan layer graphics support using media-libs/vulkan-loader.
 app-emulation/wine-vanilla:capi - Enable ISDN support via net-libs/libcapi.
@@ -56,6 +58,7 @@ app-emulation/wine-vanilla:run-exes - Use Wine to open and run .EXE and .MSI fil
 app-emulation/wine-vanilla:samba - Add support for NTLM auth. See: https://web.archive.org/web/20160108123008/http://wiki.winehq.org:80/NtlmAuthSetupGuide and https://web.archive.org/web/20150906013746/http://wiki.winehq.org/NtlmSigningAndSealing (these pages are not currently in the updated WineHQ Wiki).
 app-emulation/wine-vanilla:sdl2 - Enable controller and joystick support using media-libs/libsdl2.
 app-emulation/wine-vanilla:udev - Use virtual/libudev to provide plug and play support.
+app-emulation/wine-vanilla:unwind - Use external sys-libs/libunwind library for stack unwinding (exception handling).
 app-emulation/wine-vanilla:vkd3d - Use app-emulation/vkd3d to provide DirectX D3D12 support
 app-emulation/wine-vanilla:vulkan - Enable Vulkan layer graphics support using media-libs/vulkan-loader.
 app-emulation/winetricks:rar - Pull in app-arch/unrar for extraction of rar-compressed game files
