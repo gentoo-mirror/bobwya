@@ -1,0 +1,11 @@
+DEFINED_PHASES=install pretend
+DESCRIPTION=Java-based tools to rename TV shows, download subtitles, and validate checksums
+EAPI=7
+HOMEPAGE=https://www.filebot.net/
+IUSE=elibc_FreeBSD
+LICENSE=GPL-2
+RDEPEND=media-libs/chromaprint[tools] media-libs/fontconfig media-libs/libmediainfo[curl,mms] || ( >=virtual/jdk-11 >=virtual/jre-11 )
+SLOT=0
+SRC_URI=https://get.filebot.net/filebot/FileBot_4.9.1/FileBot_4.9.1-portable.tar.xz
+_eclasses_=java-utils-2	16d46032afaca1d6d0621f82084880cb
+_md5_=17344a507cd5831aadecfd8b696669b8
