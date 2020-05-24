@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.4 !<media-libs/mesa-11.0.6-r1 !<x11-base/xorg-server-1.16.4-r6
 SLOT=0
 SRC_URI=https://github.com/bobwya/eselect-opengl/archive/1.3.3.tar.gz -> eselect-opengl-1.3.3.tar.gz
-_eclasses_=multilib	797cda3549becfe50afdfa35192ca137	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	ac7989ababbeabdef6fdc6e465b21644	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=4029effb0aedf79f1fd234f684692d16
