@@ -42,7 +42,7 @@ sys-apps/tuxclocker 0.1.1 9999: Qt5-based GPU overclocking tool
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.3.0 9999: exFAT filesystem utilities (without fuse)
 virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
-www-client/firefox 52.9.0 68.6.0 74.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
+www-client/firefox 52.9.0 68.9.0 76.0.1 77.0.1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-base/xorg-server 1.20.7 9999: X.Org X servers
 x11-drivers/nvidia-drivers 340.108 390.132 430.64 435.21-r3 440.59 440.64 440.66.04: NVIDIA Accelerated Graphics Driver
