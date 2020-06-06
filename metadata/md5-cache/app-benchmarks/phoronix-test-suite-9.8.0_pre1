@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=app-arch/p7zip media-libs/libpng >=dev-lang/php-5.3:=[cli,curl,gd,json,posix,pcntl,sockets,ssl,truetype,xml,zip,zlib] dev-php/fpdf www-servers/apache x11-base/xorg-server sdl? ( media-libs/libsdl media-libs/sdl-net media-libs/sdl-image media-libs/libsdl2 media-libs/sdl2-net media-libs/sdl2-image media-libs/sdl2-mixer )
 SLOT=0
-SRC_URI=https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v9.4.0.tar.gz -> phoronix-test-suite-9.4.0.tar.gz
+SRC_URI=https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v9.8.0m1.tar.gz -> phoronix-test-suite-9.8.0m1.tar.gz
 _eclasses_=bash-completion-r1	e5f9c3faab3ab3d1e7e007daa8c736ef	multilib	0914eab919f4f11dd9e0407b92af4726	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
 _md5_=2cd82d31ceeab186ea33a59a0bc57aca
