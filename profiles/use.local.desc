@@ -13,7 +13,6 @@ app-emulation/vkd3d:spirv-tools - Enable SPIRV shader debugging support using de
 app-emulation/wine-staging:capi - Enable ISDN support via net-libs/libcapi.
 app-emulation/wine-staging:custom-cflags - Bypass strip-flags; use at your own peril.
 app-emulation/wine-staging:dos - Pull in games-emulation/dosbox to run DOS applications.
-app-emulation/wine-staging:esync - Add support for the wine-esync patchset (unofficial). See: https://github.com/zfigura/wine
 app-emulation/wine-staging:faudio - Enable support using FAudio, in place of the Wine XAudio 2 layer (unofficial). Injects the app-emulation/faudio package, into the current Wine variant. See: https://github.com/FNA-XNA/FAudio
 app-emulation/wine-staging:ffmpeg - Use ffmpeg to convert WMA formats, requires: media-video/ffmpeg (this feature is not supported by media-video/libav).
 app-emulation/wine-staging:gcrypt - Add support for the Diffie-Hellman key exchanges using dev-libs/libgcrypt.
@@ -23,7 +22,6 @@ app-emulation/wine-staging:mono - Add support for .NET using Wine's Mono add-on.
 app-emulation/wine-staging:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
 app-emulation/wine-staging:opencl - Enable OpenCL support.
 app-emulation/wine-staging:osmesa - Add support for OpenGL in bitmaps using libOSMesa.
-app-emulation/wine-staging:pba - Add support for the Wine-PBA patchset (unofficial). See: https://github.com/acomminos/wine-pba
 app-emulation/wine-staging:pcap - Support packet capture software (e.g. wireshark).
 app-emulation/wine-staging:perl - Install helpers written in perl (winedump/winemaker).
 app-emulation/wine-staging:pipelight - Apply Wine Staging patches for Pipelight/Silverlight support.
@@ -41,7 +39,6 @@ app-emulation/wine-staging:vulkan - Enable Vulkan layer graphics support using m
 app-emulation/wine-vanilla:capi - Enable ISDN support via net-libs/libcapi.
 app-emulation/wine-vanilla:custom-cflags - Bypass strip-flags; use at your own peril.
 app-emulation/wine-vanilla:dos - Pull in games-emulation/dosbox to run DOS applications.
-app-emulation/wine-vanilla:esync - Add support for the wine-esync patchset (unofficial). See: https://github.com/zfigura/wine
 app-emulation/wine-vanilla:faudio - Enable support using FAudio, in place of the Wine XAudio 2 layer (unofficial). Injects the app-emulation/faudio package, into the current Wine variant. See: https://github.com/FNA-XNA/FAudio
 app-emulation/wine-vanilla:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
@@ -49,7 +46,6 @@ app-emulation/wine-vanilla:mono - Add support for .NET using Wine's Mono add-on.
 app-emulation/wine-vanilla:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
 app-emulation/wine-vanilla:opencl - Enable OpenCL support.
 app-emulation/wine-vanilla:osmesa - Add support for OpenGL in bitmaps using libOSMesa.
-app-emulation/wine-vanilla:pba - Add support for the Wine-PBA patchset (unofficial). See: https://github.com/acomminos/wine-pba
 app-emulation/wine-vanilla:pcap - Support packet capture software (e.g. wireshark).
 app-emulation/wine-vanilla:perl - Install helpers written in perl (winedump/winemaker).
 app-emulation/wine-vanilla:prelink - Run prelink on DLLs during build.
