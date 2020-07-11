@@ -6,5 +6,5 @@ KEYWORDS=-* amd64 x86
 LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=https://github.com/bobwya/wine-desktop-common/archive/20180412.tar.gz -> wine-desktop-common-20180412.tar.gz
-_eclasses_=xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a
-_md5_=9f48ad25b4ad9dd11b9ec376cadea6fb
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=fc5767050c26cf880facf11f0420bdd5
