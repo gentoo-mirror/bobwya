@@ -3,6 +3,10 @@
 # * generated automatically using pmaint *
 
 app-arch/cabextract:extras - Install experimental extra tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
+app-emulation/dxvk:d3d10 - Build D3D10 to Vulkan translation layer component of package
+app-emulation/dxvk:d3d11 - Build D3D11 to Vulkan translation layer component of package
+app-emulation/dxvk:d3d9 - Build D3D9 to Vulkan translation layer component of package
+app-emulation/dxvk:dxgi - Build DirectX Graphics Infrastructure (DXGI) component of package
 app-emulation/faudio:dumpvoices - FAudio dumps buffer data to individual files with RIFF/XWMA headers, usable with players like ffplay/testxwma.
 app-emulation/faudio:ffmpeg - FAudio has optional support for decoding xWMA resources using FFmpeg, requiring: media-video/ffmpeg (note: this feature is not supported by media-video/libav).
 app-emulation/faudio:test - Build and run faudio testsuite.
@@ -18,6 +22,7 @@ app-emulation/wine-staging:ffmpeg - Use ffmpeg to convert WMA formats, requires:
 app-emulation/wine-staging:gcrypt - Add support for the Diffie-Hellman key exchanges using dev-libs/libgcrypt.
 app-emulation/wine-staging:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-staging:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
+app-emulation/wine-staging:mingw - Use the MinGW cross-compiler to compile, a supported subset of, Wine DLL's (as PE libraries). Uses (if specified): CROSSCFLAGS , CROSSLDFLAGS ; env variables for cross-compilation.
 app-emulation/wine-staging:mono - Add support for .NET using Wine's Mono add-on.
 app-emulation/wine-staging:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
 app-emulation/wine-staging:opencl - Enable OpenCL support.
@@ -42,6 +47,7 @@ app-emulation/wine-vanilla:dos - Pull in games-emulation/dosbox to run DOS appli
 app-emulation/wine-vanilla:faudio - Enable support using FAudio, in place of the Wine XAudio 2 layer (unofficial). Injects the app-emulation/faudio package, into the current Wine variant. See: https://github.com/FNA-XNA/FAudio
 app-emulation/wine-vanilla:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
+app-emulation/wine-vanilla:mingw - Use the MinGW cross-compiler to compile, a supported subset of, Wine DLL's (as PE libraries). Uses (if specified): CROSSCFLAGS , CROSSLDFLAGS ; env variables for cross-compilation.
 app-emulation/wine-vanilla:mono - Add support for .NET using Wine's Mono add-on.
 app-emulation/wine-vanilla:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
 app-emulation/wine-vanilla:opencl - Enable OpenCL support.
