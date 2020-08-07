@@ -29,14 +29,13 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-78.0-patches-05"
+PATCH="${PN}-79.0-patches-02"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 # Mercurial repository for Mozilla Firefox patches to provide better KDE Integration (developed by Wolfgang Rosenauer for OpenSUSE)
-HG_MOZ_REVISION="4ac678bd2a26"
-HG_MOZ_PV="${MOZ_PV/%.*/.0}"
-HG_MOZILLA_URI="https://www.rosenauer.org/hg/mozilla"
+GIT_MOZ_REVISION="15e73dbe1b5290bb8c4a36a4e808199c07de3d83"
+GIT_MOZ_URI="https://raw.githubusercontent.com/openSUSE/firefox-maintenance"
 
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/${PN}-${MOZ_PV}.source.tar.xz"
 
@@ -65,7 +64,8 @@ IUSE="bindist clang cpu_flags_x86_avx2 debug egl eme-free geckodriver kde
 	+system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-libvpx +system-webp test wayland wifi"
 
-REQUIRED_USE="pgo? ( lto )"
+REQUIRED_USE="pgo? ( lto )
+	screencast? ( wayland )"
 
 RESTRICT="!bindist? ( bindist )
 	!test? ( test )"
@@ -76,14 +76,14 @@ SRC_URI="${SRC_URI}
 	${MOZ_SRC_URI}
 	${PATCH_URIS[@]}
 	kde? (
-		${HG_MOZILLA_URI}/raw-file/${HG_MOZ_REVISION}/mozilla-kde.patch -> ${PN}-${HG_MOZ_PV}-mozilla-kde.patch
-		${HG_MOZILLA_URI}/raw-file/${HG_MOZ_REVISION}/mozilla-nongnome-proxies.patch -> ${PN}-${HG_MOZ_PV}-mozilla-nongnome-proxies.patch
-		${HG_MOZILLA_URI}/raw-file/${HG_MOZ_REVISION}/firefox-branded-icons.patch -> ${PN}-${HG_MOZ_PV}-firefox-branded-icons.patch
-		${HG_MOZILLA_URI}/raw-file/${HG_MOZ_REVISION}/firefox-kde.patch -> ${PN}-${HG_MOZ_PV}-firefox-kde.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/mozilla-kde.patch -> ${PN}-mozilla-kde-${GIT_MOZ_REVISION}.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/mozilla-nongnome-proxies.patch -> ${PN}-mozilla-nongnome-proxies-${GIT_MOZ_REVISION}.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/firefox/firefox-branded-icons.patch -> ${PN}-firefox-branded-icons-${GIT_MOZ_REVISION}.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/firefox/firefox-kde.patch -> ${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch
 	)"
 
 CDEPEND="
-	>=dev-libs/nss-3.53.1
+	>=dev-libs/nss-3.54
 	>=dev-libs/nspr-4.25
 	dev-libs/atk
 	dev-libs/expat
@@ -118,7 +118,7 @@ CDEPEND="
 		>=media-libs/libaom-1.0.0:=
 	)
 	system-harfbuzz? (
-		>=media-libs/harfbuzz-2.6.4:0=
+		>=media-libs/harfbuzz-2.6.8:0=
 		>=media-gfx/graphite2-1.3.13
 	)
 	system-icu? ( >=dev-libs/icu-67.1:= )
@@ -150,12 +150,12 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	>=dev-util/cbindgen-0.14.1
+	>=dev-util/cbindgen-0.14.3
 	>=net-libs/nodejs-10.19.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
 	virtual/pkgconfig
-	>=virtual/rust-1.41.0
+	>=virtual/rust-1.43.0
 	|| (
 		(
 			sys-devel/clang:10
@@ -301,17 +301,17 @@ src_prepare() {
 	local PATCHES=( "${WORKDIR}/firefox" )
 	if use kde; then
 		sed -e 's:@BINPATH@/defaults/pref/kde.js:@RESPATH@/browser/@PREF_DIR@/kde.js:' \
-			"${DISTDIR}/${PN}-${HG_MOZ_PV}-firefox-kde.patch" > \
-			"${T}/${PN}-${HG_MOZ_PV}-firefox-kde.patch" || die "sed failed"
+			"${DISTDIR}/${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch" > \
+			"${T}/${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch" || die "sed failed"
 		# Toolkit OpenSUSE KDE integration patchset
 		PATCHES+=(
-			"${DISTDIR}/${PN}-${HG_MOZ_PV}-mozilla-kde.patch"
-			"${DISTDIR}/${PN}-${HG_MOZ_PV}-mozilla-nongnome-proxies.patch"
+			"${DISTDIR}/${PN}-mozilla-kde-${GIT_MOZ_REVISION}.patch"
+			"${DISTDIR}/${PN}-mozilla-nongnome-proxies-${GIT_MOZ_REVISION}.patch"
 		)
 		# Firefox OpenSUSE KDE integration patchset
 		PATCHES+=(
-			"${DISTDIR}/${PN}-${HG_MOZ_PV}-firefox-branded-icons.patch"
-			"${DISTDIR}/${PN}-${HG_MOZ_PV}-firefox-kde.patch"
+			"${DISTDIR}/${PN}-firefox-branded-icons-${GIT_MOZ_REVISION}.patch"
+			"${DISTDIR}/${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch"
 		)
 		# Uncomment the next line to enable KDE support debugging (additional console output)...
 		#PATCHES+=( "${FILESDIR}/${PN}-kde-debug.patch" )
