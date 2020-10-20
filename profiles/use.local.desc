@@ -123,9 +123,7 @@ media-libs/mesa:wayland - Enable support for dev-libs/wayland
 media-libs/mesa:xa - Enable the XA (X Acceleration) API for Gallium3D.
 media-libs/mesa:xvmc - Enable the XvMC acceleration interface for the Gallium3D Video Layer.
 media-video/h264enc:ogm - Support for OGM container format
-www-client/firefox:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox:clang - Use Clang compiler instead of GCC
-www-client/firefox:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 www-client/firefox:egl - Enable EGL as the GL provider (unsupported).
 www-client/firefox:eme-free - Disable EME (DRM plugin) cabability at build time
 www-client/firefox:geckodriver - Enable WebDriver support
@@ -136,14 +134,12 @@ www-client/firefox:lto - Enable Link Time Optimization (LTO). Requires Gold link
 www-client/firefox:openh264 - Use media-libs/openh264 for H.264 support instead of downloading binary blob from Mozilla at runtime
 www-client/firefox:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
 www-client/firefox:screencast - Enable support for remote desktop and screen cast using media-video/pipewire
-www-client/firefox:screenshot - Allow to disable screenshot extension in global profile
 www-client/firefox:system-av1 - Use the system-wide media-libs/dav1d and media-libs/libaom library instead of bundled.
 www-client/firefox:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
 www-client/firefox:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 www-client/firefox:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
 www-client/firefox:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
 www-client/firefox:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
-www-client/firefox:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/firefox:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
 x11-base/xorg-server:dmx - Build the Distributed Multiheaded X server
 x11-base/xorg-server:elogind - Use elogind to get control over framebuffer when running as regular user
