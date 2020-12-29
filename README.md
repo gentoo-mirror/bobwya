@@ -43,20 +43,8 @@ See: [Wiki: Wine Packages](https://github.com/bobwya/bobwya/wiki/Wine-Packages) 
 
 Note: the **::bobwya Overlay** Wine packages _do_ _not_ support the **Gallium 9** / **D3D9** patchset. This is purely down to testing systems only using the Nvidia Proprietary graphics driver.
 
-### Custom GL lib switcher implementation package set
------------------------------------------------------
-
-These packages are masked and are NOT extensively tested (but I use them personally!) Loosely based off the Arch-Linux GL lib switcher. Has some rudimentary support for **PRIMUS** setups. The **x11-drivers/nvidia-drivers** package is customised to support the **GLXOSD** fork in the **::bobwya** Overlay. 
-
-	app-eselect/eselect-opengl : Gentoo OpenGL implementation switcher (heavily customised)
-	media-libs/mesa : OpenGL-like graphic library for Linux (patched version - to work with custom eselect-opengl switcher)
-	x11-base/xorg-server : X.Org X servers (patched version - to work with custom eselect-opengl switcher)
-	x11-drivers/nvidia-drivers : NVIDIA Accelerated Graphics Driver (patched version - to work with custom eselect-opengl switcher)
-
-***
-
-### Infinality Fonts package set
---------------------------------
+### Infinality Fonts package set (_WARNING: currently disabled_)
+------------------------------------------------------------------
 
 Package Set to provide updated Infinality Fonts (subpixel font rendering enhancements for freetype2 and associated packages). These four packages are designed to be used __in__ __conjunction__ with each other. The __media-libs/fontconfig-infinality__ package is in the main __Gentoo__ Portage tree.
 
