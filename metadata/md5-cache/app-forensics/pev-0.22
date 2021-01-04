@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://github.com/merces/pev/archive/v0.22.tar.gz
-_md5_=670bf482b316b7f0c2bd705a4c073525
+_md5_=495a88e5935da27de9beaa82033a7443

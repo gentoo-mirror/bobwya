@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=media-video/ffmpeg[fdk,mp3,opus,vorbis,x264,zimg]
 SLOT=0
 SRC_URI=mirror://sourceforge/ffx264/ffx264-3.7.0.tar.gz
-_md5_=f0661e48eb574507aba63b299444ba00
+_md5_=399bdd92cb9631eeaf994017459ed87d

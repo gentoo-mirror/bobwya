@@ -9,4 +9,4 @@ LICENSE=GPL-2+
 SLOT=0
 SRC_URI=http://www.etallen.com/cpuid/cpuid-20200203.src.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=50c8d4f6759edd7bb0bd9998f44fdd83
+_md5_=30bbd2940fdc5faee00cbb73b1a987b5

@@ -8,4 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=!sys-fs/exfat-utils
 SLOT=0
 SRC_URI=https://github.com/relan/exfat/releases/download/v1.3.0/exfat-utils-1.3.0.tar.gz
-_md5_=51fa66a26cc2dbcebe4527bf149d6c69
+_md5_=f4bd820e2672c5b6ecdcffbad1f15478

@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2 GPL-2 LGPL-2.1 MIT MPL-1.1
 SLOT=4.9.2
 SRC_URI=https://dl.winehq.org/wine/wine-mono/4.9.2/wine-mono-bin-4.9.2.tar.gz
-_md5_=96928e13dd89b225c97dce42233362d2
+_md5_=97848dbe91bad65e9b95b13441251c30
