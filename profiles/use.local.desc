@@ -39,6 +39,7 @@ app-emulation/wine-staging:sdl2 - Enable controller and joystick support using m
 app-emulation/wine-staging:themes - Support GTK+:3 window theming through Wine Staging.
 app-emulation/wine-staging:udev - Use virtual/libudev to provide plug and play support.
 app-emulation/wine-staging:unwind - Use external sys-libs/libunwind library for stack unwinding (exception handling).
+app-emulation/wine-staging:usb - Use external virtual/libusb library to provide USB device support.
 app-emulation/wine-staging:vkd3d - Use app-emulation/vkd3d to provide DirectX D3D12 support
 app-emulation/wine-staging:vulkan - Enable Vulkan layer graphics support using media-libs/vulkan-loader.
 app-emulation/wine-vanilla:capi - Enable ISDN support via net-libs/libcapi.
@@ -61,6 +62,7 @@ app-emulation/wine-vanilla:samba - Add support for NTLM auth. See: https://web.a
 app-emulation/wine-vanilla:sdl2 - Enable controller and joystick support using media-libs/libsdl2.
 app-emulation/wine-vanilla:udev - Use virtual/libudev to provide plug and play support.
 app-emulation/wine-vanilla:unwind - Use external sys-libs/libunwind library for stack unwinding (exception handling).
+app-emulation/wine-vanilla:usb - Use external virtual/libusb library to provide USB device support.
 app-emulation/wine-vanilla:vkd3d - Use app-emulation/vkd3d to provide DirectX D3D12 support
 app-emulation/wine-vanilla:vulkan - Enable Vulkan layer graphics support using media-libs/vulkan-loader.
 app-emulation/winetricks:rar - Pull in app-arch/unrar for extraction of rar-compressed game files
