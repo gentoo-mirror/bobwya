@@ -4,17 +4,17 @@
 # shellcheck disable=SC2034
 EAPI=7
 
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://source.winehq.org/git/vkd3d.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://dl.winehq.org/vkd3d/source/${P}.tar.xz"
 fi
 
-IUSE="doc demos spirv-tools xcb"
+IUSE="demos spirv-tools xcb"
 REQUIRED_USE="demos? ( xcb )"
 RDEPEND="spirv-tools? ( dev-util/spirv-tools:=[${MULTILIB_USEDEP}] )
 		xcb? (
@@ -25,10 +25,6 @@ RDEPEND="spirv-tools? ( dev-util/spirv-tools:=[${MULTILIB_USEDEP}] )
 		>=media-libs/vulkan-loader-1.1.88[${MULTILIB_USEDEP},X]"
 
 DEPEND="${RDEPEND}
-		doc? (
-			app-doc/doxygen
-			app-text/texlive
-		)
 		dev-util/spirv-headers
 		>=dev-util/vulkan-headers-1.1.88"
 
@@ -51,13 +47,15 @@ _install_demos() {
 }
 
 src_prepare() {
+	if has_version ">=dev-util/vulkan-headers-1.2.140"; then
+		PATCHES=( "${FILESDIR}/${P}-fix_vulkan_header_constants.patch" )
+	fi
+
 	default
-	eautoreconf
 }
 
 multilib_src_configure() {
 	local myconf=(
-		"$(use_enable doc doxygen-doc)"
 		"$(use_enable demos)"
 		"$(use_with spirv-tools)"
 		"$(use_with xcb)"
@@ -71,12 +69,8 @@ multilib_src_install() {
 
 	multilib_is_native_abi || return
 
-	dobin ".libs/vkd3d-compiler"
+	dobin "vkd3d-compiler"
 	if use demos; then
 		_install_demos "${BUILD_DIR}/demos/.libs/"
-	fi
-	if use doc; then
-		dodoc -r "doc/html"
-		dodoc "doc/${PN}.pdf"
 	fi
 }
