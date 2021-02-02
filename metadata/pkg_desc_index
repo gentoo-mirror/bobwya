@@ -4,7 +4,7 @@ app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/phoronix-test-suite 9.4.1 9.6.1 9.8.0 10.0.0 10.0.1 10.2.0_pre1 10.2.0_pre2 10.2.0_pre3 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
 app-emulation/dxvk 1.7 1.7.1 9999: A Vulkan-based translation layer for Direct3D 9/10/11 supporting Linux + Wine
 app-emulation/faudio 20.07 20.08-r1 20.09-r1 20.10-r1 20.11-r1 20.12 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
-app-emulation/vkd3d 1.0-r4 1.1-r4 9999: D3D12 to Vulkan translation library
+app-emulation/vkd3d 1.0-r5 1.1-r5 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20180412 99999999: Core desktop menu entries and icons for Wine
 app-emulation/wine-gecko 2.40 2.44 2.47_beta1 2.47 2.47.1 2.47.2: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.5.6 4.6.0 4.6.2 4.6.3 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1-r1 4.8.3-r1 4.9.0-r1 4.9.2-r1 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
