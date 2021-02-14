@@ -79,6 +79,7 @@ games-fps/dhewm3:dedicated - Install only as a dedicated game server.
 games-fps/dhewm3:sdl2 - Enable support for SDL2 - enable SDL1 support if this flag is disabled.
 mail-client/thunderbird:clang - Use Clang compiler instead of GCC
 mail-client/thunderbird:eme-free - Disable EME (DRM plugin) cabability at build time
+mail-client/thunderbird:hwaccel - Force-enable hardware-accelerated rendering (Mozilla bug 594876)
 mail-client/thunderbird:kde - Use OpenSUSE patchset to build in support for native Plasma Desktop file dialog via kde-misc/kmozillahelper.
 mail-client/thunderbird:lto - Enable Link Time Optimization (LTO). Requires Gold linker when using GCC or LDD linker when using Clang
 mail-client/thunderbird:openh264 - Use media-libs/openh264 for H.264 support instead of downloading binary blob from Mozilla at runtime
