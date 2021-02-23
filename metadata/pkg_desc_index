@@ -17,7 +17,7 @@ app-forensics/pev 0.22 0.30 0.31 0.40 0.80-r2 9999: The PE file analysis toolkit
 dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP interfaces
 dev-cpp/zstr 1.0.0 1.0.1 1.0.2 1.0.3 1.0.4 9999: C++ header-only library allowing iostream access ZLib-compressed streams
 dev-php/fpdf 1.81: FPDF is a PHP class which allows to generate PDF files with pure PHP
-games-fps/dhewm3 1.4.0 1.4.1 1.5.0 1.5.1_rc1 1.5.1_rc2 9999: A Doom 3 GPL source modification.
+games-fps/dhewm3 1.4.0 1.4.1 1.5.0 1.5.1_rc1 1.5.1_rc2 1.5.1_rc3 9999: A Doom 3 GPL source modification.
 games-util/lutris 0.5.3 0.5.4-r1 0.5.5 9999: An open source gaming platform for GNU/Linux
 kde-misc/kmozillahelper 5.0.5 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird 78.7.0 78.7.1: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
