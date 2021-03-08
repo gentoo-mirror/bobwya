@@ -435,11 +435,12 @@ pkg_setup() {
 			[[ -n "${version_lld}" ]] && version_lld="$(ver_cut 1 "${version_lld}")"
 			[[ -z "${version_lld}" ]] && die "Failed to read ld.lld version!"
 
-			version_llvm_rust="$( { ldd "$(which rustc)"; rustc -vV; } 2>/dev/null \
-				| awk '{ if ($1 ~ "LLVM") {
-					match($3, "/[[:digit:]]+/")
+			version_llvm_rust="$( rustc -vV 2>/dev/null \
+				| awk '{
+					if ($1 != "LLVM") next
+					match($3, "^[[:digit:]]+")
 					if (RSTART) {
-						printf("%s\n", substr($3,RSTART+1,RLENGTH-2))
+						printf("%s\n", substr($3,RSTART,RLENGTH))
 						exit
 					}
 				} }'
