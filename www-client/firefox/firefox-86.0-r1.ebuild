@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-78esr-patches-10.tar.xz"
+FIREFOX_PATCHSET="firefox-86-patches-01.tar.xz"
 
 LLVM_MAX_SLOT=11
 
@@ -15,7 +15,7 @@ WANT_AUTOCONF="2.1"
 
 VIRTUALX_REQUIRED="pgo"
 
-MOZ_ESR=yes
+MOZ_ESR=
 
 MOZ_PV=${PV}
 MOZ_PV_SUFFIX=
@@ -50,7 +50,7 @@ fi
 PATCH_URIS=( "https://dev.gentoo.org/"~{axs,polynomial-c,whissi}"/mozilla/patchsets/${FIREFOX_PATCHSET}" )
 
 # Mercurial repository for Mozilla Firefox patches to provide better KDE Integration (developed by Wolfgang Rosenauer for OpenSUSE)
-GIT_MOZ_REVISION="7f05160d33eb7201ba7ee1fb76db816b508b0dd8"
+GIT_MOZ_REVISION="9bce832e465710908acae4ecbb243007ad0aaf56"
 GIT_MOZ_URI="https://raw.githubusercontent.com/openSUSE/firefox-maintenance"
 
 # shellcheck disable=SC2124
@@ -69,7 +69,7 @@ HOMEPAGE="https://www.mozilla.com/firefox
 
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
-SLOT="0/esr$(ver_cut 1)"
+SLOT="0/$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+clang cpu_flags_arm_neon dbus debug egl eme-free geckodriver +gmp-autoupdate kde
 	hardened hwaccel jack lto +openh264 pgo pulseaudio screencast selinux
@@ -77,16 +77,15 @@ IUSE="+clang cpu_flags_arm_neon dbus debug egl eme-free geckodriver +gmp-autoupd
 	+system-libvpx +system-webp wayland wifi"
 
 REQUIRED_USE="debug? ( !system-av1 )
-	screencast? ( wayland )
-	wifi? ( dbus )"
+	screencast? ( wayland )"
 
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	>=dev-util/cbindgen-0.14.3
-	>=net-libs/nodejs-10.21.0
+	>=dev-util/cbindgen-0.16.0
+	>=net-libs/nodejs-10.22.1
 	virtual/pkgconfig
-	>=virtual/rust-1.41.0
+	>=virtual/rust-1.47.0
 	|| (
 		(
 			sys-devel/clang:11
@@ -113,9 +112,6 @@ BDEPEND="${PYTHON_DEPS}
 			)
 		)
 	)
-	lto? (
-		!clang? ( sys-devel/binutils[gold] )
-	)
 	amd64? ( >=dev-lang/yasm-1.1 )
 	x86? ( >=dev-lang/yasm-1.1 )
 	!system-av1? (
@@ -124,8 +120,8 @@ BDEPEND="${PYTHON_DEPS}
 	)"
 
 CDEPEND="
-	>=dev-libs/nss-3.53.1
-	>=dev-libs/nspr-4.25
+	>=dev-libs/nss-3.61
+	>=dev-libs/nspr-4.29
 	dev-libs/atk
 	dev-libs/expat
 	>=dev-libs/libffi-3.0.10:=
@@ -439,10 +435,13 @@ pkg_setup() {
 			[[ -n "${version_lld}" ]] && version_lld="$(ver_cut 1 "${version_lld}")"
 			[[ -z "${version_lld}" ]] && die "Failed to read ld.lld version!"
 
-			version_llvm_rust="$(ldd "$(which rustc)" 2>/dev/null \
+			version_llvm_rust="$( { ldd "$(which rustc)"; rustc -vV; } 2>/dev/null \
 				| awk '{ if ($1 ~ "LLVM") {
 					match($3, "/[[:digit:]]+/")
-					if (RSTART) printf("%s\n", substr($3,RSTART+1,RLENGTH-2))
+					if (RSTART) {
+						printf("%s\n", substr($3,RSTART+1,RLENGTH-2))
+						exit
+					}
 				} }'
 			)"
 			[[ -z "${version_llvm_rust}" ]] && die "Failed to read used LLVM version from rustc!"
@@ -767,8 +766,6 @@ src_configure() {
 		mozconfig_add_options_ac '-pulseaudio' --enable-alsa
 	fi
 
-	mozconfig_use_enable screencast pipewire
-
 	mozconfig_use_enable wifi necko-wifi
 
 	if use wayland; then
@@ -784,9 +781,6 @@ src_configure() {
 
 			mozconfig_add_options_ac '+lto' --enable-lto=cross
 		else
-			# Linking only works when using ld.gold when LTO is enabled
-			mozconfig_add_options_ac "forcing ld=gold due to USE=lto" --enable-linker=gold
-
 			# ThinLTO is currently broken, see bmo#1644409
 			mozconfig_add_options_ac '+lto' --enable-lto=full
 		fi
@@ -805,8 +799,6 @@ src_configure() {
 		if use clang; then
 			# This is upstream's default
 			mozconfig_add_options_ac "forcing ld=lld due to USE=clang" --enable-linker=lld
-		elif tc-ld-is-gold ; then
-			mozconfig_add_options_ac "linker is set to gold" --enable-linker=gold
 		else
 			mozconfig_add_options_ac "linker is set to bfd" --enable-linker=bfd
 		fi
@@ -936,8 +928,9 @@ src_configure() {
 	MOZ_NOSPAM=1
 	export MOZ_NOSPAM
 
-	# Build system requires xargs but is unable to find it
-	mozconfig_add_options_mk 'Gentoo default' "XARGS=${EPREFIX}/usr/bin/xargs"
+	# Portage sets XARGS environment variable to "xargs -r" by default which
+	# breaks build system's check_prog() function which doesn't support arguments
+	mozconfig_add_options_ac 'Gentoo default' "XARGS=${EPREFIX}/usr/bin/xargs"
 
 	# Set build dir
 	mozconfig_add_options_mk 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
