@@ -447,7 +447,7 @@ pkg_setup() {
 						printf("%s\n", substr($3,RSTART,RLENGTH))
 						exit
 					}
-				} }'
+				}'
 			)"
 			[[ -z "${version_llvm_rust}" ]] && die "Failed to read used LLVM version from rustc!"
 
