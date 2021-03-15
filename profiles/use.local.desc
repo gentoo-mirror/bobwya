@@ -3,6 +3,7 @@
 # * generated automatically using pmaint *
 
 app-arch/cabextract:extras - Install experimental extra tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
+app-emulation/dxvk:async - Support compiling pipelines asynchronously, when enabled (where possible). Do not report bugs with this option enabled.
 app-emulation/dxvk:d3d10 - Build D3D10 to Vulkan translation layer component of package
 app-emulation/dxvk:d3d11 - Build D3D11 to Vulkan translation layer component of package
 app-emulation/dxvk:d3d9 - Build D3D9 to Vulkan translation layer component of package
