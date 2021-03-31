@@ -9,5 +9,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=app-arch/p7zip media-libs/libpng >=dev-lang/php-5.3:=[cli,curl,gd,json,posix,pcntl,sockets,ssl,truetype,xml,zip,zlib] dev-php/fpdf www-servers/apache x11-base/xorg-server sdl? ( media-libs/libsdl media-libs/sdl-net media-libs/sdl-image media-libs/libsdl2 media-libs/sdl2-net media-libs/sdl2-image media-libs/sdl2-mixer )
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=2955f64c1a0c6a3de8795821d04ef55a
