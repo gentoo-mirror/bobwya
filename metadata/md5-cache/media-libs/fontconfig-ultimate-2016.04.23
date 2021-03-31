@@ -3,6 +3,7 @@ DEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/f
 DESCRIPTION=A set of font rendering and replacement rules for fontconfig-infinality
 EAPI=7
 HOMEPAGE=https://github.com/bohoomil
+INHERIT=readme.gentoo-r1
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=app-eselect/eselect-infinality app-eselect/eselect-lcdfilter media-libs/fontconfig-infinality media-libs/freetype:2[infinality]

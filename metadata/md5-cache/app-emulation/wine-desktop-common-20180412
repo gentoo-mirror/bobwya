@@ -2,6 +2,7 @@ DEFINED_PHASES=postinst postrm preinst
 DESCRIPTION=Core desktop menu entries and icons for Wine
 EAPI=7
 HOMEPAGE=https://github.com/bobwya/wine-desktop-common
+INHERIT=xdg-utils
 KEYWORDS=-* amd64 x86
 LICENSE=LGPL-2.1
 SLOT=0
