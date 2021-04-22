@@ -1,7 +1,7 @@
 app-arch/cabextract 1.9 1.9.1 9999: Extracts files from Microsoft cabinet archive files
 app-arch/unshield 1.0 1.1 1.2 1.3 1.4 1.4.1 1.4.2 1.4.3 9999: Tool and library to extract CAB files from InstallShield installers
 app-benchmarks/i7z 9999: A better i7 (and now i3, i5) reporting tool for Linux
-app-benchmarks/phoronix-test-suite 9.4.1 9.6.1 9.8.0 10.0.0 10.0.1 10.2.0 10.2.1 10.2.2 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
+app-benchmarks/phoronix-test-suite 10.0.0 10.0.1 10.2.0 10.2.1 10.2.2 10.4.0_pre1 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
 app-emulation/dxvk 1.7-r1 1.7.1-r1 1.8 1.8.1 9999: A Vulkan-based translation layer for Direct3D 9/10/11 supporting Linux + Wine
 app-emulation/faudio 21.01 21.02 21.03 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/vkd3d 1.0-r5 1.1-r5 1.2 9999: D3D12 to Vulkan translation library
@@ -20,7 +20,7 @@ dev-php/fpdf 1.81: FPDF is a PHP class which allows to generate PDF files with p
 games-fps/dhewm3 1.4.0 1.4.1 1.5.0 1.5.1 9999: A Doom 3 GPL source modification.
 games-util/lutris 0.5.3 0.5.4-r1 0.5.5 9999: An open source gaming platform for GNU/Linux
 kde-misc/kmozillahelper 5.0.5 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird 78.8.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird 78.9.1 78.10.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/fontconfig-infinality 20130404: freetype configuration for infinality subpixel hinting
 media-libs/fontconfig-ultimate 2016.04.23: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
@@ -37,6 +37,6 @@ sys-apps/tuxclocker 0.1.1 9999: Qt5-based GPU overclocking tool
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.3.0 9999: exFAT filesystem utilities (without fuse)
 virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
-www-client/firefox 78.8.0-r1 86.0-r1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
+www-client/firefox 78.10.0 87.0: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-misc/edid-decode 9999: EDID decoder and conformance tester
