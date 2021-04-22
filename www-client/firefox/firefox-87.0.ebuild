@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034
 EAPI="7"
 
-FIREFOX_PATCHSET="firefox-78esr-patches-10.tar.xz"
+FIREFOX_PATCHSET="firefox-87-patches-04.tar.xz"
 
 LLVM_MAX_SLOT=11
 
@@ -25,7 +25,7 @@ if [[ ${PV} =~ (_(alpha|beta|rc).*)$ ]]; then
 	# Convert the ebuild version to the upstream Mozilla version
 	MOZ_PV="${MOZ_PV/_alpha/a}" # Handle alpha for SRC_URI
 	MOZ_PV="${MOZ_PV/_beta/b}"  # Handle beta for SRC_URI
-	MOZ_PV="${MOZ_PV%%_rc*}"	# Handle rc for SRC_URI
+	MOZ_PV="${MOZ_PV%%_rc*}"    # Handle rc for SRC_URI
 fi
 
 if [[ -n ${MOZ_ESR} ]]; then
@@ -38,10 +38,6 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
-# Mercurial repository for Mozilla Firefox patches to provide better KDE Integration (developed by Wolfgang Rosenauer for OpenSUSE)
-GIT_MOZ_COMMIT="85cdb9aebe246a17d364e1fa4c6d171138033eeb"
-GIT_MOZ_URI="https://raw.githubusercontent.com/openSUSE/firefox-maintenance"
-
 inherit autotools check-reqs desktop flag-o-matic gnome2-utils llvm multiprocessing \
 	pax-utils python-any-r1 toolchain-funcs virtualx xdg
 
@@ -51,40 +47,45 @@ if [[ ${PV} == *_rc* ]]; then
 	MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/candidates/${MOZ_PV}-candidates/build${PV##*_rc}"
 fi
 
-PATCH_URIS=(
-	https://dev.gentoo.org/~{axs,polynomial-c,whissi}/mozilla/patchsets/"${FIREFOX_PATCHSET}"
-)
+PATCH_URIS=( "https://dev.gentoo.org/"~{axs,polynomial-c,whissi}"/mozilla/patchsets/${FIREFOX_PATCHSET}" )
+
+# Mercurial repository for Mozilla Firefox patches to provide better KDE Integration (developed by Wolfgang Rosenauer for OpenSUSE)
+GIT_MOZ_REVISION="3fdf082cf93d94e4289e552cbd9988601044576a"
+GIT_MOZ_URI="https://raw.githubusercontent.com/openSUSE/firefox-maintenance"
 
 # shellcheck disable=SC2124
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
 	${PATCH_URIS[@]}
 	kde? (
-		${GIT_MOZ_URI}/${GIT_MOZ_COMMIT}/mozilla-kde.patch -> ${PN}-mozilla-kde-${GIT_MOZ_COMMIT}.patch
-		${GIT_MOZ_URI}/${GIT_MOZ_COMMIT}/mozilla-nongnome-proxies.patch -> ${PN}-mozilla-nongnome-proxies-${GIT_MOZ_COMMIT}.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/mozilla-kde.patch -> ${PN}-mozilla-kde-${GIT_MOZ_REVISION}.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/mozilla-nongnome-proxies.patch -> ${PN}-mozilla-nongnome-proxies-${GIT_MOZ_REVISION}.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/firefox/firefox-branded-icons.patch -> ${PN}-firefox-branded-icons-${GIT_MOZ_REVISION}.patch
+		${GIT_MOZ_URI}/${GIT_MOZ_REVISION}/firefox/firefox-kde.patch -> ${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch
 	)"
 
-DESCRIPTION="Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration"
-HOMEPAGE="https://www.mozilla.org/thunderbird
+DESCRIPTION="Firefox Web Browser, with SUSE patchset, to provide better KDE integration"
+HOMEPAGE="https://www.mozilla.com/firefox
 	https://www.rosenauer.org/hg/mozilla"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 SLOT="0/$(ver_cut 1)"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+clang cpu_flags_arm_neon dbus debug eme-free kde kernel_linux
-	hardened hwaccel jack lto +openh264 pgo pulseaudio selinux
+IUSE="+clang cpu_flags_arm_neon dbus debug egl eme-free geckodriver +gmp-autoupdate kde
+	hardened hwaccel jack lto +openh264 pgo pulseaudio screencast selinux
 	+system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent
 	+system-libvpx +system-webp wayland wifi"
 
-REQUIRED_USE="wifi? ( dbus )"
+REQUIRED_USE="debug? ( !system-av1 )
+	screencast? ( wayland )"
 
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	>=dev-util/cbindgen-0.14.3
-	>=net-libs/nodejs-10.21.0
+	>=dev-util/cbindgen-0.16.0
+	>=net-libs/nodejs-10.23.1
 	virtual/pkgconfig
-	>=virtual/rust-1.41.0
+	>=virtual/rust-1.47.0
 	|| (
 		(
 			sys-devel/clang:11
@@ -102,17 +103,6 @@ BDEPEND="${PYTHON_DEPS}
 				pgo? ( =sys-libs/compiler-rt-sanitizers-10*[profile] )
 			)
 		)
-		(
-			sys-devel/clang:9
-			sys-devel/llvm:9
-			clang? (
-				=sys-devel/lld-9*
-				pgo? ( =sys-libs/compiler-rt-sanitizers-9*[profile] )
-			)
-		)
-	)
-	lto? (
-		!clang? ( sys-devel/binutils[gold] )
 	)
 	amd64? ( >=dev-lang/yasm-1.1 )
 	x86? ( >=dev-lang/yasm-1.1 )
@@ -122,8 +112,8 @@ BDEPEND="${PYTHON_DEPS}
 	)"
 
 CDEPEND="
-	>=dev-libs/nss-3.53.1
-	>=dev-libs/nspr-4.25
+	>=dev-libs/nss-3.62
+	>=dev-libs/nspr-4.29
 	dev-libs/atk
 	dev-libs/expat
 	>=dev-libs/libffi-3.0.10:=
@@ -153,12 +143,13 @@ CDEPEND="
 		sys-apps/dbus
 		dev-libs/dbus-glib
 	)
+	screencast? ( media-video/pipewire:0/0.3 )
 	system-av1? (
-		>=media-libs/dav1d-0.3.0:=
+		>=media-libs/dav1d-0.8.1:=
 		>=media-libs/libaom-1.0.0:=
 	)
 	system-harfbuzz? (
-		>=media-libs/harfbuzz-2.6.8:0=
+		>=media-libs/harfbuzz-2.7.4:0=
 		>=media-gfx/graphite2-1.3.13
 	)
 	system-icu? ( >=dev-libs/icu-67.1:= )
@@ -177,8 +168,8 @@ CDEPEND="
 	selinux? ( sec-policy/selinux-mozilla )"
 
 RDEPEND="${CDEPEND}
-	kde? ( kde-misc/kmozillahelper:= )
 	jack? ( virtual/jack )
+	kde? ( kde-misc/kmozillahelper:=  )
 	openh264? ( media-libs/openh264:*[plugin] )
 	pulseaudio? (
 		|| (
@@ -187,7 +178,7 @@ RDEPEND="${CDEPEND}
 		)
 	)
 	selinux? ( sec-policy/selinux-mozilla )
-	!<x11-plugins/enigmail-2.2"
+	kde? ( kde-misc/kmozillahelper:=  )"
 
 DEPEND="${CDEPEND}
 	pulseaudio? (
@@ -201,6 +192,12 @@ DEPEND="${CDEPEND}
 	x86? ( virtual/opengl )"
 
 S="${WORKDIR}/${PN}-${PV%_*}"
+
+# Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
+# overridden in the enviromnent (advanced hackers only)
+if [[ -z "${MOZ_GMP_PLUGIN_LIST+set}" ]]; then
+	MOZ_GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
+fi
 
 llvm_check_deps() {
 	if ! has_version -b "sys-devel/clang:${LLVM_SLOT}"; then
@@ -226,10 +223,13 @@ llvm_check_deps() {
 }
 
 MOZ_LANGS=(
-	"af" "ar" "ast" "be" "bg" "br" "ca" "cak" "cs" "cy"	"da" "de" "dsb" "el" "en-CA" "en-GB" "en-US"
-	"es-AR" "es-ES" "et" "eu" "fa" "fi" "fr" "fy-NL" "ga-IE" "gd" "gl" "he" "hr" "hsb" "hu" "hy-AM"
-	"id" "is" "it" "ja" "ka" "kab" "kk" "ko" "lt" "ms" "nb-NO" "nl" "nn-NO" "pa-IN" "pl" "pt-BR"
-	"pt-PT" "rm" "ro" "ru" "si" "sk" "sl" "sq" "sr" "sv-SE" "th" "tr" "uz" "vi" "zh-CN" "zh-TW"
+	"ach" "af" "an" "ar" "ast" "az" "be" "bg" "bn" "br" "bs" "ca-valencia" "ca" "cak" "cs" "cy"
+	"da" "de" "dsb" "el" "en-CA" "en-GB" "en-US" "eo" "es-AR" "es-CL" "es-ES" "es-MX" "et" "eu"
+	"fa" "ff" "fi" "fr" "fy-NL" "ga-IE" "gd" "gl" "gn" "gu-IN" "he" "hi-IN" "hr" "hsb" "hu" "hy-AM"
+	"ia" "id" "is" "it" "ja" "ka" "kab" "kk" "km" "kn" "ko" "lij" "lt" "lv" "mk" "mr" "ms" "my"
+	"nb-NO" "ne-NP" "nl" "nn-NO" "oc" "pa-IN" "pl" "pt-BR" "pt-PT" "rm" "ro" "ru"
+	"si" "sk" "sl" "son" "sq" "sr" "sv-SE" "szl" "ta" "te" "th" "tl" "tr" "trs" "uk" "ur" "uz" "vi"
+	"xh" "zh-CN" "zh-TW"
 )
 
 mozilla_set_globals() {
@@ -240,15 +240,15 @@ mozilla_set_globals() {
 	)
 
 	local lang xflag
-	# shellcheck disable=SC2608
-	for lang in "${MOZ_LANGS[@]}" ; do
+	# shellcheck disable=SC2068
+	for lang in ${MOZ_LANGS[@]} ; do
 		# en and en_US are handled internally
 		if [[ "${lang}" == en ]] || [[ "${lang}" == en-US ]]; then
 			continue
 		fi
 
 		# strip region subtag if $lang is in the list
-		# shellcheck disable=SC2608
+		# shellcheck disable=SC2068
 		if has "${lang}" "${MOZ_TOO_REGIONALIZED_FOR_L10N[@]}"; then
 			xflag="${lang%%-*}"
 		else
@@ -272,6 +272,7 @@ moz_clear_vendor_checksums() {
 
 	einfo "Clearing cargo checksums for ${1} ..."
 
+	# shellcheck disable=SC2154
 	sed -i \
 		-e 's/\("files":{\)[^}]*/\1/' \
 		"${S}/third_party/rust/${1}/.cargo-checksum.json" \
@@ -293,7 +294,7 @@ moz_install_xpi() {
 
 	local emid xpi_file xpi_tmp_dir
 	# shellcheck disable=SC2068
-	for xpi_file in "${@}" ; do
+	for xpi_file in ${@} ; do
 		emid=
 		xpi_tmp_dir="$(mktemp -d --tmpdir="${T}")"
 
@@ -329,6 +330,7 @@ mozconfig_add_options_ac() {
 
 	local option
 	# shellcheck disable=SC2068
+	# shellcheck disable=SC2068
 	for option in ${@} ; do
 		echo "ac_add_options ${option} # ${reason}" >>"${MOZCONFIG}"
 	done
@@ -347,6 +349,7 @@ mozconfig_add_options_mk() {
 
 	local option
 	# shellcheck disable=SC2068
+	# shellcheck disable=SC2068
 	for option in ${@} ; do
 		echo "mk_add_options ${option} # ${reason}" >>"${MOZCONFIG}"
 	done
@@ -360,8 +363,9 @@ mozconfig_use_enable() {
 	fi
 
 	local flag
+	# shellcheck disable=SC2068
 	flag="$(use_enable "${@}")"
-	mozconfig_add_options_ac "$(use "${1}" && echo +"${1}" || echo -"${1}")" "${flag}"
+	mozconfig_add_options_ac "$(use "${1}"&& echo +"${1}" || echo -"${1}")" "${flag}"
 }
 
 mozconfig_use_with() {
@@ -372,15 +376,16 @@ mozconfig_use_with() {
 	fi
 
 	local flag
+	# shellcheck disable=SC2068
 	flag="$(use_with "${@}")"
-	mozconfig_add_options_ac "$(use "${1}" && echo +"${1}" || echo -"${1}")" "${flag}"
+	mozconfig_add_options_ac "$(use "${1}"&& echo +"${1}" || echo -"${1}")" "${flag}"
 }
 
 pkg_pretend() {
 	if [[ "${MERGE_TYPE}" != binary ]]; then
 		if use pgo; then
 			# shellcheck disable=SC2086
-			if ! has usersandbox ${FEATURES}; then
+			if ! has usersandbox $FEATURES; then
 				die "You must enable usersandbox as X server can not run as root!"
 			fi
 		fi
@@ -400,7 +405,7 @@ pkg_setup() {
 	if [[ "${MERGE_TYPE}" != binary ]]; then
 		if use pgo; then
 			# shellcheck disable=SC2086
-			if ! has userpriv ${FEATURES}; then
+			if ! has userpriv "${FEATURES}"; then
 				eerror "Building ${PN} with USE=pgo and FEATURES=-userpriv is not supported!"
 			fi
 		fi
@@ -417,20 +422,22 @@ pkg_setup() {
 		llvm_pkg_setup
 
 		if use clang && use lto; then
-			local version_lld
+			local version_lld version_llvm_rust
 			version_lld="$(ld.lld --version 2>/dev/null | awk '{ print $2 }')"
 			[[ -n "${version_lld}" ]] && version_lld="$(ver_cut 1 "${version_lld}")"
-			[[ -z "${version_lld}" ]] && die "Failed to read  -r ld.lld version!"
+			[[ -z "${version_lld}" ]] && die "Failed to read ld.lld version!"
 
-			# we can assume that rust 1.{49,50}.0 always uses llvm 11
-			local version_llvm_rust
-			version_llvm_rust="$(ldd "$(which rustc)" 2>/dev/null \
-				| awk '{ if ($1 ~ "LLVM") {
-					match($3, "/[[:digit:]]+/")
-					if (RSTART) printf("%s\n", substr($3,RSTART+1,RLENGTH-2))
-				} }'
+			version_llvm_rust="$( rustc -vV 2>/dev/null \
+				| awk '{
+					if ($1 != "LLVM") next
+					match($3, "^[[:digit:]]+")
+					if (RSTART) {
+						printf("%s\n", substr($3,RSTART,RLENGTH))
+						exit
+					}
+				}'
 			)"
-			[[ -z "${version_llvm_rust}" ]] && die "Failed to read  -r used LLVM version from rustc!"
+			[[ -z "${version_llvm_rust}" ]] && die "Failed to read used LLVM version from rustc!"
 
 			if ver_test "${version_lld}" -ne "${version_llvm_rust}"; then
 				eerror "Rust is using LLVM version ${version_llvm_rust} but ld.lld version belongs to LLVM version ${version_lld}."
@@ -497,8 +504,7 @@ src_unpack() {
 		mkdir "${_lp_dir}" || die
 	fi
 
-	# shellcheck disable=SC2066
-	for _src_file in ${A}; do
+	for _src_file in ${A} ; do
 		if [[ "${_src_file}" == *.xpi ]]; then
 			# shellcheck disable=SC2153
 			cp "${DISTDIR}/${_src_file}" "${_lp_dir}" || die "Failed to copy '${_src_file}' to '${_lp_dir}'!"
@@ -511,39 +517,49 @@ src_unpack() {
 src_prepare() {
 	use lto && rm -v "${WORKDIR}/firefox-patches/"*-LTO-Only-enable-LTO-*.patch
 	eapply "${WORKDIR}/firefox-patches"
-
 	if use kde; then
-		# Gecko/toolkit OpenSUSE KDE integration patchset
-
-		eapply "${DISTDIR}/${PN}-mozilla-kde-${GIT_MOZ_COMMIT}.patch"
-		eapply "${DISTDIR}/${PN}-mozilla-nongnome-proxies-${GIT_MOZ_COMMIT}.patch"
+		sed -e 's:@BINPATH@/defaults/pref/kde.js:@RESPATH@/browser/@PREF_DIR@/kde.js:' \
+			"${DISTDIR}/${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch" > \
+			"${T}/${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch" || die "sed failed"
+		# Toolkit OpenSUSE KDE integration patchset
+		eapply "${DISTDIR}/${PN}-mozilla-kde-${GIT_MOZ_REVISION}.patch"
+		eapply "${DISTDIR}/${PN}-mozilla-nongnome-proxies-${GIT_MOZ_REVISION}.patch"
+		# Firefox OpenSUSE KDE integration patchset
+		eapply "${DISTDIR}/${PN}-firefox-branded-icons-${GIT_MOZ_REVISION}.patch"
+		eapply "${DISTDIR}/${PN}-firefox-kde-${GIT_MOZ_REVISION}.patch"
 		# Uncomment the next line to enable KDE support debugging (additional console output)...
 		#eapply "${FILESDIR}/${PN}-kde-debug.patch"
-		# Uncomment the following patch line to force Plasma/Qt file dialog for Thunderbird...
+		# Uncomment the following patch line to force Plasma/Qt file dialog for Firefox...
 		#eapply "${FILESDIR}/${PN}-force-qt-dialog.patch"
-		# ... _OR_ install the patch file as a User patch (/etc/portage/patches/mail-client/thunderbird/)
+		# ... _OR_ install the patch file as a User patch (/etc/portage/patches/www-client/firefox/)
+		# ... _OR_ add to your user .xinitrc: "xprop -root -f KDE_FULL_SESSION 8s -set KDE_FULL_SESSION true"
 	fi
 
+	# Allow user to apply any additional patches without modifying ebuild
 	eapply_user
 
 	# Make LTO respect MAKEOPTS
+	# shellcheck disable=SC2154
 	sed -i \
 		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
 		"${S}/build/moz.configure/lto-pgo.configure" \
 		|| die "sed failed to set num_cores"
 
 	# Make ICU respect MAKEOPTS
+	# shellcheck disable=SC2154
 	sed -i \
 		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
 		"${S}/intl/icu_sources_data.py" \
 		|| die "sed failed to set num_cores"
 
 	# sed-in toolchain prefix
+	# shellcheck disable=SC2154
 	sed -i \
 		-e "s/objdump/${CHOST}-objdump/" \
 		"${S}/python/mozbuild/mozbuild/configure/check_debug_ranges.py" \
 		|| die "sed failed to set toolchain prefix"
 
+	# shellcheck disable=SC2154
 	sed -i \
 		-e 's/ccache_stats = None/return None/' \
 		"${S}/python/mozbuild/mozbuild/controller/building.py" \
@@ -604,37 +620,36 @@ src_configure() {
 	fi
 
 	# Ensure we use correct toolchain
-	export HOST_CC
 	HOST_CC="$(tc-getBUILD_CC)"
-	export HOST_CXX
+	export HOST_CC
 	HOST_CXX="$(tc-getBUILD_CXX)"
+	export HOST_CXX
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
 	# Pass the correct toolchain paths through cbindgen
 	if tc-is-cross-compiler; then
-		export BINDGEN_CFLAGS
 		BINDGEN_CFLAGS="${SYSROOT:+--sysroot=${ESYSROOT}} --target=${CHOST} ${BINDGEN_CFLAGS-}"
+	export BINDGEN_CFLAGS
 	fi
 
 	# Set MOZILLA_FIVE_HOME
-	export MOZILLA_FIVE_HOME
 	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
+	export MOZILLA_FIVE_HOME
 
 	# python/mach/mach/mixin/process.py fails to detect SHELL
-	export SHELL
 	SHELL="${EPREFIX}/bin/bash"
+	export SHELL
 
 	# Set MOZCONFIG
-	export MOZCONFIG
 	MOZCONFIG="${S}/.mozconfig"
+	export MOZCONFIG
 
 	# Initialize MOZCONFIG
-	mozconfig_add_options_ac '' --enable-application=comm/mail
-	mozconfig_add_options_ac '' --enable-calendar
+	mozconfig_add_options_ac '' --enable-application=browser
 
 	# Set Gentoo defaults
-	export MOZILLA_OFFICIAL
 	MOZILLA_OFFICIAL=1
+	export MOZILLA_OFFICIAL
 
 	mozconfig_add_options_ac 'Gentoo default' \
 		--allow-addon-sideload \
@@ -669,14 +684,18 @@ src_configure() {
 	[[ -n "${MOZ_ESR}" ]] && update_channel=esr
 	mozconfig_add_options_ac '' --update-channel="${update_channel}"
 
-	if ! use x86 && [[ "${CHOST}" != armv*h* ]]; then
+	local is_arch_simd_arch=1 is_rust_simd_supported=1
+	use x86 || [[ "${CHOST}" == armv*h* ]] && is_arch_simd_arch=0
+	has_version ">=virtual/rust-1.33.0"    && is_rust_simd_supported=0
+
+	if (( is_arch_simd_arch && is_rust_simd_supported )); then
 		mozconfig_add_options_ac '' --enable-rust-simd
 	fi
 
 	if [[ -s "${S}/api-google.key" ]]; then
-		local key_origin
+		local key_origin 
 		key_origin="Gentoo default"
-		if [[ "$(md5sum "${S}/api-google.key" | awk '{ print $1 }')" != 709560c02f94b41f9ad2c49207be6c54 ]]; then
+		if [[ "$(md5sum <"${S}/api-google.key" | awk '{ print $1 }')" != 709560c02f94b41f9ad2c49207be6c54 ]]; then
 			key_origin="User value"
 		fi
 
@@ -687,9 +706,9 @@ src_configure() {
 	fi
 
 	if [[ -s "${S}/api-location.key" ]]; then
-		local key_origin
+		local key_origin 
 		key_origin="Gentoo default"
-		if [[ "$(md5sum "${S}/api-location.key" | awk '{ print $1 }')" != ffb7895e35dedf832eb1c5d420ac7420 ]]; then
+		if [[ "$(md5sum <"${S}/api-location.key" | awk '{ print $1 }')" != ffb7895e35dedf832eb1c5d420ac7420 ]]; then
 			key_origin="User value"
 		fi
 
@@ -700,9 +719,9 @@ src_configure() {
 	fi
 
 	if [[ -s "${S}/api-mozilla.key" ]]; then
-		local key_origin
+		local key_origin 
 		key_origin="Gentoo default"
-		if [[ "$(md5sum "${S}/api-mozilla.key" | awk '{ print $1 }')" != 3927726e9442a8e8fa0e46ccc39caa27 ]]; then
+		if [[ "$(md5sum <"${S}/api-mozilla.key" | awk '{ print $1 }')" != 3927726e9442a8e8fa0e46ccc39caa27 ]]; then
 			key_origin="User value"
 		fi
 
@@ -724,6 +743,8 @@ src_configure() {
 	mozconfig_use_enable dbus
 
 	use eme-free && mozconfig_add_options_ac '+eme-free' --disable-eme
+
+	mozconfig_use_enable geckodriver
 
 	if use hardened; then
 		mozconfig_add_options_ac "+hardened" --enable-hardening
@@ -753,9 +774,6 @@ src_configure() {
 
 			mozconfig_add_options_ac '+lto' --enable-lto=cross
 		else
-			# Linking only works when using ld.gold when LTO is enabled
-			mozconfig_add_options_ac "forcing ld=gold due to USE=lto" --enable-linker=gold
-
 			# ThinLTO is currently broken, see bmo#1644409
 			mozconfig_add_options_ac '+lto' --enable-lto=full
 		fi
@@ -765,8 +783,8 @@ src_configure() {
 
 			if use clang; then
 				# Used in build/pgo/profileserver.py
-				export LLVM_PROFDATA
 				LLVM_PROFDATA="llvm-profdata"
+	export LLVM_PROFDATA
 			fi
 		fi
 	else
@@ -774,8 +792,6 @@ src_configure() {
 		if use clang; then
 			# This is upstream's default
 			mozconfig_add_options_ac "forcing ld=lld due to USE=clang" --enable-linker=lld
-		elif tc-ld-is-gold ; then
-			mozconfig_add_options_ac "linker is set to gold" --enable-linker=gold
 		else
 			mozconfig_add_options_ac "linker is set to bfd" --enable-linker=bfd
 		fi
@@ -835,6 +851,7 @@ src_configure() {
 		mozconfig_add_options_ac 'CHOST=armv*h*' --with-float-abi=hard
 
 		if ! use system-libvpx; then
+			# shellcheck disable=SC2154
 			sed -i \
 				-e "s|softfp|hard|" \
 				"${S}/media/libvpx/moz.build" \
@@ -893,19 +910,20 @@ src_configure() {
 	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}",--enable-new-dtags
 
 	# Pass $MAKEOPTS to build system
-	export MOZ_MAKE_FLAGS
 	MOZ_MAKE_FLAGS="${MAKEOPTS}"
+	export MOZ_MAKE_FLAGS
 
 	# Use system's Python environment
-	export MACH_USE_SYSTEM_PYTHON
 	MACH_USE_SYSTEM_PYTHON=1
+	export MACH_USE_SYSTEM_PYTHON
 
 	# Disable notification when build system has finished
-	export MOZ_NOSPAM
 	MOZ_NOSPAM=1
+	export MOZ_NOSPAM
 
-	# Build system requires xargs but is unable to find it
-	mozconfig_add_options_mk 'Gentoo default' "XARGS=${EPREFIX}/usr/bin/xargs"
+	# Portage sets XARGS environment variable to "xargs -r" by default which
+	# breaks build system's check_prog() function which doesn't support arguments
+	mozconfig_add_options_ac 'Gentoo default' "XARGS=${EPREFIX}/usr/bin/xargs"
 
 	# Set build dir
 	mozconfig_add_options_mk 'Gentoo default' "MOZ_OBJDIR=${BUILD_DIR}"
@@ -922,8 +940,9 @@ src_configure() {
 
 	# Apply EXTRA_ECONF entries to $MOZCONFIG
 	if [[ -n "${EXTRA_ECONF}" ]]; then
+		# shellcheck disable=SC2086
 		IFS=\! read  -r -a ac <<<"${EXTRA_ECONF// --/\!}"
-		# shellcheck disable=SC2608
+		# shellcheck disable=SC2068
 		for opt in "${ac[@]}"; do
 			mozconfig_add_options_ac "EXTRA_ECONF" --"${opt#--}"
 		done
@@ -959,7 +978,7 @@ src_compile() {
 	local -x GDK_BACKEND
 	GDK_BACKEND=x11
 
-	${virtx_cmd} ./mach build --verbose \
+	"${virtx_cmd}" ./mach build --verbose \
 		|| die "./mach failed"
 }
 
@@ -988,12 +1007,12 @@ src_install() {
 
 	# Install system-wide preferences
 	local PREFS_DIR
-	PREFS_DIR="${MOZILLA_FIVE_HOME}/defaults/pref"
+	PREFS_DIR="${MOZILLA_FIVE_HOME}/browser/defaults/preferences"
 	insinto "${PREFS_DIR}"
-	newins "${FILESDIR}/gentoo-default-prefs.js" gentoo-prefs.js
+	newins "${FILESDIR}/gentoo-default-prefs.js" all-gentoo.js
 
 	local GENTOO_PREFS
-	GENTOO_PREFS="${ED}${PREFS_DIR}/gentoo-prefs.js"
+	GENTOO_PREFS="${ED}${PREFS_DIR}/all-gentoo.js"
 
 	# Set dictionary path to use system hunspell
 	cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to set spellchecker.dictionary_path pref"
@@ -1007,6 +1026,16 @@ src_install() {
 		|| die "failed to add prefs to force hardware-accelerated rendering to all-gentoo.js"
 	fi
 
+	if ! use gmp-autoupdate; then
+		# shellcheck disable=SC2068
+		for plugin in ${MOZ_GMP_PLUGIN_LIST[@]} ; do
+			einfo "Disabling auto-update for ${plugin} plugin ..."
+			cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to disable autoupdate for ${plugin} media plugin"
+			pref("media.${plugin}.autoupdate", false);
+			EOF
+		done
+	fi
+
 	# Force the graphite pref if USE=system-harfbuzz is enabled, since the pref cannot disable it
 	if use system-harfbuzz; then
 		cat >>"${GENTOO_PREFS}" <<-EOF || die "failed to set gfx.font_rendering.graphite.enabled pref"
@@ -1015,19 +1044,29 @@ src_install() {
 	fi
 
 	# Install language packs
-	local langpacks
+	local langpacks       
 	langpacks=( "$(find "${WORKDIR}/language_packs" -type f -name '*.xpi')" )
 	# shellcheck disable=SC2128
 	if [[ -n "${langpacks}" ]]; then
-		# shellcheck disable=SC2608
+		# shellcheck disable=SC2068
 		moz_install_xpi "${MOZILLA_FIVE_HOME}/distribution/extensions" "${langpacks[@]}"
+	fi
+
+	# Install geckodriver
+	if use geckodriver; then
+		einfo "Installing geckodriver into ${ED}${MOZILLA_FIVE_HOME} ..."
+		pax-mark m "${BUILD_DIR}/dist/bin/geckodriver"
+		exeinto "${MOZILLA_FIVE_HOME}"
+		doexe "${BUILD_DIR}/dist/bin/geckodriver"
+
+		dosym "${MOZILLA_FIVE_HOME}/geckodriver" /usr/bin/geckodriver
 	fi
 
 	# Install icons
 	local icon_srcdir
-	icon_srcdir="${S}/comm/mail/branding/thunderbird"
+	icon_srcdir="${S}/browser/branding/official"
 	local icon_symbolic_file
-	icon_symbolic_file="${icon_srcdir}/TB-symbolic.svg"
+	icon_symbolic_file="${FILESDIR}/icon/firefox-symbolic.svg"
 
 	insinto /usr/share/icons/hicolor/symbolic/apps
 	newins "${icon_symbolic_file}" "${PN}-symbolic.svg"
@@ -1045,13 +1084,19 @@ src_install() {
 	done
 
 	# Install menus
-	local desktop_file display_protocols icon name use_wayland wrapper_wayland wrapper_x11
+	local wrapper_wayland
 	wrapper_wayland="${PN}-wayland.sh"
+	local wrapper_x11
 	wrapper_x11="${PN}-x11.sh"
+	local desktop_file
 	desktop_file="${FILESDIR}/icon/${PN}-r2.desktop"
+	local display_protocols 
 	display_protocols="auto X11"
+	local icon
 	icon="${PN}"
+	local name 
 	name="Mozilla ${MOZ_PN^}"
+	local use_wayland
 	use_wayland="false"
 
 	if use wayland; then
@@ -1060,8 +1105,7 @@ src_install() {
 	fi
 
 	local app_name desktop_filename display_protocol exec_command
-	# shellcheck disable=SC2128
-	for display_protocol in ${display_protocols}; do
+	for display_protocol in ${display_protocols} ; do
 		app_name="${name} on ${display_protocol}"
 		desktop_filename="${PN}-${display_protocol,,}.desktop"
 
@@ -1149,6 +1193,17 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
+	if ! use gmp-autoupdate; then
+		elog "USE='-gmp-autoupdate' has disabled the following plugins from updating or"
+		elog "installing into new profiles:"
+		local plugin
+		# shellcheck disable=SC2068
+		for plugin in ${MOZ_GMP_PLUGIN_LIST[@]} ; do
+			elog "\t ${plugin}"
+		done
+		elog
+	fi
+
 	if use pulseaudio && has_version ">=media-sound/apulse-0.1.12-r4"; then
 		elog "Apulse was detected at merge time on this system and so it will always be"
 		elog "used for sound. If you wish to use pulseaudio instead please unmerge"
@@ -1156,11 +1211,25 @@ pkg_postinst() {
 		elog
 	fi
 
-	local show_doh_information
+	local show_doh_information show_normandy_information
 
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# New install; Tell user that DoH is disabled by default
 		show_doh_information=yes
+		show_normandy_information=yes
+	else
+		local replacing_version
+		for replacing_version in ${REPLACING_VERSIONS} ; do
+			if ver_test "${replacing_version}" -lt 70; then
+				# Tell user only once about our DoH default
+				show_doh_information=yes
+			fi
+
+			if ver_test "${replacing_version}" -lt 74.0-r2; then
+				# Tell user only once about our Normandy default
+				show_normandy_information=yes
+			fi
+		done
 	fi
 
 	if [[ -n "${show_doh_information}" ]]; then
@@ -1171,5 +1240,22 @@ pkg_postinst() {
 		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
 		elog "(\"Off by choice\") by default."
 		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
+	fi
+
+	# bug 713782
+	if [[ -n "${show_normandy_information}" ]]; then
+		elog
+		elog "Upstream operates a service named Normandy which allows Mozilla to"
+		elog "push changes for default settings or even install new add-ons remotely."
+		elog "While this can be useful to address problems like 'Armagadd-on 2.0' or"
+		elog "revert previous decisions to disable TLS 1.0/1.1, privacy and security"
+		elog "concerns prevail, which is why we have switched off the use of this"
+		elog "service by default."
+		elog
+		elog "To re-enable this service set"
+		elog
+		elog " app.normandy.enabled=true"
+		elog
+		elog "in about:config."
 	fi
 }
