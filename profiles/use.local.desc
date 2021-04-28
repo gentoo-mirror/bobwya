@@ -94,7 +94,6 @@ mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp ins
 media-libs/fontconfig-infinality:nyx - Additional style using croscorefonts
 media-video/h264enc:ogm - Support for OGM container format
 www-client/firefox:clang - Use Clang compiler instead of GCC
-www-client/firefox:egl - Enable EGL as the GL provider (unsupported).
 www-client/firefox:eme-free - Disable EME (DRM plugin) cabability at build time
 www-client/firefox:geckodriver - Enable WebDriver support
 www-client/firefox:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
