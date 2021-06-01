@@ -18,7 +18,6 @@ dev-cpp/pion 5.0.7: A C++ development library for implementing lightweight HTTP 
 dev-cpp/zstr 1.0.0 1.0.1 1.0.2 1.0.3 1.0.4 9999: C++ header-only library allowing iostream access ZLib-compressed streams
 dev-php/fpdf 1.81: FPDF is a PHP class which allows to generate PDF files with pure PHP
 games-fps/dhewm3 1.4.0 1.4.1 1.5.0 1.5.1 9999: A Doom 3 GPL source modification.
-games-util/lutris 0.5.3 0.5.4-r1 0.5.5 9999: An open source gaming platform for GNU/Linux
 kde-misc/kmozillahelper 5.0.5 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird 78.9.1 78.10.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
