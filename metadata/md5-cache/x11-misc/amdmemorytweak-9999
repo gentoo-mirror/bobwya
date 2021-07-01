@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install unpack
+DEPEND=sys-apps/pciutils >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Read and modify memory timings on AMD graphics cards
+EAPI=6
+HOMEPAGE=https://github.com/Eliovp/starfield
+INHERIT=toolchain-funcs git-r3
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=sys-apps/pciutils
+SLOT=0
+_eclasses_=toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib	97566c1a256d07b00848aa767e38a352	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
+_md5_=050490640f8cb7e9df5c8c4cb60ba104
