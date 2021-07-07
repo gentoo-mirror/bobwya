@@ -11,22 +11,20 @@ inherit autotools l10n multilib multilib-minimal pax-utils toolchain-funcs virtu
 
 if [[ "${WINE_PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
-	EGIT_REPO_WINE_STAGING="https://github.com/wine-staging/wine-staging.git"
 	inherit git-r3
 else
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine Staging patchset"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, without any external patchsets"
 HOMEPAGE="https://www.winehq.org/"
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
 
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc faudio ffmpeg +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mingw mp3 netapi nls odbc openal opencl +opengl osmesa oss pcap +perl pipelight +png prelink prefix pulseaudio +realtime +run-exes samba scanner sdl2 selinux +ssl test themes +threads +truetype udev +udisks +unwind +usb v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc faudio +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mingw mp3 netapi nls odbc openal opencl +opengl osmesa oss pcap +perl +png prelink prefix pulseaudio +realtime +run-exes samba scanner sdl2 selinux +ssl test +threads +truetype udev +udisks +unwind +usb v4l vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
-	faudio? ( !ffmpeg )
 	osmesa? ( opengl )
 	test? ( abi_x86_32 )
 	vkd3d? ( vulkan )" #286560 osmesa-opengl  #551124 X-truetype
@@ -36,7 +34,6 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 RESTRICT="test"
 
 COMMON_DEPEND="
-	sys-apps/attr[${MULTILIB_USEDEP}]
 	>=app-emulation/wine-desktop-common-20180412
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
@@ -50,7 +47,6 @@ COMMON_DEPEND="
 	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
 	faudio? ( app-emulation/faudio[${MULTILIB_USEDEP}] )
-	ffmpeg? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
@@ -78,11 +74,6 @@ COMMON_DEPEND="
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
 	sdl2? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
-	themes? (
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		x11-libs/cairo[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
-	)
 	truetype? ( >=media-libs/freetype-2.0.5[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
@@ -90,7 +81,6 @@ COMMON_DEPEND="
 	usb? ( virtual/libusb:=[udev,${MULTILIB_USEDEP}] )
 	vkd3d? ( >=app-emulation/vkd3d-1.2[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vaapi? ( x11-libs/libva:=[drm,X?,${MULTILIB_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[X,${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
@@ -105,7 +95,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-eselect/eselect-wine-1.5.5
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47.2[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:6.0.0 )
+	mono? ( app-emulation/wine-mono:6.2.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -144,6 +134,7 @@ src_unpack() {
 src_prepare() {
 	local md5hash
 	md5hash="$(md5sum server/protocol.def)" || die "md5sum failed"
+	[[ -n "${WINE_STABLE_PREFIX}" ]] && sed -i -e 's/[-.[:alnum:]]\+$/'"${WINE_PV}"'/' "${S}/VERSION"
 	local -a PATCHES PATCHES_BIN
 
 	wine_add_stock_gentoo_patches
@@ -152,9 +143,6 @@ src_prepare() {
 	wine_fix_gentoo_O3_compilation_support
 	wine_fix_gentoo_winegcc_support
 	wine_support_wine_mono_downgrade
-
-	wine_eapply_staging_patchset
-	wine_src_set_staging_versioning
 
 	#617864 Generate wine64 man pages for 64-bit bit only installation
 	if use abi_x86_64 && ! use abi_x86_32; then
@@ -213,6 +201,7 @@ multilib_src_configure() {
 		"$(use_with capi)"
 		"$(use_with lcms cms)"
 		"$(use_with cups)"
+		"$(use_with faudio)"
 		"$(use_with fontconfig)"
 		"$(use_with ssl gnutls)"
 		"$(use_enable gecko mshtml)"
@@ -237,7 +226,6 @@ multilib_src_configure() {
 		"$(use_with pcap)"
 		"$(use_with png)"
 		"$(use_with pulseaudio pulse)"
-		"$(use_with themes gtk3)"
 		"$(use_with threads pthread)"
 		"$(use_with scanner sane)"
 		"$(use_with sdl2 sdl)"
@@ -248,23 +236,15 @@ multilib_src_configure() {
 		"$(use_with udisks dbus)"
 		"$(use_with usb)"
 		"$(use_with v4l v4l2)"
-		"$(usex vaapi '' --without-va)"
 		"$(use_with vkd3d)"
 		"$(use_with vulkan)"
 		"$(use_with X x)"
 		"$(use_with X xfixes)"
-		--with-xattr
 		"$(use_with xcomposite)"
 		"$(use_with xinerama)"
 		"$(use_with xml)"
 		"$(use_with xml xslt)"
 	)
-
-	if use ffmpeg; then
-		myconf+=( "$(use_with ffmpeg)" )
-	else
-		myconf+=( "$(use_with faudio)" )
-	fi
 
 	local PKG_CONFIG AR RANLIB
 	#472038 Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64
