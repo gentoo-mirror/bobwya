@@ -1,0 +1,11 @@
+DEFINED_PHASES=postinst postrm preinst
+DESCRIPTION=Core desktop menu entries and icons for Wine
+EAPI=7
+HOMEPAGE=https://github.com/bobwya/wine-desktop-common
+INHERIT=xdg-utils
+KEYWORDS=-* amd64 x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=https://github.com/bobwya/wine-desktop-common/archive/20180412.tar.gz -> wine-desktop-common-20180412.tar.gz
+_eclasses_=xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e
+_md5_=506005542b4811d151f99a552a348254

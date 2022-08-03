@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install test unpack
+DESCRIPTION=C++ header-only library allowing iostream access ZLib-compressed streams
+EAPI=8
+HOMEPAGE=https://github.com/mateidavid/zstr.git
+INHERIT=git-r3
+IUSE=examples
+LICENSE=MIT
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	b9ac6f96d2a88edb5b351df634dc5e53
+_md5_=c9c24cc3614531ef56b3766bbf717882

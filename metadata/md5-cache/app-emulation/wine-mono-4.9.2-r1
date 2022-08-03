@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Wine Mono is a replacement for the .NET runtime and class libraries in Wine
+EAPI=8
+HOMEPAGE=https://www.winehq.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2 GPL-2 LGPL-2.1 MIT MPL-1.1
+SLOT=4.9.2
+SRC_URI=https://dl.winehq.org/wine/wine-mono/4.9.2/wine-mono-bin-4.9.2.tar.gz
+_md5_=34dea8a6cb6faa30d8c8b4a438985ba3

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsingleapplication[X] dev-qt/qtwidgets:5
+DESCRIPTION=Wine Wizard is a new GUI for Wine written in Qt
+EAPI=7
+HOMEPAGE=https://github.com/LLIAKAJL/WineWizard
+INHERIT=qmake-utils
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsingleapplication[X] dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=https://github.com/LLIAKAJL/winewizard/archive/3.0.2.tar.gz
+_eclasses_=toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	qmake-utils	59420c906278d16deaaa629f9d115707
+_md5_=0be5771e54137e410aeac82021d91f67

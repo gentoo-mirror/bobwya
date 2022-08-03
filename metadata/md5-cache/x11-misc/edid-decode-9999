@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=EDID decoder and conformance tester
+EAPI=7
+HOMEPAGE=https://git.linuxtv.org/edid-decode.git/about/
+INHERIT=git-r3
+KEYWORDS=-* ~amd64 ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=MIT
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	b9ac6f96d2a88edb5b351df634dc5e53
+_md5_=5ca174179bf6f6a2901bb8737ba09c68

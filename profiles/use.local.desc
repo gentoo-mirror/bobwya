@@ -1,0 +1,107 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml.
+# Please add your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+app-arch/cabextract:extras - Install experimental extra tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
+app-emulation/dxvk:async - Support compiling pipelines asynchronously, when enabled (where possible). Do not report bugs with this option enabled.
+app-emulation/dxvk:d3d10 - Build D3D10 to Vulkan translation layer component of package
+app-emulation/dxvk:d3d11 - Build D3D11 to Vulkan translation layer component of package
+app-emulation/dxvk:d3d9 - Build D3D9 to Vulkan translation layer component of package
+app-emulation/dxvk:dxgi - Build DirectX Graphics Infrastructure (DXGI) component of package
+app-emulation/faudio:dumpvoices - FAudio dumps buffer data to individual files with RIFF/XWMA headers, usable with players like ffplay/testxwma.
+app-emulation/faudio:test - Build and run faudio testsuite.
+app-emulation/faudio:utils - Build all faudio utilities.
+app-emulation/faudio:xnasong - Build support for optional XNG_SONG component (note: this not required by app-emulation/wine-staging, app-emulation/wine-vanilla for faudio XAudio support).
+app-emulation/vkd3d:demos - Build D3D12 demo programs
+app-emulation/vkd3d:spirv-tools - Enable SPIRV shader debugging support using dev-util/spirv-tools
+app-emulation/wine-staging:capi - Enable ISDN support via net-libs/libcapi.
+app-emulation/wine-staging:custom-cflags - Bypass strip-flags; use at your own peril.
+app-emulation/wine-staging:dos - Pull in games-emulation/dosbox to run DOS applications.
+app-emulation/wine-staging:faudio - Enable support using FAudio, in place of the Wine XAudio 2 layer (unofficial). Injects the app-emulation/faudio package, into the current Wine variant. See: https://github.com/FNA-XNA/FAudio
+app-emulation/wine-staging:ffmpeg - Use ffmpeg to convert WMA formats, requires: media-video/ffmpeg (this feature is not supported by media-video/libav).
+app-emulation/wine-staging:gcrypt - Add support for the Diffie-Hellman key exchanges using dev-libs/libgcrypt.
+app-emulation/wine-staging:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine-staging:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
+app-emulation/wine-staging:mingw - Use the MinGW cross-compiler to compile, a supported subset of, Wine DLL's (as PE libraries). Uses (if specified): CROSSCFLAGS , CROSSLDFLAGS ; env variables for cross-compilation.
+app-emulation/wine-staging:mono - Add support for .NET using Wine's Mono add-on.
+app-emulation/wine-staging:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
+app-emulation/wine-staging:opencl - Enable OpenCL support.
+app-emulation/wine-staging:osmesa - Add support for OpenGL in bitmaps using libOSMesa.
+app-emulation/wine-staging:pcap - Support packet capture software (e.g. wireshark).
+app-emulation/wine-staging:perl - Install helpers written in perl (winedump/winemaker).
+app-emulation/wine-staging:pipelight - Apply Wine Staging patches for Pipelight/Silverlight support.
+app-emulation/wine-staging:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support.
+app-emulation/wine-staging:run-exes - Use Wine to open and run .EXE and .MSI files.
+app-emulation/wine-staging:s3tc - Pull in media-libs/libtxc_dxtn for DXTn texture compression, needed for many games.
+app-emulation/wine-staging:samba - Add support for NTLM auth. See: https://web.archive.org/web/20160108123008/http://wiki.winehq.org:80/NtlmAuthSetupGuide and https://web.archive.org/web/20150906013746/http://wiki.winehq.org/NtlmSigningAndSealing (these pages are not currently in the updated WineHQ Wiki).
+app-emulation/wine-staging:sdl2 - Enable controller and joystick support using media-libs/libsdl2.
+app-emulation/wine-staging:themes - Support GTK+:3 window theming through Wine Staging.
+app-emulation/wine-staging:udev - Use virtual/libudev to provide plug and play support.
+app-emulation/wine-staging:unwind - Use external sys-libs/libunwind library for stack unwinding (exception handling).
+app-emulation/wine-staging:usb - Use external virtual/libusb library to provide USB device support.
+app-emulation/wine-staging:vkd3d - Use app-emulation/vkd3d to provide DirectX D3D12 support
+app-emulation/wine-staging:vulkan - Enable Vulkan layer graphics support using media-libs/vulkan-loader.
+app-emulation/wine-vanilla:capi - Enable ISDN support via net-libs/libcapi.
+app-emulation/wine-vanilla:custom-cflags - Bypass strip-flags; use at your own peril.
+app-emulation/wine-vanilla:dos - Pull in games-emulation/dosbox to run DOS applications.
+app-emulation/wine-vanilla:faudio - Enable support using FAudio, in place of the Wine XAudio 2 layer (unofficial). Injects the app-emulation/faudio package, into the current Wine variant. See: https://github.com/FNA-XNA/FAudio
+app-emulation/wine-vanilla:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality.
+app-emulation/wine-vanilla:mingw - Use the MinGW cross-compiler to compile, a supported subset of, Wine DLL's (as PE libraries). Uses (if specified): CROSSCFLAGS , CROSSLDFLAGS ; env variables for cross-compilation.
+app-emulation/wine-vanilla:mono - Add support for .NET using Wine's Mono add-on.
+app-emulation/wine-vanilla:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll.
+app-emulation/wine-vanilla:opencl - Enable OpenCL support.
+app-emulation/wine-vanilla:osmesa - Add support for OpenGL in bitmaps using libOSMesa.
+app-emulation/wine-vanilla:pcap - Support packet capture software (e.g. wireshark).
+app-emulation/wine-vanilla:perl - Install helpers written in perl (winedump/winemaker).
+app-emulation/wine-vanilla:realtime - Pull in sys-auth/rtkit for low-latency pulseaudio support.
+app-emulation/wine-vanilla:run-exes - Use Wine to open and run .EXE and .MSI files.
+app-emulation/wine-vanilla:samba - Add support for NTLM auth. See: https://web.archive.org/web/20160108123008/http://wiki.winehq.org:80/NtlmAuthSetupGuide and https://web.archive.org/web/20150906013746/http://wiki.winehq.org/NtlmSigningAndSealing (these pages are not currently in the updated WineHQ Wiki).
+app-emulation/wine-vanilla:sdl2 - Enable controller and joystick support using media-libs/libsdl2.
+app-emulation/wine-vanilla:udev - Use virtual/libudev to provide plug and play support.
+app-emulation/wine-vanilla:unwind - Use external sys-libs/libunwind library for stack unwinding (exception handling).
+app-emulation/wine-vanilla:usb - Use external virtual/libusb library to provide USB device support.
+app-emulation/wine-vanilla:vkd3d - Use app-emulation/vkd3d to provide DirectX D3D12 support
+app-emulation/wine-vanilla:vulkan - Enable Vulkan layer graphics support using media-libs/vulkan-loader.
+app-emulation/winetricks:rar - Pull in app-arch/unrar for extraction of rar-compressed game files
+app-shells/eternalterminal:utempter - Enable support for sys-libs/libutempter
+games-fps/dhewm3:dedicated - Install only as a dedicated game server.
+games-fps/dhewm3:sdl2 - Enable support for SDL2 - enable SDL1 support if this flag is disabled.
+mail-client/thunderbird:clang - Use Clang compiler instead of GCC
+mail-client/thunderbird:eme-free - Disable EME (DRM plugin) capability at build time
+mail-client/thunderbird:hwaccel - Force-enable hardware-accelerated rendering (Mozilla bug 594876)
+mail-client/thunderbird:kde - Use OpenSUSE patchset to build in support for native Plasma Desktop file dialog via kde-misc/kmozillahelper.
+mail-client/thunderbird:lto - Enable Link Time Optimization (LTO). Requires Gold linker when using GCC or LDD linker when using Clang
+mail-client/thunderbird:openh264 - Use media-libs/openh264 for H.264 support instead of downloading binary blob from Mozilla at runtime
+mail-client/thunderbird:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
+mail-client/thunderbird:sndio - Enable support for the media-sound/sndio backend
+mail-client/thunderbird:system-av1 - Use the system-wide media-libs/dav1d and media-libs/libaom library instead of bundled.
+mail-client/thunderbird:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
+mail-client/thunderbird:system-icu - Use the system-wide dev-libs/icu instead of bundled.
+mail-client/thunderbird:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled.
+mail-client/thunderbird:system-libevent - Use the system-wide dev-libs/libevent instead of bundled.
+mail-client/thunderbird:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
+mail-client/thunderbird:system-png - Use the system-wide media-libs/libpng instead of bundled (requires APNG patches)
+mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
+media-video/h264enc:ogm - Support for OGM container format
+www-client/firefox:clang - Use Clang compiler instead of GCC
+www-client/firefox:eme-free - Disable EME (DRM plugin) capability at build time
+www-client/firefox:geckodriver - Enable WebDriver support
+www-client/firefox:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
+www-client/firefox:hwaccel - Force-enable hardware-accelerated rendering (Mozilla bug 594876)
+www-client/firefox:kde - Use OpenSUSE patchset to build in support for native Plasma Desktop file dialog via kde-misc/kmozillahelper.
+www-client/firefox:libproxy - Enable libproxy support
+www-client/firefox:lto - Enable Link Time Optimization (LTO) - Uses BFD linker with GCC and LLD linker with Clang
+www-client/firefox:openh264 - Use media-libs/openh264 for H264 support instead of downloading binary blob from Mozilla at runtime
+www-client/firefox:pgo - Add support for profile-guided optimization for faster binaries - this option will double the compile time
+www-client/firefox:screencast - Enable support for remote desktop and screen cast using media-video/pipewire
+www-client/firefox:sndio - Enable support for the media-sound/sndio backend
+www-client/firefox:system-av1 - Use the system-wide media-libs/dav1d and media-libs/libaom library instead of bundled
+www-client/firefox:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled
+www-client/firefox:system-icu - Use the system-wide dev-libs/icu instead of bundled
+www-client/firefox:system-jpeg - Use the system-wide media-libs/libjpeg-turbo instead of bundled
+www-client/firefox:system-libevent - Use the system-wide dev-libs/libevent instead of bundled
+www-client/firefox:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled
+www-client/firefox:system-png - Use the system-wide media-libs/libpng instead of bundled (requires APNG patches)
+www-client/firefox:system-python-libs - Use system's python site instead of bundled python libraries
+www-client/firefox:system-webp - Use the system-wide media-libs/libwebp instead of bundled
