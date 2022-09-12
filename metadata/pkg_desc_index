@@ -18,7 +18,7 @@ dev-cpp/zstr 1.0.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 9999: C++ header-only library a
 dev-php/fpdf 1.81: FPDF is a PHP class which allows to generate PDF files with pure PHP
 games-fps/dhewm3 1.4.0 1.4.1 1.5.0 1.5.1 1.5.2 9999: A Doom 3 GPL source modification.
 kde-misc/kmozillahelper 5.0.6 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird 91.10.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird 91.13.0 102.2.2: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-sound/neroaac 1.5.4-r1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-video/ffx264 3.7.0: Script to encode video files to H.264/AVC video using the FFmpeg encoder
