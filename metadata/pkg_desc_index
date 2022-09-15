@@ -18,7 +18,7 @@ dev-cpp/zstr 1.0.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 9999: C++ header-only library a
 dev-php/fpdf 1.81: FPDF is a PHP class which allows to generate PDF files with pure PHP
 games-fps/dhewm3 1.4.0 1.4.1 1.5.0 1.5.1 1.5.2 9999: A Doom 3 GPL source modification.
 kde-misc/kmozillahelper 5.0.6 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird 91.13.0 102.2.2: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird 91.13.0-r1 102.2.2-r1: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-sound/neroaac 1.5.4-r1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-video/ffx264 3.7.0: Script to encode video files to H.264/AVC video using the FFmpeg encoder
@@ -34,7 +34,7 @@ sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.3.0 9999: exFAT filesystem utilities (without fuse)
 sys-power/nbfc-linux 0.1.7-r1 9999: Lightweight C port of NoteBook FanControl (no Mono required)
 virtual/wine 0-r1: Virtual for WINE that supports multiple variants and slotting
-www-client/firefox 91.13.0 102.2.0 104.0.2: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
+www-client/firefox 91.13.0-r1 102.2.0-r1 104.0.2-r1: Firefox Web Browser, with SUSE patchset, to provide better KDE integration
 x11-apps/starfield 9999: Reminiscence to the screensaver that shipped until WinXP...
 x11-misc/amdmemorytweak 0.1.8.1 0.1.9.1 9999: Read and modify memory timings on AMD graphics cards
 x11-misc/edid-decode 9999: EDID decoder and conformance tester
