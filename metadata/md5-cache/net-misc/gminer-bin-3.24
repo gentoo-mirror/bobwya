@@ -6,4 +6,4 @@ KEYWORDS=-* ~amd64
 LICENSE=all-rights-reserved
 SLOT=0
 SRC_URI=https://github.com/develsoftware/GMinerRelease/releases/download/3.24/gminer_3_24_linux64.tar.xz -> gminer-bin-3.24.tar.xz
-_md5_=f33cc9603b75c524917d98883d7a977b
+_md5_=894c8dba363ec9673fc25e9aa539b7b1
