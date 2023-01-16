@@ -20,6 +20,9 @@ media-video/get_iplayer 3.30 9999: A utility for downloading programmes from BBC
 media-video/h264enc 10.4.7-r2: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 net-dialup/dterm 0.3-r1 0.5-r1: Simple serial terminal emulator
 net-dns/ndjbdns 9999: Fork of djbdns, a collection of DNS client/server software
+net-misc/gminer-bin 3.24: Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms
+net-misc/lolminer-bin 1.65: A multi algorithm crypto miner client supporting AMD & Nvidia GPUs
+net-misc/t-rex-bin 0.26.8: Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms
 sys-apps/amdmemorytweak 0.1.8.1 0.1.9.1 9999: Read and modify memory timings on AMD graphics cards
 sys-apps/hw-probe 1.6.5 9999: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/inxi 3.3.24_p1 9999: Perl script that collects and displays system information.
