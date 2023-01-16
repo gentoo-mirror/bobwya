@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-libs/openssl:0
+DESCRIPTION=The PE file analysis toolkit
+EAPI=8
+HOMEPAGE=https://pev.sourceforge.net/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/openssl:0
+SLOT=0
+SRC_URI=https://github.com/merces/pev/archive/v0.81.tar.gz -> pev-0.81.tar.gz https://github.com/merces/libpe/archive/ce39b127328e3863e08163962f7ecc768eb2555e.tar.gz -> libpe-ce39b127328e3863e08163962f7ecc768eb2555e.tar.gz
+_md5_=66f93a4d620d2de06212e41d1533284e

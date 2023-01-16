@@ -1,12 +1,12 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=config install postinst unpack
+DEFINED_PHASES=install postinst unpack
 DESCRIPTION=Perl script that collects and displays system information.
-EAPI=7
+EAPI=8
 HOMEPAGE=https://github.com/smxi/inxi
-INHERIT=git-r3
+INHERIT=optfeature git-r3
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=app-text/tree dev-lang/perl:0= dev-perl/Cpanel-JSON-XS sys-apps/pciutils sys-apps/usbutils virtual/perl-HTTP-Tiny virtual/perl-IO-Socket-IP virtual/perl-Time-HiRes
 SLOT=0
-_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
-_md5_=b509a1821d6827a5efa9767941d3d058
+_eclasses_=optfeature	1a2157392a869265b2afcb63a26c12ac	git-r3	2347f8fe2d392b2a091191f94be37e6f
+_md5_=12b70e935fbdede71e9a24431e7d7776

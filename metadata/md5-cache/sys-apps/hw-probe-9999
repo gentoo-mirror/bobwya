@@ -1,13 +1,12 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=A tool to probe for hardware, check it's operability and find drivers
-EAPI=7
+EAPI=8
 HOMEPAGE=https://github.com/linuxhw/hw-probe/
-INHERIT=readme.gentoo-r1 git-r3
-KEYWORDS=~amd64 ~x86
+INHERIT=optfeature readme.gentoo-r1 git-r3
 LICENSE=LGPL-2.1+
 PROPERTIES=live
 RDEPEND=dev-lang/perl dev-perl/Digest-SHA1 net-misc/curl sys-apps/dmidecode sys-apps/edid-decode sys-apps/hwinfo sys-apps/pciutils sys-apps/smartmontools sys-apps/usbutils virtual/perl-Data-Dumper
 SLOT=0
-_eclasses_=readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55	git-r3	2347f8fe2d392b2a091191f94be37e6f
-_md5_=16ed6325f619336a54880ef2169caaf4
+_eclasses_=optfeature	1a2157392a869265b2afcb63a26c12ac	readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55	git-r3	2347f8fe2d392b2a091191f94be37e6f
+_md5_=7abcb35e4152655c52da7647f2394da3

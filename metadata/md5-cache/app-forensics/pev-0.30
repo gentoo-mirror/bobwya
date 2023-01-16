@@ -1,9 +1,0 @@
-DEFINED_PHASES=install
-DESCRIPTION=The PE file analysis toolkit
-EAPI=8
-HOMEPAGE=http://pev.sourceforge.net/
-KEYWORDS=~amd64 ~x86
-LICENSE=GPL-3+
-SLOT=0
-SRC_URI=https://github.com/merces/pev/archive/v0.30.tar.gz
-_md5_=517ee52019f4cdd93b097edaaad16f12

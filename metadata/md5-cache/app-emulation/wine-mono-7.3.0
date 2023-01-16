@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2 GPL-2 LGPL-2.1 MIT MPL-1.1
 SLOT=7.3.0
 SRC_URI=https://dl.winehq.org/wine/wine-mono/7.3.0/wine-mono-7.3.0-x86.msi
-_md5_=15f6baf9a22ce4e8deed00264026039a
+_md5_=8bed64418608e6e8114d4a5313f330cb
