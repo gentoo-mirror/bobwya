@@ -9,6 +9,7 @@ app-emulation/wine-mono 4.5.6 4.6.0 4.6.2 4.6.3 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.
 app-forensics/pev 0.81 9999: The PE file analysis toolkit
 app-shells/eternalterminal 6.2.1 9999: Re-connectable secure remote shell
 dev-cpp/zstr 1.0.7 9999: C++ header-only library allowing iostream access ZLib-compressed streams
+dev-libs/qt5pas 20221116 20221222 99999999: Free Pascal Qt5 bindings library updated by lazarus IDE.
 dev-php/fpdf 1.85: FPDF is a PHP class which allows to generate PDF files with pure PHP
 games-fps/dhewm3 1.5.2-r1 9999: A Doom 3 GPL source modification.
 kde-misc/kmozillahelper 5.0.6-r1 9999: Mozilla KDE Desktop Integration
@@ -18,6 +19,8 @@ media-sound/neroaac 1.5.4-r2: Nero AAC reference quality MPEG-4 and 3GPP audio c
 media-video/ffx264 4.1.7: Script to encode video files to H.264/AVC video using the FFmpeg encoder
 media-video/get_iplayer 3.30 9999: A utility for downloading programmes from BBC iPlayer and BBC Sounds
 media-video/h264enc 10.4.7-r2: Script to encode H.264/AVC/MPEG-4 Part 10 formats
+media-video/renamemytvseries-gtk-bin 2.1.7_beta: Rename your TV-Series using TheTVDB (GTK version)
+media-video/renamemytvseries-qt5-bin 2.1.8_beta: Rename your TV-Series using TheTVDB (QT5 version)
 net-dialup/dterm 0.5-r1: Simple serial terminal emulator
 net-dns/ndjbdns 9999: Fork of djbdns, a collection of DNS client/server software
 net-misc/gminer-bin 3.24: Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms

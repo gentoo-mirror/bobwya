@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DESCRIPTION=Rename your TV-Series using TheTVDB (QT5 version)
+EAPI=8
+HOMEPAGE=https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2
+INHERIT=desktop xdg-utils
+KEYWORDS=-* ~amd64
+LICENSE=RenameMyTVSeries
+RDEPEND=!media-video/renamemytvseries-gtk-bin dev-db/sqlite:3 dev-libs/glib:2 dev-libs/qt5pas media-video/ffmpeg x11-libs/gdk-pixbuf:2[introspection] x11-libs/libnotify[introspection] x11-libs/libX11
+SLOT=0
+SRC_URI=https://www.tweaking4all.com/downloads/betas/RenameMyTVSeries-2.1.8-QT5-beta-Linux-64bit-shared-ffmpeg.tar.gz -> renamemytvseries-qt5-bin-2.1.8_beta.tar.gz
+_eclasses_=desktop	7eb20ad915a0a318176d51bc2508ff5c	xdg-utils	ac0e315a3688929e34ac75b139e7349a
+_md5_=282f45145faf5923e3885f025b5243f1
