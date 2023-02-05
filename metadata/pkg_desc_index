@@ -13,7 +13,7 @@ dev-libs/qt5pas 20221116 20221222 99999999: Free Pascal Qt5 bindings library upd
 dev-php/fpdf 1.85: FPDF is a PHP class which allows to generate PDF files with pure PHP
 games-fps/dhewm3 1.5.2-r1 9999: A Doom 3 GPL source modification.
 kde-misc/kmozillahelper 5.0.6-r1 9999: Mozilla KDE Desktop Integration
-mail-client/thunderbird 102.6.1: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
+mail-client/thunderbird 102.6.1 102.7.1: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/libtxc_dxtn 1.0.1-r2: Helper library for S3TC texture (de)compression
 media-sound/neroaac 1.5.4-r2: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-video/ffx264 4.1.7: Script to encode video files to H.264/AVC video using the FFmpeg encoder
