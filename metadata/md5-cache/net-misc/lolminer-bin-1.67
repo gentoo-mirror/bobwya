@@ -7,5 +7,5 @@ KEYWORDS=-* ~amd64
 LICENSE=Boost-1.0 BSD lolMiner MIT
 SLOT=0
 SRC_URI=https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.67/lolMiner_v1.67_Lin64.tar.gz -> lolminer-bin-1.67.tar.gz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	9a610728b9bcca1919234cceb35a1027	multilib	5ca4e49abed8e3a2f7b56920eadee157	unpacker	fdd15d854bf5e84f82d35524ab8ca6ba
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	cf009a3ed4e5bef503e7a9f215791a78	multilib	5ca4e49abed8e3a2f7b56920eadee157	unpacker	fdd15d854bf5e84f82d35524ab8ca6ba
 _md5_=c21fe19a17e79c60a3b6006c9b933f4c
