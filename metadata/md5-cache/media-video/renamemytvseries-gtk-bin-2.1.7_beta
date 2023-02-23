@@ -8,5 +8,5 @@ LICENSE=RenameMyTVSeries
 RDEPEND=!media-video/renamemytvseries-qt5-bin dev-db/sqlite:3 >=app-accessibility/at-spi2-core-2.46.0:2[X,introspection] dev-libs/glib:2 media-video/ffmpeg x11-libs/cairo[X,glib] x11-libs/gtk+:2[introspection] x11-libs/libX11 x11-libs/libnotify[introspection] x11-libs/pango[X,introspection]
 SLOT=0
 SRC_URI=https://www.tweaking4all.com/downloads/betas/RenameMyTVSeries-2.1.7-GTK-beta-Linux-64bit-shared-ffmpeg.tar.gz -> renamemytvseries-gtk-bin-2.1.7_beta.tar.gz
-_eclasses_=desktop	7eb20ad915a0a318176d51bc2508ff5c	xdg-utils	ac0e315a3688929e34ac75b139e7349a
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	ac0e315a3688929e34ac75b139e7349a
 _md5_=33c24f5cc987bbd55f517a4d7e919116
