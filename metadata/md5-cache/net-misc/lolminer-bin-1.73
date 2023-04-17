@@ -6,6 +6,6 @@ INHERIT=unpacker
 KEYWORDS=-* ~amd64
 LICENSE=Boost-1.0 BSD lolMiner MIT
 SLOT=0
-SRC_URI=https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.72/lolMiner_v1.72_Lin64.tar.gz -> lolminer-bin-1.72.tar.gz
+SRC_URI=https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.73/lolMiner_v1.73_Lin64.tar.gz -> lolminer-bin-1.73.tar.gz
 _eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multilib	d1408425c7c4a7669b9b17735404b693	unpacker	aa6a4e924009232d8b78b31e932c30b5
 _md5_=c21fe19a17e79c60a3b6006c9b933f4c
