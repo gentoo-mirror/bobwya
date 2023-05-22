@@ -10,6 +10,7 @@ app-emulation/faudio:xnasong - Build support for optional XNG_SONG component (no
 app-emulation/vkd3d:demos - Build D3D12 demo programs
 app-emulation/vkd3d:spirv-tools - Enable SPIRV shader debugging support using dev-util/spirv-tools
 app-shells/eternalterminal:client - Install network client
+app-shells/eternalterminal:sentry - Enable Sentry SDK crash reporting client
 app-shells/eternalterminal:server - Install network server
 app-shells/eternalterminal:utempter - Enable support for sys-libs/libutempter
 games-fps/dhewm3:dedicated - Install only as a dedicated game server.
