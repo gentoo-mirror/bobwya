@@ -1,4 +1,4 @@
-app-arch/cabextract 1.9.1-r1 9999: Extracts files from Microsoft cabinet archive files
+app-arch/cabextract 1.11 9999: Extracts files from Microsoft cabinet archive files
 app-arch/unshield 1.5.1-r1 9999: Tool and library to extract CAB files from InstallShield installers
 app-benchmarks/phoronix-test-suite 10.8.4-r1 9999: Phoronix's comprehensive, cross-platform testing and benchmark suite
 app-emulation/faudio 23.01 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
