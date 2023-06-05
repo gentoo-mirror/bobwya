@@ -1,14 +1,14 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install postinst unpack
-DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 x11-drivers/nvidia-drivers:*[driver,static-libs,tools]
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 x11-drivers/nvidia-drivers:*[static-libs,tools]
 DESCRIPTION=Qt5-based GPU overclocking tool
 EAPI=8
 HOMEPAGE=https://github.com/Lurkki14/tuxclocker
 INHERIT=desktop qmake-utils xdg-utils git-r3
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 x11-drivers/nvidia-drivers:*[driver,static-libs,tools]
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 x11-drivers/nvidia-drivers:*[static-libs,tools]
 REQUIRED_USE=elibc_glibc
 SLOT=0
 _eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multilib	c19072c3cd7ac5cb21de013f7e9832e0	qmake-utils	59420c906278d16deaaa629f9d115707	xdg-utils	baea6080dd821f5562d715887954c9d3	git-r3	27e13c09a4c7e4c78ac812f74727e676
-_md5_=917be8757993e3de053e512a2ebc52cb
+_md5_=8209e6a60595c5467011867806462a5b
