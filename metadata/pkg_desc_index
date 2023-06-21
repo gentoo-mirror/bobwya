@@ -23,9 +23,9 @@ media-video/renamemytvseries-gtk-bin 2.1.7_beta: Rename your TV-Series using The
 media-video/renamemytvseries-qt5-bin 2.1.8_beta: Rename your TV-Series using TheTVDB (QT5 version)
 net-dialup/dterm 0.5-r1: Simple serial terminal emulator
 net-dns/ndjbdns 9999: Fork of djbdns, a collection of DNS client/server software
-net-misc/gminer-bin 3.38: Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms
+net-misc/gminer-bin 3.40: Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms
 net-misc/lolminer-bin 1.76: A multi algorithm crypto miner client supporting AMD & Nvidia GPUs
-net-misc/srbminer-multi-bin 2.2.6: A cryptocurrency miner that can mine different algorithms on AMD/Nvidia GPUs
+net-misc/srbminer-multi-bin 2.2.9: A cryptocurrency miner that can mine different algorithms on AMD/Nvidia GPUs
 net-misc/t-rex-bin 0.26.8: Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms
 sys-apps/amdmemorytweak 0.1.9.1 9999: Read and modify memory timings on AMD graphics cards
 sys-apps/hw-probe 1.6.5 9999: A tool to probe for hardware, check it's operability and find drivers

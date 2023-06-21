@@ -5,5 +5,5 @@ HOMEPAGE=https://gminer.info/
 KEYWORDS=-* ~amd64
 LICENSE=all-rights-reserved
 SLOT=0
-SRC_URI=https://github.com/develsoftware/GMinerRelease/releases/download/3.38/gminer_3_38_linux64.tar.xz -> gminer-bin-3.38.tar.xz
+SRC_URI=https://github.com/develsoftware/GMinerRelease/releases/download/3.40/gminer_3_40_linux64.tar.xz -> gminer-bin-3.40.tar.xz
 _md5_=894c8dba363ec9673fc25e9aa539b7b1
