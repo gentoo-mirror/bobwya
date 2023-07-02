@@ -1,13 +1,13 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install unpack
-DEPEND=media-libs/freeglut media-libs/libsdl media-libs/sdl-image virtual/glu virtual/opengl
+DEPEND=media-libs/freeglut media-libs/libsdl media-libs/sdl-image virtual/glu virtual/opengl x11-libs/libX11
 DESCRIPTION=Reminiscence to the screensaver that shipped until WinXP...
 EAPI=8
 HOMEPAGE=https://github.com/luebking/starfield
 INHERIT=toolchain-funcs git-r3
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=media-libs/freeglut media-libs/libsdl media-libs/sdl-image virtual/glu virtual/opengl
+RDEPEND=media-libs/freeglut media-libs/libsdl media-libs/sdl-image virtual/glu virtual/opengl x11-libs/libX11
 SLOT=0
 _eclasses_=toolchain-funcs	513c31b3346458ed1f3878b57da6d61c	multilib	c19072c3cd7ac5cb21de013f7e9832e0	git-r3	27e13c09a4c7e4c78ac812f74727e676
-_md5_=4c8223e30ecc9bf23ac7dab65d525ea9
+_md5_=8c18a904833210a2c6adf6e80d117f95
