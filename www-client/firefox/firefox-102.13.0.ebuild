@@ -891,7 +891,7 @@ src_configure() {
 	fi
 
 	# LTO flag was handled via configure
-	filter-flags '-flto*'
+	filter-lto
 
 	mozconfig_use_enable debug
 	if use debug; then
@@ -977,7 +977,7 @@ src_configure() {
 	fi
 
 	if use elibc_musl && use arm64; then
-	       	mozconfig_add_options_ac 'elf-hack is broken when using musl/arm64' --disable-elf-hack
+		mozconfig_add_options_ac 'elf-hack is broken when using musl/arm64' --disable-elf-hack
 	fi
 
 	# Additional ARCH support
