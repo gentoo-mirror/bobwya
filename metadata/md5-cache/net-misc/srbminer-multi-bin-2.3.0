@@ -1,11 +1,11 @@
 DEFINED_PHASES=install unpack
-DESCRIPTION=A cryptocurrency miner that can mine different algorithms on AMD/Nvidia GPUs
+DESCRIPTION=A cryptocurrency miner for CPU and GPU (AMD, NVIDIA, INTEL) devices
 EAPI=8
 HOMEPAGE=https://www.srbminer.com/
 INHERIT=unpacker
 KEYWORDS=-* ~amd64
 LICENSE=no-source-code
 SLOT=0
-SRC_URI=https://github.com/doktor83/SRBMiner-Multi/releases/download/2.2.9/SRBMiner-Multi-2-2-9-Linux.tar.xz
+SRC_URI=https://github.com/doktor83/SRBMiner-Multi/releases/download/2.3.0/SRBMiner-Multi-2-3-0-Linux.tar.xz
 _eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	513c31b3346458ed1f3878b57da6d61c	multilib	c19072c3cd7ac5cb21de013f7e9832e0	unpacker	aa6a4e924009232d8b78b31e932c30b5
-_md5_=42f7f2719043b4dc6f74bc34c7e07523
+_md5_=2da343028dbe22846ab97364bf68151e
