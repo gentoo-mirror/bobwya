@@ -23,6 +23,7 @@ mail-client/thunderbird:libproxy - Enable libproxy support
 mail-client/thunderbird:lto - Enable Link Time Optimization (LTO)
 mail-client/thunderbird:openh264 - Use media-libs/openh264 for H.264 support instead of downloading binary blob from Mozilla at runtime
 mail-client/thunderbird:pgo - Add support for profile-guided optimization using gcc-4.5, for faster binaries. This option will double the compile time.
+mail-client/thunderbird:pulseaudio - Add sound server support via media-libs/libpulse (may be PulseAudio or Pipewire, or apulse if installed)
 mail-client/thunderbird:sndio - Enable support for the media-sound/sndio backend
 mail-client/thunderbird:system-av1 - Use the system-wide media-libs/dav1d and media-libs/libaom library instead of bundled.
 mail-client/thunderbird:system-harfbuzz - Use the system-wide media-libs/harfbuzz and media-gfx/graphite2 instead of bundled.
@@ -34,6 +35,7 @@ mail-client/thunderbird:system-libvpx - Use the system-wide media-libs/libvpx in
 mail-client/thunderbird:system-png - Use the system-wide media-libs/libpng instead of bundled (requires APNG patches)
 mail-client/thunderbird:system-python-libs - Use system's python site instead of bundled python libraries
 mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
+mail-client/thunderbird:wifi - Enable necko-wifi for NetworkManager integration, and access point MAC address scanning for better precision with opt-in geolocation services
 www-client/firefox:clang - Use Clang compiler instead of GCC
 www-client/firefox:eme-free - Disable EME (DRM plugin) capability at build time
 www-client/firefox:geckodriver - Enable WebDriver support
