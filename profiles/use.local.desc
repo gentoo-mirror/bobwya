@@ -36,6 +36,10 @@ mail-client/thunderbird:system-png - Use the system-wide media-libs/libpng inste
 mail-client/thunderbird:system-python-libs - Use system's python site instead of bundled python libraries
 mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
 mail-client/thunderbird:wifi - Enable necko-wifi for NetworkManager integration, and access point MAC address scanning for better precision with opt-in geolocation services
+net-misc/xmrig:cuda - Build with cuda support
+net-misc/xmrig:donate - Set the default donation level to 1% instead of 0%
+net-misc/xmrig:hwloc - Use sys-apps/hwloc for CPU affinity support
+net-misc/xmrig:opencl - Enable opencl support
 www-client/firefox:clang - Use Clang compiler instead of GCC
 www-client/firefox:eme-free - Disable EME (DRM plugin) capability at build time
 www-client/firefox:geckodriver - Enable WebDriver support
