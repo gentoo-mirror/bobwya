@@ -30,6 +30,7 @@ net-misc/srbminer-multi-bin 2.3.8: A cryptocurrency miner for CPU and GPU (AMD, 
 net-misc/t-rex-bin 0.26.8: Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms
 net-misc/xmrig 6.20.0 9999: RandomX, CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner
 net-misc/xmrig-cuda 6.17.0 9999: NVIDIA CUDA plugin for XMRig miner
+net-misc/xmrigcc 3.3.3 9999: XMRigCC is an open source RandomX, GhostRider, KawPow, CryptoNight CPU/GPU miner
 sys-apps/amdmemorytweak 0.1.9.1 9999: Read and modify memory timings on AMD graphics cards
 sys-apps/hw-probe 1.6.5 9999: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/inxi 3.3.24_p1 9999: Perl script that collects and displays system information.

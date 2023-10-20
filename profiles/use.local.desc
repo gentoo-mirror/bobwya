@@ -36,10 +36,18 @@ mail-client/thunderbird:system-png - Use the system-wide media-libs/libpng inste
 mail-client/thunderbird:system-python-libs - Use system's python site instead of bundled python libraries
 mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
 mail-client/thunderbird:wifi - Enable necko-wifi for NetworkManager integration, and access point MAC address scanning for better precision with opt-in geolocation services
-net-misc/xmrig:cuda - Build with cuda support
+net-misc/xmrig:cuda - Build cuda plugin
 net-misc/xmrig:donate - Set the default donation level to 1% instead of 0%
 net-misc/xmrig:hwloc - Use sys-apps/hwloc for CPU affinity support
 net-misc/xmrig:opencl - Enable opencl support
+net-misc/xmrigcc:ccclient - Enable "Command and Control" (CC) Client features
+net-misc/xmrigcc:ccclientexec - Enable "Command and Control" (CC) Client shell execution (shell execution might be a security risk)
+net-misc/xmrigcc:ccserver - Enable "Command and Control" (CC) Server features
+net-misc/xmrigcc:cuda - Build cuda plugin
+net-misc/xmrigcc:donate - Set the default donation level to 5% instead of 0%
+net-misc/xmrigcc:http - Enable built in HTTP support, this feature is used for HTTP API and daemon (solo mining) support
+net-misc/xmrigcc:hwloc - Use sys-apps/hwloc for CPU affinity support
+net-misc/xmrigcc:opencl - Enable OpenCL support
 www-client/firefox:clang - Use Clang compiler instead of GCC
 www-client/firefox:eme-free - Disable EME (DRM plugin) capability at build time
 www-client/firefox:geckodriver - Enable WebDriver support
