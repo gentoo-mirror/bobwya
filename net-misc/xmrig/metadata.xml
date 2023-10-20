@@ -6,7 +6,7 @@
     CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner.
   </longdescription>
   <use>
-    <flag name="cuda">Build with cuda support</flag>
+    <flag name="cuda">Build cuda plugin</flag>
     <flag name="donate">Set the default donation level to 1% instead of 0%</flag>
     <flag name="hwloc">Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support</flag>
     <flag name="opencl">Enable opencl support</flag>
