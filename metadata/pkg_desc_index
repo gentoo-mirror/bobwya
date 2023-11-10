@@ -25,10 +25,10 @@ net-dialup/dterm 0.5-r1: Simple serial terminal emulator
 net-dns/ndjbdns 9999: Fork of djbdns, a collection of DNS client/server software
 net-misc/astrobwt-miner-bin 1.9.2_p5: An optimized CPU miner for the AstroBWTv3 hashing algorithm
 net-misc/gminer-bin 3.41: Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms
-net-misc/lolminer-bin 1.76_alpha: A multi algorithm crypto miner client supporting AMD & Nvidia GPUs
+net-misc/lolminer-bin 1.76_alpha-r1: A multi algorithm crypto miner client supporting AMD & Nvidia GPUs
 net-misc/onezerominer-bin 1.2.5: Nvidia/CUDA optimized GPU miner for crypto projects
 net-misc/srbminer-multi-bin 2.3.9-r1: A cryptocurrency miner for CPU and GPU (AMD, NVIDIA, INTEL) devices
-net-misc/t-rex-bin 0.26.8: Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms
+net-misc/t-rex-bin 0.26.8-r1: Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms
 net-misc/xmrig 6.20.0 9999: RandomX, CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner
 net-misc/xmrig-cuda 6.17.0 9999: NVIDIA CUDA plugin for XMRig miner
 net-misc/xmrigcc 3.3.3 9999: XMRigCC is an open source RandomX, GhostRider, KawPow, CryptoNight CPU/GPU miner
