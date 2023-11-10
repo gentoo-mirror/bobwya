@@ -10,4 +10,4 @@ RDEPEND=app-arch/p7zip media-libs/libpng >=dev-lang/php-5.3[cli,curl,gd,posix,pc
 SLOT=0
 SRC_URI=https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.8.4.tar.gz -> phoronix-test-suite-10.8.4.tar.gz
 _eclasses_=toolchain-funcs	edeef89edaf21d30225d31702ab117ac	multilib	c19072c3cd7ac5cb21de013f7e9832e0	bash-completion-r1	f5e7a020fd9c741740756aac61bf75ff	optfeature	222cb475c5a4f7ae7cfb0bf510a6fe54
-_md5_=9cb79ce55cb00761f71b5bd3a3018fb2
+_md5_=e13a85ac8e4ca2ed98a9104b7ac6e624

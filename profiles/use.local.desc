@@ -36,6 +36,8 @@ mail-client/thunderbird:system-png - Use the system-wide media-libs/libpng inste
 mail-client/thunderbird:system-python-libs - Use system's python site instead of bundled python libraries
 mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
 mail-client/thunderbird:wifi - Enable necko-wifi for NetworkManager integration, and access point MAC address scanning for better precision with opt-in geolocation services
+net-misc/srbminer-multi-bin:cuda - Support Nvidia graphics cards
+net-misc/srbminer-multi-bin:opencl - Support AMD/Intel graphics cards
 net-misc/xmrig:cuda - Build cuda plugin
 net-misc/xmrig:donate - Set the default donation level to 1% instead of 0%
 net-misc/xmrig:hwloc - Use sys-apps/hwloc for CPU affinity support
