@@ -1,14 +1,14 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install postinst unpack
-DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 x11-drivers/nvidia-drivers:*[static-libs,tools]
-DESCRIPTION=Qt5-based GPU overclocking tool
+BDEPEND=>=dev-util/meson-1.2.1 >=dev-util/ninja-1.8.2 dev-util/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst postrm test unpack
+DEPEND=dev-libs/boost:= gui? ( dev-qt/qtcore:5 dev-qt/qtcharts:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+DESCRIPTION=Hardware controlling and monitoring program.
 EAPI=8
 HOMEPAGE=https://github.com/Lurkki14/tuxclocker
-INHERIT=desktop qmake-utils xdg-utils git-r3
+INHERIT=desktop meson xdg-utils git-r3
+IUSE=+daemon +gui +plugins hwdata video_cards_amdgpu video_cards_nvidia
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 x11-drivers/nvidia-drivers:*[static-libs,tools]
-REQUIRED_USE=elibc_glibc
+RDEPEND=dev-libs/boost:= gui? ( dev-qt/qtcore:5 dev-qt/qtcharts:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) video_cards_amdgpu? ( hwdata? ( dev-python/python-hwdata ) x11-libs/libdrm[video_cards_amdgpu] ) video_cards_nvidia? ( x11-drivers/nvidia-drivers:*[static-libs,tools] )
 SLOT=0
-_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	toolchain-funcs	eed10cf5e5a06916e654d31f5a1925cc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	qmake-utils	a8dd17b1d94586164f5e3fc12b1c6b81	xdg-utils	baea6080dd821f5562d715887954c9d3	git-r3	5133e393e8717a3a093660f990801dc1
-_md5_=8209e6a60595c5467011867806462a5b
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	ninja-utils	39e7a84b06eff4efd9f2e0c3d1668b98	toolchain-funcs	eed10cf5e5a06916e654d31f5a1925cc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	python-utils-r1	e989dbdcbb647bd8655857c1f95be244	meson	1be925a1f585b2f19a8e45737f09016c	xdg-utils	baea6080dd821f5562d715887954c9d3	git-r3	5133e393e8717a3a093660f990801dc1
+_md5_=724c136b11e1e354578e06374131e57b

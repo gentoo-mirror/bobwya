@@ -11,6 +11,7 @@ app-shells/eternalterminal 6.2.8-r1 9999: Re-connectable secure remote shell
 dev-cpp/zstr 1.0.7 9999: C++ header-only library allowing iostream access ZLib-compressed streams
 dev-libs/qt5pas 20221116 20221222 99999999: Free Pascal Qt5 bindings library updated by lazarus IDE.
 dev-php/fpdf 1.85: FPDF is a PHP class which allows to generate PDF files with pure PHP
+dev-python/python-hwdata 2.4.1_p1: Provides a python interface to the database stored in sys-apps/hwdata package
 games-fps/dhewm3 1.5.2-r1 9999: A Doom 3 GPL source modification.
 kde-misc/kmozillahelper 5.0.6-r1 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird 115.4.1: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
@@ -35,7 +36,7 @@ net-misc/xmrigcc 3.3.3 9999: XMRigCC is an open source RandomX, GhostRider, KawP
 sys-apps/amdmemorytweak 0.1.9.1 9999: Read and modify memory timings on AMD graphics cards
 sys-apps/hw-probe 1.6.5 9999: A tool to probe for hardware, check it's operability and find drivers
 sys-apps/inxi 3.3.24_p1 9999: Perl script that collects and displays system information.
-sys-apps/tuxclocker 0.1.1-r1 9999: Qt5-based GPU overclocking tool
+sys-apps/tuxclocker 1.3.2 9999: Hardware controlling and monitoring program.
 sys-fs/exfat-nofuse 9999: Non-fuse kernel driver for exFat and VFat file systems
 sys-fs/exfat-utils-nofuse 1.3.0-r1 9999: exFAT filesystem utilities (without fuse)
 sys-power/nbfc-linux 0.1.7-r1 9999: Lightweight C port of NoteBook FanControl (no Mono required)

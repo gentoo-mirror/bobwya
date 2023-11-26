@@ -52,6 +52,9 @@ net-misc/xmrigcc:donate - Set the default donation level to 5% instead of 0%
 net-misc/xmrigcc:http - Enable built in HTTP support, this feature is used for HTTP API and daemon (solo mining) support
 net-misc/xmrigcc:hwloc - Use sys-apps/hwloc for CPU affinity support
 net-misc/xmrigcc:opencl - Enable OpenCL support
+sys-apps/tuxclocker:daemon - Build the system daemon
+sys-apps/tuxclocker:hwdata - Enable (optional) support for more accurate AMD GPU descriptions
+sys-apps/tuxclocker:plugins - Enable support for plugins
 www-client/firefox:clang - Use Clang compiler instead of GCC
 www-client/firefox:eme-free - Disable EME (DRM plugin) capability at build time
 www-client/firefox:geckodriver - Enable WebDriver support
