@@ -7,5 +7,5 @@ INHERIT=xdg-utils git-r3
 LICENSE=LGPL-2.1
 PROPERTIES=live
 SLOT=0
-_eclasses_=xdg-utils	baea6080dd821f5562d715887954c9d3	git-r3	5133e393e8717a3a093660f990801dc1
+_eclasses_=xdg-utils	baea6080dd821f5562d715887954c9d3	git-r3	86fa1f157b70b9d2ff340c4633b1cf4b
 _md5_=43fa78e2c45e73c32f138477d984bf6a
