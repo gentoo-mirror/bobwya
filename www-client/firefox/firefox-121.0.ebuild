@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-119-patches-01.tar.xz"
+FIREFOX_PATCHSET="firefox-121-patches-01.tar.xz"
 MOZ_KDE_PATCHSET="mozilla-kde-opensuse-patchset-${P}"
 
 LLVM_MAX_SLOT=17
@@ -60,8 +60,11 @@ IUSE+=" +telemetry valgrind wayland wifi +X"
 # Firefox-only IUSE
 IUSE+=" geckodriver +gmp-autoupdate screencast"
 
+# "-jumbo-build +system-icu": build failure on firefox-120:
+#   firefox-120.0/intl/components/src/TimeZone.cpp:345:3: error: use of undeclared identifier 'MOZ_TRY'
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
+	!jumbo-build? ( !system-icu )
 	pgo? ( lto )
 	wifi? ( dbus )"
 
@@ -105,7 +108,13 @@ BDEPEND="${PYTHON_DEPS}
 	>=dev-util/cbindgen-0.26.0
 	net-libs/nodejs
 	virtual/pkgconfig
-	!clang? ( >=virtual/rust-1.65 )
+	!clang? ( >=virtual/rust-1.70 )
+	!elibc_glibc? (
+		|| (
+			dev-lang/rust
+			<dev-lang/rust-bin-1.73
+		)
+	)
 	amd64? ( >=dev-lang/nasm-2.14 )
 	x86? ( >=dev-lang/nasm-2.14 )
 	pgo? (
@@ -124,7 +133,7 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/libffi:=
-	>=dev-libs/nss-3.94
+	>=dev-libs/nss-3.95
 	>=dev-libs/nspr-4.35
 	media-libs/alsa-lib
 	media-libs/fontconfig
@@ -138,7 +147,6 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	x11-libs/pango
 	x11-libs/pixman
 	dbus? (
-		dev-libs/dbus-glib
 		sys-apps/dbus
 	)
 	jack? ( virtual/jack )
@@ -174,7 +182,6 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	)
 	wifi? (
 		kernel_linux? (
-			dev-libs/dbus-glib
 			net-misc/networkmanager
 			sys-apps/dbus
 		)
@@ -702,12 +709,18 @@ src_prepare() {
 		rm -v "${WORKDIR}/firefox-patches/"*ppc64*.patch || die "rm failed"
 	fi
 
-	eapply "${WORKDIR}/firefox-patches"
-
 	# Workaround for bgo#917599
 	if has_version ">=dev-libs/icu-74.1" && use system-icu; then
-		eapply "${FILESDIR}/firefox-115.4.0-icu-74.patch"
+		eapply "${WORKDIR}/firefox-patches/0028-bmo-1862601-system-icu-74.patch"
 	fi
+	rm -v "${WORKDIR}/firefox-patches/0028-bmo-1862601-system-icu-74.patch" || die "rm failed"
+
+	# Workaround for bgo#915651 on musl
+	if ! use elibc_glibc; then
+		rm -v "${WORKDIR}/firefox-patches/"*bgo-748849-RUST_TARGET_override.patch || die "rm failed"
+	fi
+
+	eapply "${WORKDIR}/firefox-patches"
 
 	# Allow user to apply any additional patches without modifying ebuild
 	eapply_user
@@ -715,6 +728,19 @@ src_prepare() {
 	# Make cargo respect MAKEOPTS
 	export CARGO_BUILD_JOBS
 	CARGO_BUILD_JOBS="$(makeopts_jobs)"
+
+	# Workaround for bgo#915651
+	if ! use elibc_glibc; then
+		if use amd64; then
+			export RUST_TARGET
+			RUST_TARGET="x86_64-unknown-linux-musl"
+		elif use x86 ; then
+			export RUST_TARGET
+			RUST_TARGET="x86-unknown-linux-musl"
+		else
+			die "Unknown musl chost, please post your rustc -vV along with emerge --info on Gentoo's bug #915651"
+		fi
+	fi
 
 	# Make LTO respect MAKEOPTS
 	# shellcheck disable=SC2154
