@@ -8,6 +8,6 @@ KEYWORDS=-* ~amd64
 LICENSE=Boost-1.0 BSD lolMiner MIT
 RDEPEND=cuda? ( dev-util/nvidia-cuda-toolkit ) opencl? ( virtual/opencl )
 SLOT=0
-SRC_URI=https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.82/lolMiner_v1.82_Lin64.tar.gz -> lolminer-bin-1.82.tar.gz
+SRC_URI=https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.82a/lolMiner_v1.82a_Lin64.tar.gz -> lolminer-bin-1.82_alpha.tar.gz
 _eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	unpacker	aa6a4e924009232d8b78b31e932c30b5
 _md5_=f6615b364e99389f53e5fefe46e1e761
