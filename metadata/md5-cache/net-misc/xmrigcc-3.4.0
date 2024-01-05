@@ -11,6 +11,6 @@ LICENSE=Apache-2.0 GPL-3+ MIT
 RDEPEND=dev-libs/libuv:= cuda? ( ~net-misc/xmrig-cuda-6.17.0 ) hwloc? ( >=sys-apps/hwloc-2.5.0:= ) opencl? ( virtual/opencl ) ssl? ( dev-libs/openssl:= ) !arm64? ( sys-apps/msr-tools )
 REQUIRED_USE=http? ( ssl )
 SLOT=0
-SRC_URI=https://github.com/Bendr0id/xmrigCC/archive/3.3.3.tar.gz -> xmrigcc-3.3.3.tar.gz
+SRC_URI=https://github.com/Bendr0id/xmrigCC/archive/3.4.0.tar.gz -> xmrigcc-3.4.0.tar.gz
 _eclasses_=toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	78cf3cc2d5572fddf5e5e10c70f7c81a	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	ninja-utils	c8951c1dfcc1d43e3f967f61fd0ec59c	xdg-utils	baea6080dd821f5562d715887954c9d3	cmake	0f2e0c197fad0312f3c4765c9cf36271	systemd	c8b03e8df84486aa991d4396686e8942
 _md5_=e87d76488e94918b3ebd5c470f63a955
