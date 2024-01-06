@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms
+EAPI=8
+HOMEPAGE=https://gminer.info/
+IUSE=cuda opencl
+KEYWORDS=-* ~amd64
+LICENSE=all-rights-reserved
+RDEPEND=cuda? ( dev-util/nvidia-cuda-toolkit ) opencl? ( virtual/opencl )
+SLOT=0
+SRC_URI=https://github.com/develsoftware/GMinerRelease/releases/download/3.43/gminer_3_43_linux64.tar.xz -> gminer-bin-3.43.tar.xz
+_md5_=ecc3aee1f9c4dcaff7c4bba80f50c172

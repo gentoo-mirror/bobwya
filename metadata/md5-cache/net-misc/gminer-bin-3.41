@@ -1,9 +1,0 @@
-DEFINED_PHASES=install prepare
-DESCRIPTION=Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms
-EAPI=8
-HOMEPAGE=https://gminer.info/
-KEYWORDS=-* ~amd64
-LICENSE=all-rights-reserved
-SLOT=0
-SRC_URI=https://github.com/develsoftware/GMinerRelease/releases/download/3.41/gminer_3_41_linux64.tar.xz -> gminer-bin-3.41.tar.xz
-_md5_=894c8dba363ec9673fc25e9aa539b7b1
