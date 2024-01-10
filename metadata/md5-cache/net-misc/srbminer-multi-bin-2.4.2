@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=A cryptocurrency miner for CPU and GPU (AMD, NVIDIA, INTEL) devices
+EAPI=8
+HOMEPAGE=https://www.srbminer.com/
+INHERIT=unpacker
+IUSE=cuda opencl
+KEYWORDS=-* ~amd64
+LICENSE=no-source-code
+RDEPEND=cuda? ( dev-util/nvidia-cuda-toolkit ) opencl? ( virtual/opencl )
+SLOT=0
+SRC_URI=https://github.com/doktor83/SRBMiner-Multi/releases/download/2.4.2/SRBMiner-Multi-2-4-2-Linux.tar.xz
+_eclasses_=multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	unpacker	7b40f3faa3e2e12f5cf6d36d0fbfcd09
+_md5_=f4dc8a888253edd196e64c393d643152
