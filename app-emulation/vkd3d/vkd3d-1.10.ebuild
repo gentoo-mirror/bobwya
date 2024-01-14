@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://source.winehq.org/git/vkd3d.git"
 	inherit git-r3
 else
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* amd64 x86"
 	SRC_URI="https://dl.winehq.org/vkd3d/source/${P}.tar.xz"
 fi
 
@@ -51,28 +51,21 @@ _fix_idl_header_paths() {
 	local output_header_file
 	local output_header_full_path
 
-	find "tests/" -name "*.idl" | \
-		while read -r idl_input_file; do
-			output_header_file="${idl_input_file%.idl}"
-			output_header_full_path="${S}/${output_header_file}"
-			echo "${output_header_file_path}"
-			sed -i -e "s|${output_header_file}|${output_header_full_path}|g" \
-				"Makefile.am" \
-				|| die "sed failed"
-		done
+	while read -r idl_input_file; do
+		output_header_file="${idl_input_file%.idl}"
+		output_header_full_path="${S}/${output_header_file}"
+		sed -i -e "s|${output_header_file}|${output_header_full_path}|g" \
+			"Makefile.am" \
+			|| die "sed failed"
+	done < <(find "tests/" -type f -name "*.idl" -printf '%f\0' 2>/dev/null)
 }
 
 _install_demos() {
-	(($# == 1)) || die "${FUNCNAME[0]}(): invalid parameter count: ${#} (1)"
-
-	local demo_path="${1}"
 	local demo_bin
 
-	pushd "${demo_path}" || die "pushd failed"
 	while IFS= read -r -d '' demo_bin; do
 		newbin "${demo_bin}" "${PN}-${demo_bin}"
 	done < <(find . -maxdepth 1 -executable -type f -printf '%f\0' 2>/dev/null)
-	popd || die "popd failed"
 }
 
 src_prepare() {
@@ -101,7 +94,7 @@ multilib_src_install() {
 
 	dobin ".libs/vkd3d-compiler"
 	if use demos; then
-		_install_demos "${BUILD_DIR}/demos/.libs/"
+		_install_demos
 	fi
 	if use doc; then
 		dodoc -r "doc/html"
