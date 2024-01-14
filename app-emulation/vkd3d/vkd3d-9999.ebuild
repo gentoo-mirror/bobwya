@@ -30,11 +30,9 @@ DEPEND="${RDEPEND}
 		>=dev-util/vulkan-headers-1.3.228
 		opengl?  ( media-libs/mesa[X(+),${MULTILIB_USEDEP}] )"
 BDEPEND="
-		!elibc_musl? (
-			doc? (
-				app-doc/doxygen
-				app-text/texlive
-			)
+		doc? (
+			app-doc/doxygen
+			app-text/texlive
 		)
 		sys-devel/flex
 		sys-devel/bison
