@@ -17,8 +17,8 @@ kde-misc/kmozillahelper 5.0.6-r1 9999: Mozilla KDE Desktop Integration
 mail-client/thunderbird 115.6.0: Thunderbird Mail Client, with SUSE patchset, to provide better KDE integration
 media-libs/libtxc_dxtn 1.0.1-r2: Helper library for S3TC texture (de)compression
 media-sound/neroaac 1.5.4-r2: Nero AAC reference quality MPEG-4 and 3GPP audio codec
-media-video/ffx264 4.1.7: Script to encode video files to H.264/AVC video using the FFmpeg encoder
-media-video/get_iplayer 3.31 9999: A utility for downloading programmes from BBC iPlayer and BBC Sounds
+media-video/ffx264 4.1.16: Script to encode video files to H.264/AVC video using the FFmpeg encoder
+media-video/get_iplayer 3.35 9999: A utility for downloading programmes from BBC iPlayer and BBC Sounds
 media-video/h264enc 10.4.7-r2: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 media-video/renamemytvseries-gtk-bin 2.1.7_beta: Rename your TV-Series using TheTVDB (GTK version)
 media-video/renamemytvseries-qt5-bin 2.1.8_beta: Rename your TV-Series using TheTVDB (QT5 version)
