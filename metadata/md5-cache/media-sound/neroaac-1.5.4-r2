@@ -11,4 +11,4 @@ RESTRICT=fetch strip mirror test
 SLOT=0
 SRC_URI=NeroAACCodec-1.5.4.zip
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773
-_md5_=49c4fd899ab0c6509c83d69fd145ba9b
+_md5_=207a7f6532f93e228ad61f8f1565f1bc
