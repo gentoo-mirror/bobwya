@@ -9,4 +9,4 @@ RDEPEND=!media-video/renamemytvseries-qt5-bin dev-db/sqlite:3 >=app-accessibilit
 SLOT=0
 SRC_URI=https://www.tweaking4all.com/downloads/betas/RenameMyTVSeries-2.1.7-GTK-beta-Linux-64bit-shared-ffmpeg.tar.gz -> renamemytvseries-gtk-bin-2.1.7_beta.tar.gz
 _eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	baea6080dd821f5562d715887954c9d3
-_md5_=33c24f5cc987bbd55f517a4d7e919116
+_md5_=a28f4b231584386e140e83aa4d2a56b0

@@ -22,7 +22,6 @@ media-video/get_iplayer 3.35 9999: A utility for downloading programmes from BBC
 media-video/h264enc 10.4.7-r2: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 media-video/renamemytvseries-gtk-bin 2.1.7_beta: Rename your TV-Series using TheTVDB (GTK version)
 media-video/renamemytvseries-qt5-bin 2.1.8_beta: Rename your TV-Series using TheTVDB (QT5 version)
-net-dialup/dterm 0.5-r1: Simple serial terminal emulator
 net-dns/ndjbdns 9999: Fork of djbdns, a collection of DNS client/server software
 net-misc/astrobwt-miner-bin 1.9.2_p5: An optimized CPU miner for the AstroBWTv3 hashing algorithm
 net-misc/gminer-bin 3.43: Gminer supports most popular crypto hashing algorithms on AMD+Nvidia platforms
