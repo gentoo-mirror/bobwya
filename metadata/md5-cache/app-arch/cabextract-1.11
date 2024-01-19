@@ -11,4 +11,4 @@ RDEPEND=extras? ( dev-lang/perl )
 SLOT=0
 SRC_URI=https://github.com/kyz/libmspack/archive/refs/tags/v1.11.tar.gz -> cabextract-1.11.tar.gz
 _eclasses_=gnuconfig	b6b3e92f8b8c996400074b5f61a59256	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	9d3a9a889a6fa62ae794f817c156491b	autotools	e4cf390b19033d5ca443765bc8537b81
-_md5_=0a260883b0e8e5af9002a138020322a7
+_md5_=c947d9a6a7e304b4c62dfbf5da03a510
