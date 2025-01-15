@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=app-text/tree dev-lang/perl:0= dev-perl/Cpanel-JSON-XS sys-apps/pciutils sys-apps/usbutils virtual/perl-HTTP-Tiny virtual/perl-IO-Socket-IP virtual/perl-Time-HiRes
 SLOT=0
 SRC_URI=https://github.com/smxi/inxi/archive/3.3.31-2.tar.gz -> inxi-3.3.31-2.tar.gz
-_eclasses_=optfeature	222cb475c5a4f7ae7cfb0bf510a6fe54
+_eclasses_=optfeature	538bce96e5589935b57e178e8635f301
 _md5_=740342d748a52ce009c9db8bac570936
