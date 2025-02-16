@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=app-arch/p7zip media-libs/libpng >=dev-lang/php-5.3[cli,curl,gd,posix,pcntl,sockets,ssl,truetype,xml,zip,zlib] dev-php/fpdf www-servers/apache sdl? ( media-libs/libsdl media-libs/sdl-net media-libs/sdl-image media-libs/libsdl2 media-libs/sdl2-net media-libs/sdl2-image media-libs/sdl2-mixer )
 SLOT=0
 SRC_URI=https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.8.4.tar.gz -> phoronix-test-suite-10.8.4.tar.gz
-_eclasses_=toolchain-funcs	14648d8795f7779e11e1bc7cf08b7536	multilib	b2a329026f2e404e9e371097dda47f96	bash-completion-r1	767861f3744f589ee5291c1698b1c082	optfeature	538bce96e5589935b57e178e8635f301
+_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	bash-completion-r1	767861f3744f589ee5291c1698b1c082	optfeature	538bce96e5589935b57e178e8635f301
 _md5_=1e6d1a15da97a9f4c46c6d34a6679207
