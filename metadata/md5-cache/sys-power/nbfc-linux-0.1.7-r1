@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=sys-apps/dmidecode
 SLOT=0
 SRC_URI=https://github.com/nbfc-linux/nbfc-linux/archive/0.1.7.tar.gz -> nbfc-linux-0.1.7.tar.gz
-_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	bash-completion-r1	767861f3744f589ee5291c1698b1c082	linux-info	497f53bf03541c9ee8d103e895ba7b3d	systemd	a964c0cbe818b5729da1dbfcee5be861
+_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	bash-completion-r1	767861f3744f589ee5291c1698b1c082	linux-info	efd923656513c879204fec6638eadee5	systemd	a964c0cbe818b5729da1dbfcee5be861
 _md5_=fd6a027f1458285b80ccdcb4bda80830
