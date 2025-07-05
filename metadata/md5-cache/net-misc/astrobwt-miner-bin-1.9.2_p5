@@ -7,5 +7,5 @@ KEYWORDS=-* ~amd64 ~arm64
 LICENSE=all-rights-reserved
 SLOT=0
 SRC_URI=amd64? ( https://github.com/dero-am/astrobwt-miner/releases/download/V1.9.2.R5/astrominer-V1.9.2.R5_amd64_linux.tar.gz -> astrobwt-miner-bin-1.9.2_p5_amd64.tar.gz ) arm64? ( https://github.com/dero-am/astrobwt-miner/releases/download/V1.9.2.R5/astrominer-V1.9.2.R5_aarch64_linux.tar.gz -> astrobwt-miner-bin-1.9.2_p5_arm64.tar.gz )
-_eclasses_=multiprocessing	1e32df7deee68372153dca65f4a7c21f	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	unpacker	3b4ee72d1e2e0374fd8cd3eddfa00627
+_eclasses_=multiprocessing	1e32df7deee68372153dca65f4a7c21f	toolchain-funcs	a6df79c1e9bc84369dbf3d44206ac772	unpacker	3b4ee72d1e2e0374fd8cd3eddfa00627
 _md5_=6bde2c7a1029058eb22bd54b8bad2ec8
